@@ -18,6 +18,6 @@ def get_satur_temp(psat):
     Ei = (beta**2) + _n[2]*beta + _n[5]
     Fi = _n[0]*(beta**2) + _n[3]*beta + _n[6]
     Gi = _n[1]*(beta**2) + _n[4]*beta + _n[7]
-    Di = 2*Gi/(-Fi - sqrt((Fi**2) - 4*Ei*Gi))
+    Di = 2*Gi/(-Fi - np.sqrt((Fi**2) - 4*Ei*Gi))
     ans = 1*((_n[9] + Di - np.sqrt((_n[9] + Di)**2 - 4*(_n[8] + _n[9]*Di)))/2)
     return ans

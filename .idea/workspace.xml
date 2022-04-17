@@ -4,17 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="update gitignore">
-      <change afterPath="$PROJECT_DIR$/if97/tests/test_region4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="update gitignore, tes dan debug region 4">
       <change beforePath="$PROJECT_DIR$/.idea/Python-Water-Properties-IF97.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Python-Water-Properties-IF97.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/_if97.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/_if97.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/cores/region3.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/region3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/if97/cores/region4.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/region4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/koefisien/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/koefisien/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/tests/test_region4.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/tests/test_region4.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650182183630</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update gitignore, tes dan debug region 4">
+      <created>1650199413631</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1650199413631</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -101,6 +103,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="update gitignore" />
+    <MESSAGE value="update gitignore, tes dan debug region 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="update gitignore, tes dan debug region 4" />
   </component>
 </project>
