@@ -2,8 +2,8 @@ import math
 from if97.cores.region1 import PropReg1
 from if97.cores.region2 import PropReg2a, PropReg2b
 from if97.cores.region3 import PropReg3, PropPTReg3
-from if97.cores.region4 import getSaturTemp
-from if97.cores.region4 import getSaturPress
+from if97.cores.region4 import get_satur_temp
+from if97.cores.region4 import get_satur_press
 from if97.cores.region5 import PropReg5
 from if97.cores.boundary import Bound23
 from .koefisien import tempc, pressc, presst
@@ -19,10 +19,10 @@ def singlephase(P0, T0):
     Prop5 = PropReg5()
     Prop6 = PropPTReg3()
     B23 = Bound23()
-    SatPress = getSaturPress
+    SatPress = get_satur_press
 
     if (T0 > 273.15) and (T0 <= 623.15):
-        psat0 = SatPress(tsat0=T0)
+        psat0 = SatPress(tsat=T0)
         if (P0 > psat0) and (P0 <= 1e5):
             ans["v"] = Prop1.getSpecVol(P0, T0)
             ans["h"] = Prop1.getSpecEnthalpy(P0, T0)
@@ -83,12 +83,12 @@ def saturation(Psat0=None, Tsat0=None, x0=None):
     Prop2 = PropReg2a()
     Prop3 = PropReg3()
     Prop4 = PropReg2b()
-    SatTemp = getSaturTemp
-    SatPress = getSaturPress
+    SatTemp = get_satur_temp
+    SatPress = get_satur_press
 
     if (Psat0 is None) and (Tsat0 is not None) and (x0 is None):
         if (Tsat0 > 273.15) and (Tsat0 <= 623.15):
-            psat0 = SatPress(tsat0=Tsat0)
+            psat0 = SatPress(tsat=Tsat0)
             ans["Psat"] = round(psat0, 8)
             ans["Tsat"] = Tsat0
             ans["vf"] = Prop1.getSpecVol(p=psat0, t=Tsat0)
@@ -104,7 +104,7 @@ def saturation(Psat0=None, Tsat0=None, x0=None):
             ans["Cpf"] = Prop1.getCp(p=psat0, t=Tsat0)
             ans["Cpg"] = Prop2.getCp(p=psat0, t=Tsat0)
         elif (Tsat0 > 623.15) and (Tsat0 < tempc):
-            psat0 = SatPress(tsat0=Tsat0)
+            psat0 = SatPress(tsat=Tsat0)
             rhoes = Prop3.getSatRho(Tsat0)
             ans["Psat"] = round(psat0, 8)
             ans["Tsat"] = Tsat0
@@ -121,7 +121,7 @@ def saturation(Psat0=None, Tsat0=None, x0=None):
             ans["Cpf"] = Prop3.getCp(rho=rhoes[0], t=Tsat0)
             ans["Cpg"] = Prop3.getCp(rho=rhoes[1], t=Tsat0)
         elif math.isclose(Tsat0, tempc, abs_tol=1e-4):
-            psat0 = SatPress(tsat0=Tsat0)
+            psat0 = SatPress(tsat=Tsat0)
             rhoes = Prop3.getSatRho(Tsat0)
             ans["Psat"] = round(psat0,8)
             ans["Tsat"] = Tsat0
@@ -139,17 +139,17 @@ def saturation(Psat0=None, Tsat0=None, x0=None):
             ans["Cpg"] = Prop3.getCp(rho=rhoes[1], t=Tsat0)
     elif (Psat0 is not None) and (Tsat0 is None) and (x0 is None):
         if (Psat0 >= presst) and (Psat0 <= 16529.2):
-            tsat0 = SatTemp(psat0=Psat0)
+            tsat0 = SatTemp(psat=Psat0)
             ans = saturation(Tsat0=tsat0).copy()
         elif (Psat0 > 16529.2) and (Psat0 < pressc):
-            tsat0 = SatTemp(psat0=Psat0)
+            tsat0 = SatTemp(psat=Psat0)
             ans = saturation(Tsat0=tsat0).copy()
         elif math.isclose(Psat0, pressc, abs_tol=1e-14):
-            tsat0 = SatTemp(psat0=Psat0)
+            tsat0 = SatTemp(psat=Psat0)
             ans = saturation(Tsat0=round(tsat0, 3)).copy()
     elif (Psat0 is None) and (Tsat0 is not None) and (x0 is not None):
         if (Tsat0 > 273.15) and (Tsat0 <= 623.15):
-            psat0 = SatPress(tsat0=Tsat0)
+            psat0 = SatPress(tsat=Tsat0)
             if (psat0 >= presst) and (psat0 <= 10e3):
                 if (x0 > 0.95) and (x0 <= 1.):
                     ans0 = saturation(Tsat0=Tsat0).copy()
@@ -203,7 +203,7 @@ def saturation(Psat0=None, Tsat0=None, x0=None):
             ans["Cv"] = ans0["Cvf"]+x0*(ans0["Cvg"]-ans0["Cvf"])
     elif (Psat0 is not None) and (Tsat0 is None) and (x0 is not None):
         if (Psat0 >= presst) and (Psat0 <= 16529.2):
-            tsat0 = SatTemp(psat0=Psat0)
+            tsat0 = SatTemp(psat=Psat0)
             if (Psat0 >= presst) and (Psat0 <= 10e3):
                 if (x0 >= 0.) and (x0 <= 0.95):
                     ans = saturation(Tsat0=tsat0, x0=x0).copy()
@@ -212,10 +212,10 @@ def saturation(Psat0=None, Tsat0=None, x0=None):
             if Psat0 > 10e3:
                 ans = saturation(Tsat0=tsat0, x0=x0)
         elif (Psat0 > 16529.2) and (Psat0 < pressc):
-            tsat0 = SatTemp(psat0=Psat0)
+            tsat0 = SatTemp(psat=Psat0)
             ans = saturation(Tsat0=tsat0, x0=x0).copy()
         elif math.isclose(Psat0, pressc, abs_tol=1e-14):
-            tsat0 = SatTemp(psat0=Psat0)
+            tsat0 = SatTemp(psat=Psat0)
             ans = saturation(Tsat0=round(tsat0, 3), x0=x0).copy()
 
     return ans

@@ -1,7 +1,7 @@
 from math import log, exp, isclose
 from scipy import optimize
 from if97.koefisien import bigr, tempc, rhoc, koefReg3, koefB3, koefSubReg3
-from .region4 import getSaturPress, getSaturTemp
+from .region4 import get_satur_press, get_satur_temp
 from if97.cores.boundary import Bound3
 
 
@@ -91,7 +91,7 @@ class PropReg3:
         return ans*rhoc
 
     def getSatRho(self, tsat):
-        psat = getSaturPress(tsat0=tsat)
+        psat = get_satur_press(tsat=tsat)
         delta1 = optimize.newton(func=self.__SingleDelta__, fprime=self.__dfunc__, x0=1.7, args=(psat, tsat))
         delta2 = optimize.newton(func=self.__SaturDeltag__, fprime=self.__dfunc2__, x0=0.1, args=(delta1, tsat))
         return delta1*rhoc, delta2*rhoc
@@ -261,12 +261,12 @@ class PropPTReg3:
         self.bound.setKoef(koef=self.koef3wx)
         t3wx = self.bound.getTemp2(p)
 
-        psat0 = getSaturPress(tsat0=623.15)
-        tsat0 = getSaturTemp(psat0=p)
+        psat0 = get_satur_press(tsat=623.15)
+        tsat0 = get_satur_temp(psat=p)
         p3cd = 1.900_881_189_173_929e4
         psat1 = 2.193_161_551e4
         psat2 = 2.190_096_265e4
-        psat3 = getSaturPress(tsat0=643.15)
+        psat3 = get_satur_press(tsat=643.15)
 
         ans = 0.
         if ((p > 4e4) and (p < 1e5)) or isclose(p, 1e5, abs_tol=1e-14):
@@ -366,7 +366,7 @@ class PropPTReg3:
                 self.back.setKoef(koef=self.koef3k)
                 ans = self.back.omega(p0=p, t0=t)
         elif ((p > 20.5e3) and (p < 21.043_367_32e3)) or isclose(p, 21.043_367_32e3, abs_tol=1e-9):
-            tsat = _reg4.getSaturTemp(psat0=p)
+            tsat = _reg4.get_satur_temp(psat=p)
             if (t < t3cd) or isclose(t, t3cd, abs_tol=1e-9):
                 self.back.setKoef(koef=self.koef3c)
                 ans = self.back.omega(p0=p, t0=t)
@@ -380,7 +380,7 @@ class PropPTReg3:
                 self.back.setKoef(koef=self.koef3k)
                 ans = self.back.omega(p0=p, t0=t)
         elif ((p > p3cd) and (p < 20.5e3)) or isclose(p, 20.5e3, abs_tol=1e-9):
-            tsat = _reg4.getSaturTemp(psat0=p)
+            tsat = _reg4.get_satur_temp(psat=p)
             if (t < t3cd) or isclose(t, t3cd, abs_tol=1e-9):
                 self.back.setKoef(koef=self.koef3c)
                 ans = self.back.omega(p0=p, t0=t)
@@ -391,7 +391,7 @@ class PropPTReg3:
                 self.back.setKoef(koef=self.koef3t)
                 ans = self.back.omega(p0=p, t0=t)
         elif ((p > psat0) and (p < p3cd)) or isclose(p, p3cd, abs_tol=1e-14):
-            tsat = _reg4.getSaturTemp(psat0=p)
+            tsat = _reg4.get_satur_temp(psat=p)
             if (t < tsat) or isclose(t, tsat, abs_tol=1e-9):
                 self.back.setKoef(koef=self.koef3c)
                 ans = self.back.omega(p0=p, t0=t)
