@@ -1,4 +1,4 @@
-from if97.koefisien import bigr, koefReg1
+from if97.koefisien import BIGR, koefReg1
 
 
 class __BasicReg1__:
@@ -64,7 +64,7 @@ class PropReg1:
         pi = p/self.p0
         tau = self.t0/t
         gamma1 = self.basic.parGammaPi(pi0=pi, tau0=tau)
-        ans = ((bigr*t)/p)*pi*gamma1
+        ans = ((BIGR*t)/p)*pi*gamma1
         return ans
 
     def getSpecInternal(self, p, t):
@@ -72,7 +72,7 @@ class PropReg1:
         tau = self.t0/t
         gamma1 = self.basic.parGammaTau(pi0=pi, tau0=tau)
         gamma2 = self.basic.parGammaPi(pi0=pi, tau0=tau)
-        ans = (bigr*t)*(tau*gamma1-pi*gamma2)
+        ans = (BIGR*t)*(tau*gamma1-pi*gamma2)
         return ans
 
     def getSpecEntropy(self, p, t):
@@ -80,21 +80,21 @@ class PropReg1:
         tau = self.t0/t
         gamma1 = self.basic.gamma(pi0=pi, tau0=tau)
         gamma2 = self.basic.parGammaTau(pi0=pi, tau0=tau)
-        ans = bigr*(tau*gamma2-gamma1)
+        ans = BIGR*(tau*gamma2-gamma1)
         return ans
 
     def getSpecEnthalpy(self, p, t):
         pi = p/self.p0
         tau = self.t0/t
         gamma1 = self.basic.parGammaTau(pi0=pi, tau0=tau)
-        ans = bigr*t*tau*gamma1
+        ans = BIGR*t*tau*gamma1
         return ans
 
     def getCp(self, p, t):
         pi = p/self.p0
         tau = self.t0/t
         gamma1 = self.basic.parGammaTau2(pi0=pi, tau0=tau)
-        ans = -bigr*(tau**2)*gamma1
+        ans = -BIGR*(tau**2)*gamma1
         return ans
 
     def getCv(self, p, t):
@@ -104,5 +104,5 @@ class PropReg1:
         gamma2 = self.basic.parGammaPi2(pi0=pi, tau0=tau)
         gamma3 = self.basic.parGammaTau2(pi0=pi, tau0=tau)
         gamma4 = self.basic.parGammaPiTau(pi0=pi, tau0=tau)
-        ans = -bigr*(tau**2)*gamma3 + bigr*(((gamma1-tau*gamma4)**2)/gamma2)
+        ans = -BIGR*(tau**2)*gamma3+BIGR*(((gamma1-tau*gamma4)**2)/gamma2)
         return ans

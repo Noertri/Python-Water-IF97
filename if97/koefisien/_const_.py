@@ -1,7 +1,7 @@
 #Konstanta umum
-tempc = 647.096
-pressc = 22064.
-rhoc = 322.
-bigr = 0.461526
-tempt = 273.16
-presst = 0.611657
+TEMPC = 647.096
+PRESSC = 22064.
+RHOC = 322.
+BIGR = 0.461526
+TEMPT = 273.16
+PRESST = 0.611657

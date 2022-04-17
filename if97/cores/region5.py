@@ -1,5 +1,5 @@
 from math import log
-from if97.koefisien import bigr, koefReg5
+from if97.koefisien import BIGR, koefReg5
 
 
 class __IdealPart__:
@@ -93,7 +93,7 @@ class PropReg5:
         tau = self.t0/t
         gamma1 = self.ideal.parGammaPi(pi0=pi)
         gamma2 = self.residu.parGammaPi(pi0=pi, tau0=tau)
-        ans = ((bigr*t)/p)*pi*(gamma1 + gamma2)
+        ans = ((BIGR*t)/p)*pi*(gamma1+gamma2)
         return ans
 
     def getSpecInternal(self, p, t):
@@ -103,7 +103,7 @@ class PropReg5:
         gamma2 = self.residu.parGammaTau(pi0=pi, tau0=tau)
         gamma3 = self.ideal.parGammaPi(pi0=pi)
         gamma4 = self.residu.parGammaPi(pi0=pi, tau0=tau)
-        ans = bigr*t*tau*(gamma1+gamma2)-bigr*t*pi*(gamma3+gamma4)
+        ans = BIGR*t*tau*(gamma1+gamma2)-BIGR*t*pi*(gamma3+gamma4)
         return ans
 
     def getSpecEntropy(self, p, t):
@@ -113,7 +113,7 @@ class PropReg5:
         gamma2 = self.residu.parGammaTau(pi0=pi, tau0=tau)
         gamma3 = self.ideal.gamma(pi0=pi, tau0=tau)
         gamma4 = self.residu.gamma(pi0=pi, tau0=tau)
-        ans = bigr*tau*(gamma1+gamma2)-bigr*(gamma3+gamma4)
+        ans = BIGR*tau*(gamma1+gamma2)-BIGR*(gamma3+gamma4)
         return ans
 
     def getSpecEnthalpy(self, p, t):
@@ -121,7 +121,7 @@ class PropReg5:
         tau = self.t0/t
         gamma1 = self.ideal.parGammaTau(tau0=tau)
         gamma2 = self.residu.parGammaTau(pi0=pi, tau0=tau)
-        ans = bigr*t*tau*(gamma1+gamma2)
+        ans = BIGR*t*tau*(gamma1+gamma2)
         return ans
 
     def getCp(self, p, t):
@@ -129,7 +129,7 @@ class PropReg5:
         tau = self.t0/t
         gamma1 = self.ideal.parGammaTau2(tau0=tau)
         gamma2 = self.residu.parGammaTau2(pi0=pi, tau0=tau)
-        ans = -bigr*(tau**2)*(gamma1+gamma2)
+        ans = -BIGR*(tau**2)*(gamma1+gamma2)
         return ans
 
     def getCv(self, p, t):
@@ -141,5 +141,5 @@ class PropReg5:
         ans1 = ((1 + pi*gamma1 - tau*pi*gamma3)**2)/(1 - (pi**2)*gamma2)
         gamma4 = self.ideal.parGammaTau2(tau0=tau)
         gamma5 = self.residu.parGammaTau2(pi0=pi, tau0=tau)
-        ans = -bigr*(tau**2)*(gamma4+gamma5) - bigr*ans1
+        ans = -BIGR*(tau**2)*(gamma4+gamma5)-BIGR*ans1
         return ans

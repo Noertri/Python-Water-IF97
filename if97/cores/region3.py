@@ -1,6 +1,6 @@
 from math import log, exp, isclose
 from scipy import optimize
-from if97.koefisien import bigr, tempc, rhoc, koefReg3, koefB3, koefSubReg3
+from if97.koefisien import BIGR, TEMPC, RHOC, koefReg3, koefB3, koefSubReg3
 from .region4 import get_satur_press, get_satur_temp
 from if97.cores.boundary import Bound3
 
@@ -62,79 +62,79 @@ class PropReg3:
         self.basic = __BasicReg3__()
 
     def __SingleDelta__(self, delta, p, t):
-        tau = tempc/t
-        c = p/(rhoc*bigr*t)
+        tau = TEMPC/t
+        c = p/(RHOC*BIGR*t)
         phi = self.basic.parPhiDelta(delta0=delta, tau0=tau)
         ans = (delta**2)*phi - c
         return ans
 
     def __dfunc__(self, delta, p, t):
-        tau = tempc/t
+        tau = TEMPC/t
         phi1 = self.basic.parPhiDelta(delta0=delta, tau0=tau)
         phi2 = self.basic.parPhiDelta2(delta0=delta, tau0=tau)
         return 2*delta*phi1 + (delta**2)*phi2
 
     def __dfunc2__(self, delta, delta1, t):
-        tau = tempc/t
+        tau = TEMPC/t
         phi1 = self.basic.parPhiDelta(delta0=delta, tau0=tau)
         phi2 = self.basic.parPhiDelta2(delta0=delta, tau0=tau)
         return -2*delta*phi1 - (delta**2)*phi2
 
     def __SaturDeltag__(self, delta, delta1, t):
-        tau = tempc/t
+        tau = TEMPC/t
         phi1 = self.basic.parPhiDelta(delta0=delta, tau0=tau)
         phi2 = self.basic.parPhiDelta(delta0=delta1, tau0=tau)
         return (delta1**2)*phi2 - (delta**2)*phi1
 
     def getRho(self, p, t):
         ans = optimize.newton(self.__SingleDelta__, fprime=self.__dfunc__, x0=1.7, args=(p, t))
-        return ans*rhoc
+        return ans*RHOC
 
     def getSatRho(self, tsat):
         psat = get_satur_press(tsat=tsat)
         delta1 = optimize.newton(func=self.__SingleDelta__, fprime=self.__dfunc__, x0=1.7, args=(psat, tsat))
         delta2 = optimize.newton(func=self.__SaturDeltag__, fprime=self.__dfunc2__, x0=0.1, args=(delta1, tsat))
-        return delta1*rhoc, delta2*rhoc
+        return delta1*RHOC, delta2*RHOC
 
     def getSpecInternal(self, rho, t):
-        delta = rho/rhoc
-        tau = tempc/t
+        delta = rho/RHOC
+        tau = TEMPC/t
         phi = self.basic.parPhiTau(delta0=delta, tau0=tau)
-        ans = bigr*t*tau*phi
+        ans = BIGR*t*tau*phi
         return ans
 
     def getSpecEntropy(self, rho, t):
-        delta = rho/rhoc
-        tau = tempc/t
+        delta = rho/RHOC
+        tau = TEMPC/t
         phi1 = self.basic.parPhiTau(delta0=delta, tau0=tau)
         phi2 = self.basic.phi(delta0=delta, tau0=tau)
-        ans = bigr*tau*phi1-bigr*phi2
+        ans = BIGR*tau*phi1-BIGR*phi2
         return ans
 
     def getSpecEnthalpy(self, rho, t):
-        delta = rho/rhoc
-        tau = tempc/t
+        delta = rho/RHOC
+        tau = TEMPC/t
         phi1 = self.basic.parPhiTau(delta0=delta, tau0=tau)
         phi2 = self.basic.parPhiDelta(delta0=delta, tau0=tau)
-        ans = bigr*t*(tau*phi1+delta*phi2)
+        ans = BIGR*t*(tau*phi1+delta*phi2)
         return ans
 
     def getCv(self, rho, t):
-        delta = rho/rhoc
-        tau = tempc/t
+        delta = rho/RHOC
+        tau = TEMPC/t
         phi = self.basic.parPhiTau2(delta0=delta, tau0=tau)
-        ans = -bigr*(tau**2)*phi
+        ans = -BIGR*(tau**2)*phi
         return ans
 
     def getCp(self, rho, t):
-        delta = rho/rhoc
-        tau = tempc/t
+        delta = rho/RHOC
+        tau = TEMPC/t
         phi1 = self.basic.parPhiDelta(delta0=delta, tau0=tau)
         phi2 = self.basic.parPhiDelta2(delta0=delta, tau0=tau)
         phi3 = self.basic.parPhiDeltaTau(delta0=delta, tau0=tau)
         ans1 = ((delta*phi1-delta*tau*phi3)**2)/(2*delta*phi1+(delta**2)*phi2)
         phi4 = self.basic.parPhiTau2(delta0=delta, tau0=tau)
-        ans = -bigr*(tau**2)*phi4+bigr*ans1
+        ans = -BIGR*(tau**2)*phi4+BIGR*ans1
         return ans
 
 

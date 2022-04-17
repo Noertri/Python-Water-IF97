@@ -1,5 +1,5 @@
 import unittest
-from if97 import get_satur_press, get_satur_temp
+from if97 import get_satur_press, get_satur_temp, PRESSC, TEMPC, PRESST, TEMPT
 
 
 class TestRegion4(unittest.TestCase):
@@ -21,6 +21,16 @@ class TestRegion4(unittest.TestCase):
         self.assertAlmostEqual(get_satur_temp(psat=100), tsat1_des, delta=1e-6)
         self.assertAlmostEqual(get_satur_temp(psat=1e3), tsat2_des, delta=1e-6)
         self.assertAlmostEqual(get_satur_temp(psat=1e4), tsat3_des, delta=1e-6)
+
+    def test_satpress_critical_and_triple_point(self):
+
+        self.assertAlmostEqual(get_satur_press(tsat=273.16), PRESST, delta=1e-6)
+        self.assertAlmostEqual(get_satur_press(tsat=647.096), PRESSC, delta=1e-6)
+
+    def test_sattemp_critical_and_triple_point(self):
+
+        self.assertAlmostEqual(get_satur_temp(psat=PRESST), TEMPT, delta=1e-8)
+        self.assertAlmostEqual(get_satur_temp(psat=PRESSC), TEMPC, delta=1e-8)
 
 
 if __name__ == "__main__":
