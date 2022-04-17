@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="tes dan debug region 4">
-      <change beforePath="$PROJECT_DIR$/if97/cores/region4.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/region4.py" afterDir="false" />
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi, tes, dan debug region 4">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/cores/region1.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/region1.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +40,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python tests.Python tests in test_region4.py">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -116,8 +117,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main" />
         <item itemvalue="Python tests.Python tests in test_region4.py" />
+        <item itemvalue="Python.main" />
         <item itemvalue="Python tests.Python tests for test_region4.TestRegion4.test_sattemp_critical_and_triple_point" />
         <item itemvalue="Python tests.Python tests for test_region4.TestRegion4.test_satpress_critical_and_triple_point" />
         <item itemvalue="Python tests.Python tests for test_region4.TestRegion4.test_satur_temp" />
@@ -161,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650201388390</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="memodifikasi, tes, dan debug region 4">
+      <created>1650201457747</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1650201457747</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -179,6 +187,7 @@
     <MESSAGE value="update gitignore" />
     <MESSAGE value="update gitignore, tes dan debug region 4" />
     <MESSAGE value="tes dan debug region 4" />
-    <option name="LAST_COMMIT_MESSAGE" value="tes dan debug region 4" />
+    <MESSAGE value="memodifikasi, tes, dan debug region 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi, tes, dan debug region 4" />
   </component>
 </project>
