@@ -1,4 +1,4 @@
-from if97.koefisien import nReg4
+from ..koefisien import nReg4
 import numpy as np
 
 

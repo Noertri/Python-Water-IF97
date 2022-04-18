@@ -1,145 +1,69 @@
-from math import log
-from if97.koefisien import BIGR, koefReg5
+import numpy as np
+from ..koefisien import IJnReg5
 
 
-class __IdealPart__:
+def gammao(pi, tau, desc=None):
 
-    def __init__(self):
-        self.capj = koefReg5["capjo"]
-        self.n = koefReg5["no"]
+    _gamma = dict()
+    _gamma["gamma"] = np.log(pi)
+    _gamma["dgammadpi"] = 1./pi
+    _gamma["dgammadpi2"] = -1./(pi**2)
+    _gamma["dgammadtau"] = 0.
+    _gamma["dgammadtau2"] = 0.
+    _gamma["dgammadpidtau"] = 0.
 
-    def gamma(self, pi0, tau0):
-        ans = log(pi0)
-        for k in range(6):
-            ans += self.n[k]*(tau0**self.capj[k])
-        return ans
+    for Jio, nio in zip(IJnReg5["Jo"], IJnReg5["no"]):
+        _gamma["gamma"] += nio*(tau**Jio)
+        _gamma["dgammadtau"] += nio*Jio*(tau**(Jio-1))
+        _gamma["dgammadtau2"] += nio*Jio*(Jio-1)*(tau**(Jio-2))
 
-    def parGammaPi(self, pi0):
-        return 1./pi0
-
-    def parGammaPi2(self, pi0):
-        return -1./(pi0**2)
-
-    def parGammaTau(self, tau0):
-        ans = 0.
-        for k in range(6):
-            ans += self.n[k]*self.capj[k]*(tau0**(self.capj[k]-1))
-        return ans
-
-    def parGammaTau2(self, tau0):
-        ans = 0.
-        for k in range(6):
-            ans += self.n[k]*self.capj[k]*(self.capj[k]-1)*(tau0**(self.capj[k]-2))
-        return ans
-
-    def parGammaPiTau(self):
-        return 0.
+    match desc:
+        case "gamma":
+            return _gamma["gamma"]
+        case "dgammadpi":
+            return _gamma["dgammadpi"]
+        case "dgammadpi2":
+            return _gamma["dgammadpi2"]
+        case "dgammadtau":
+            return _gamma["dgammadtau"]
+        case "dgammadtau2":
+            return _gamma["dgammadtau2"]
+        case "dgammadpidtau":
+            return _gamma["dgammadpidtau"]
+        case _:
+            return Nome
 
 
-class __ResiduPart__:
+def gammar(pi, tau, desc):
 
-    def __init__(self):
-        self.capi = koefReg5["capi"]
-        self.capj = koefReg5["capj"]
-        self.n = koefReg5["n"]
+    _gamma = dict()
+    _gamma["gamma"] = 0.
+    _gamma["dgammadpi"] = 0.
+    _gamma["dgammadpi2"] = 0.
+    _gamma["dgammadtau"] = 0.
+    _gamma["dgammadtau2"] = 0.
+    _gamma["dgammadpidtau"] = 0.
 
-    def gamma(self, pi0, tau0):
-        ans = 0.
-        for k in range(5):
-            ans += self.n[k]*(pi0**self.capi[k])*(tau0**self.capj[k])
-        return ans
+    for Ii, Ji, ni in zip(IJnReg5["I"], IJnReg5["J"], IJnReg5["n"]):
+        _gamma["gamma"] += ni*(pi**Ii)*(tau**Ji)
+        _gamma["dgammadpi"] += ni*Ii*(pi**(Ii-1))*(tau**Ji)
+        _gamma["dgammadpi2"] += ni*Ii*(Ii-1)*(pi**(Ii-2))*(tau**Ji)
+        _gamma["dgammadtau"] += ni*Ji*(pi**Ii)*(tau**(Ji-1))
+        _gamma["dgammadtau2"] += ni*Ji*(Ji-1)*(pi**Ii)*(tau**(Ji-2))
+        _gamma["dgammadpidtau"] += ni*Ii*Ji*(pi**(Ii-1))*(tau**(Ji-1))
 
-    def parGammaPi(self, pi0, tau0):
-        ans = 0.
-        for k in range(5):
-            ans += self.n[k]*self.capi[k]*(pi0**(self.capi[k]-1))*(tau0**self.capj[k])
-        return ans
-
-    def parGammaPi2(self, pi0, tau0):
-        ans = 0.
-        for k in range(5):
-            ans += self.n[k]*self.capi[k]*(self.capi[k]-1)*(pi0**(self.capi[k]-2))*(tau0**self.capj[k])
-        return ans
-
-    def parGammaTau(self, pi0, tau0):
-        ans = 0.
-        for k in range(5):
-            ans += self.n[k]*self.capj[k]*(pi0**self.capi[k])*(tau0**(self.capj[k]-1))
-        return ans
-
-    def parGammaTau2(self, pi0, tau0):
-        ans = 0.
-        for k in range(5):
-            ans += self.n[k]*self.capj[k]*(self.capj[k]-1)*(pi0**self.capi[k])*(tau0**(self.capj[k]-2))
-        return ans
-
-    def parGammaPiTau(self, pi0, tau0):
-        ans = 0.
-        for k in range(5):
-            ans += self.n[k]*self.capi[k]*self.capj[k]*(pi0**(self.capi[k]-1))*(tau0**(self.capj[k]-1))
-        return ans
-
-
-class PropReg5:
-
-    def __init__(self):
-        self.ideal = __IdealPart__()
-        self.residu = __ResiduPart__()
-        self.p0 = 1000
-        self.t0 = 1000
-
-    def getSpecVol(self, p, t):
-        pi = p/self.p0
-        tau = self.t0/t
-        gamma1 = self.ideal.parGammaPi(pi0=pi)
-        gamma2 = self.residu.parGammaPi(pi0=pi, tau0=tau)
-        ans = ((BIGR*t)/p)*pi*(gamma1+gamma2)
-        return ans
-
-    def getSpecInternal(self, p, t):
-        pi = p/self.p0
-        tau = self.t0/t
-        gamma1 = self.ideal.parGammaTau(tau0=tau)
-        gamma2 = self.residu.parGammaTau(pi0=pi, tau0=tau)
-        gamma3 = self.ideal.parGammaPi(pi0=pi)
-        gamma4 = self.residu.parGammaPi(pi0=pi, tau0=tau)
-        ans = BIGR*t*tau*(gamma1+gamma2)-BIGR*t*pi*(gamma3+gamma4)
-        return ans
-
-    def getSpecEntropy(self, p, t):
-        pi = p/self.p0
-        tau = self.t0/t
-        gamma1 = self.ideal.parGammaTau(tau0=tau)
-        gamma2 = self.residu.parGammaTau(pi0=pi, tau0=tau)
-        gamma3 = self.ideal.gamma(pi0=pi, tau0=tau)
-        gamma4 = self.residu.gamma(pi0=pi, tau0=tau)
-        ans = BIGR*tau*(gamma1+gamma2)-BIGR*(gamma3+gamma4)
-        return ans
-
-    def getSpecEnthalpy(self, p, t):
-        pi = p/self.p0
-        tau = self.t0/t
-        gamma1 = self.ideal.parGammaTau(tau0=tau)
-        gamma2 = self.residu.parGammaTau(pi0=pi, tau0=tau)
-        ans = BIGR*t*tau*(gamma1+gamma2)
-        return ans
-
-    def getCp(self, p, t):
-        pi = p/self.p0
-        tau = self.t0/t
-        gamma1 = self.ideal.parGammaTau2(tau0=tau)
-        gamma2 = self.residu.parGammaTau2(pi0=pi, tau0=tau)
-        ans = -BIGR*(tau**2)*(gamma1+gamma2)
-        return ans
-
-    def getCv(self, p, t):
-        pi = p/self.p0
-        tau = self.t0/t
-        gamma1 = self.residu.parGammaPi(pi0=pi, tau0=tau)
-        gamma2 = self.residu.parGammaPiTau(pi0=pi, tau0=tau)
-        gamma3 = self.residu.parGammaPi2(pi0=pi, tau0=tau)
-        ans1 = ((1 + pi*gamma1 - tau*pi*gamma3)**2)/(1 - (pi**2)*gamma2)
-        gamma4 = self.ideal.parGammaTau2(tau0=tau)
-        gamma5 = self.residu.parGammaTau2(pi0=pi, tau0=tau)
-        ans = -BIGR*(tau**2)*(gamma4+gamma5)-BIGR*ans1
-        return ans
+    match desc:
+        case "gamma":
+            return _gamma["gamma"]
+        case "dgammadpi":
+            return _gamma["dgammadpi"]
+        case "dgammadpi2":
+            return _gamma["dgammadpi2"]
+        case "dgammadtau":
+            return _gamma["dgammadtau"]
+        case "dgammadtau2":
+            return _gamma["dgammadtau2"]
+        case "dgammadpidtau":
+            return _gamma["dgammadpidtau"]
+        case _:
+            return Nome

@@ -1,4 +1,4 @@
-from if97.koefisien import IJnReg1
+from ..koefisien import IJnReg1
 
 
 def gamma(pi, tau, desc=None):
