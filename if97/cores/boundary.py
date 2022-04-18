@@ -1,4 +1,4 @@
-from math import sqrt, log
+from math import sqrt
 from ..koefisien import b23
 
 

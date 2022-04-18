@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi modul region 1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi semua modul di subpackage cores">
       <change beforePath="$PROJECT_DIR$/if97/cores/boundary.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/boundary.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/cores/region1.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/region1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/cores/region2.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/region2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/cores/region3.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/region3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/cores/region4.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/region4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/cores/region5.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/region5.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/koefisien/_IJnReg2_.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/koefisien/_IJnReg2_.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/koefisien/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/koefisien/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650204097233</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="memodifikasi semua modul di subpackage cores">
+      <created>1650259499021</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1650259499021</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,6 +205,7 @@
     <MESSAGE value="tes dan debug region 4" />
     <MESSAGE value="memodifikasi, tes, dan debug region 4" />
     <MESSAGE value="memodifikasi modul region 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi modul region 1" />
+    <MESSAGE value="memodifikasi semua modul di subpackage cores" />
+    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi semua modul di subpackage cores" />
   </component>
 </project>
