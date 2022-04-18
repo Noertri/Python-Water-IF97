@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi semua modul di subpackage cores">
-      <change afterPath="$PROJECT_DIR$/if97/tests/test_region1.py" afterDir="false" />
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi semua modul di subpackage cores, tes dan debug region1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/if97/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/_if97.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/_if97.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/if97/cores/region1.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/region1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/if97/cores/region2.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/region2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/koefisien/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/koefisien/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/tests/test_region4.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/tests/test_region4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/tests/test_region1.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/tests/test_region1.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +52,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python tests.Python tests for test_region1.TestRegion1.test_properties3">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -134,11 +132,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main" />
-        <item itemvalue="Python tests.Python tests in test_region1.py" />
         <item itemvalue="Python tests.Python tests for test_region1.TestRegion1.test_properties3" />
         <item itemvalue="Python tests.Python tests for test_region1.TestRegion1.test_properties2" />
         <item itemvalue="Python tests.Python tests for test_region1.TestRegion1.test_properties1" />
+        <item itemvalue="Python.main" />
+        <item itemvalue="Python tests.Python tests in test_region1.py" />
       </list>
     </recent_temporary>
   </component>
@@ -207,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650259547498</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="memodifikasi semua modul di subpackage cores, tes dan debug region1">
+      <created>1650266280309</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1650266280309</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -228,6 +233,7 @@
     <MESSAGE value="memodifikasi, tes, dan debug region 4" />
     <MESSAGE value="memodifikasi modul region 1" />
     <MESSAGE value="memodifikasi semua modul di subpackage cores" />
-    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi semua modul di subpackage cores" />
+    <MESSAGE value="memodifikasi semua modul di subpackage cores, tes dan debug region1" />
+    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi semua modul di subpackage cores, tes dan debug region1" />
   </component>
 </project>
