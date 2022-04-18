@@ -1,5 +1,6 @@
 import unittest
-from if97 import get_satur_press, get_satur_temp, PRESSC, TEMPC, PRESST, TEMPT
+from if97 import PRESSC, TEMPC, PRESST, TEMPT
+from if97.cores.region4 import get_satur_press, get_satur_temp
 
 
 class TestRegion4(unittest.TestCase):
