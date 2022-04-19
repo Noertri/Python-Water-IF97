@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="tes dan debug region5">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi region3, tes dan debug region3">
+      <change afterPath="$PROJECT_DIR$/if97/tests/test_bound23.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/cores/region3.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/region3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/koefisien/_IJnReg5_.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/koefisien/_IJnReg5_.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/tests/test_region3.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/tests/test_region3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/_if97.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/_if97.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/cores/boundary.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/boundary.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/koefisien/_IJnBound_.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/koefisien/_IJnBound_.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,8 +51,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="Python tests.Python tests in test_region3.py">
-    <configuration name="Python tests for test_region3.TestRegion3.test_properties1" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python tests.Python tests for test_bound23.TestBoundary23.test_temp">
+    <configuration name="Python tests for test_bound23.TestBoundary23.test_press" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -61,7 +62,21 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_region3.TestRegion3.test_properties1&quot;" />
+      <option name="_new_target" value="&quot;test_bound23.TestBoundary23.test_press&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_bound23.TestBoundary23.test_temp" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="Python-Water-Properties-IF97" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/IF97/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_bound23.TestBoundary23.test_temp&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -107,27 +122,13 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests in test_region5.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="Python-Water-Properties-IF97" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/IF97/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/IF97/tests/test_region5.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for test_bound23.TestBoundary23.test_temp" />
+        <item itemvalue="Python tests.Python tests for test_bound23.TestBoundary23.test_press" />
         <item itemvalue="Python tests.Python tests in test_region3.py" />
         <item itemvalue="Python tests.Python tests for test_region3.TestRegion3.test_properties3" />
         <item itemvalue="Python tests.Python tests for test_region3.TestRegion3.test_properties2" />
-        <item itemvalue="Python tests.Python tests for test_region3.TestRegion3.test_properties1" />
-        <item itemvalue="Python tests.Python tests in test_region5.py" />
       </list>
     </recent_temporary>
   </component>
@@ -238,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650375085463</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="memodifikasi region3, tes dan debug region3">
+      <created>1650375768741</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1650375768741</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -265,6 +273,7 @@
     <MESSAGE value="tes dan debug region3" />
     <MESSAGE value="mengganti nama dari if97 ke IF97" />
     <MESSAGE value="tes dan debug region5" />
-    <option name="LAST_COMMIT_MESSAGE" value="tes dan debug region5" />
+    <MESSAGE value="memodifikasi region3, tes dan debug region3" />
+    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi region3, tes dan debug region3" />
   </component>
 </project>
