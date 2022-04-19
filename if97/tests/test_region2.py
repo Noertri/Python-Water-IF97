@@ -1,5 +1,5 @@
 import unittest
-from if97.cores import region2
+from IF97.cores import region2
 
 
 class TestRegion2(unittest.TestCase):
