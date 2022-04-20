@@ -49,6 +49,15 @@ class TestRegion3(unittest.TestCase):
         self.assertAlmostEqual(self.props3.get_properties(rho=500, t=750, desc="s"), s_des, delta=1e-8)
         self.assertAlmostEqual(self.props3.get_properties(rho=500, t=750, desc="cp"), cp_des, delta=1e-8)
 
+    def test_ritial_point(self):
+        p_des = 22064.
+        h_des = 2087.55
+        s_des = 4.4120
+
+        self.assertAlmostEqual(self.props3.get_properties(rho=322., t=647.096, desc="p"), p_des, delta=1e-7)
+        self.assertAlmostEqual(self.props3.get_properties(rho=322., t=647.096, desc="h"), h_des, delta=1e-2)
+        self.assertAlmostEqual(self.props3.get_properties(rho=322., t=647.096, desc="s"), s_des, delta=1e-4)
+
 
 if __name__ == "__main__":
     unittest.main()
