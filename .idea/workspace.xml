@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="membuat fungsi untuk persamaan boundary subregion3, tes dan debug boundaru subregion3">
-      <change afterPath="$PROJECT_DIR$/if97/koefisien/_SubReg3/_sub3a.py" afterDir="false" />
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="membuat modul _sub3a.py">
+      <change afterPath="$PROJECT_DIR$/if97/koefisien/_SubReg3/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/koefisien/_IJnPTReg3_.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/koefisien/_IJnPTReg3_.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,14 +48,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="PyConsoleOptionsProvider">
-    <option name="myPythonConsoleState">
-      <console-settings>
-        <option name="useSoftWraps" value="true" />
-      </console-settings>
-    </option>
-  </component>
-  <component name="RunManager" selected="Python tests.Python tests in test_bound_subreg3.py">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -133,10 +125,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
         <item itemvalue="Python tests.Python tests in test_bound_subreg3.py" />
         <item itemvalue="Python tests.Python tests for test_bound_subreg3.TestBoundSubReg3.test_result_none" />
         <item itemvalue="Python tests.Python tests for test_bound_subreg3.TestBoundSubReg3.test_nound_subreg3" />
-        <item itemvalue="Python.main" />
         <item itemvalue="Python tests.Python tests for test_region3.TestRegion3.test_ritial_point" />
       </list>
     </recent_temporary>
@@ -269,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650459407130</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="membuat modul _sub3a.py">
+      <created>1650459802480</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1650459802480</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -299,6 +298,7 @@
     <MESSAGE value="memodifikasi region3, tes dan debug region3" />
     <MESSAGE value="memodifikasi class Boundary23, tes dan debug class Boundary23" />
     <MESSAGE value="membuat fungsi untuk persamaan boundary subregion3, tes dan debug boundaru subregion3" />
-    <option name="LAST_COMMIT_MESSAGE" value="membuat fungsi untuk persamaan boundary subregion3, tes dan debug boundaru subregion3" />
+    <MESSAGE value="membuat modul _sub3a.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="membuat modul _sub3a.py" />
   </component>
 </project>
