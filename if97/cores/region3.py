@@ -1,5 +1,6 @@
 import numpy as np
 from ..koefisien import IJnReg3, RHOC, TEMPC, BIGR
+from scipy import optimize
 
 
 class Region3:
@@ -10,7 +11,7 @@ class Region3:
         I = IJnReg3["I"]
         J = IJnReg3["J"]
         _phi = dict()
-        _phi["phi"] = n[0]*np.log(delta)
+        _phi["phi"] = n[0]*np.log(abs(delta))
         _phi["dphiddelta"] = n[0]/delta
         _phi["dphiddelta2"] = (-1*n[0])/(delta**2)
         _phi["dphidtau"] = 0.

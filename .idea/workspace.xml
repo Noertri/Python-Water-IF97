@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="membuat modul _sub3a.py">
-      <change afterPath="$PROJECT_DIR$/if97/koefisien/_SubReg3/__init__.py" afterDir="false" />
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="modifikasi region3.py">
+      <change afterPath="$PROJECT_DIR$/if97/cores/backwardPT.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/if97/tests/test_backwardPT.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/cores/region3.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/region3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/koefisien/_IJnPTReg3_.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/koefisien/_IJnPTReg3_.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/koefisien/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/koefisien/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,11 +52,14 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python tests.Python tests in test_backwardPT.py">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -67,7 +74,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_bound_subreg3.TestBoundSubReg3.test_nound_subreg3" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_backwardPT.TestBackwardPT.test_subreg3a" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -77,11 +84,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_bound_subreg3.TestBoundSubReg3.test_nound_subreg3&quot;" />
+      <option name="_new_target" value="&quot;test_backwardPT.TestBackwardPT.test_subreg3a&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_bound_subreg3.TestBoundSubReg3.test_result_none" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_backwardPT.TestBackwardPT.test_subreg3o" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -91,11 +98,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_bound_subreg3.TestBoundSubReg3.test_result_none&quot;" />
+      <option name="_new_target" value="&quot;test_backwardPT.TestBackwardPT.test_subreg3o&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_region3.TestRegion3.test_ritial_point" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests in test_backwardPT.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -105,8 +112,8 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_region3.TestRegion3.test_ritial_point&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/IF97/tests/test_backwardPT.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <configuration name="Python tests in test_bound_subreg3.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
@@ -125,11 +132,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests in test_backwardPT.py" />
+        <item itemvalue="Python tests.Python tests for test_backwardPT.TestBackwardPT.test_subreg3o" />
+        <item itemvalue="Python tests.Python tests for test_backwardPT.TestBackwardPT.test_subreg3a" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python tests.Python tests in test_bound_subreg3.py" />
-        <item itemvalue="Python tests.Python tests for test_bound_subreg3.TestBoundSubReg3.test_result_none" />
-        <item itemvalue="Python tests.Python tests for test_bound_subreg3.TestBoundSubReg3.test_nound_subreg3" />
-        <item itemvalue="Python tests.Python tests for test_region3.TestRegion3.test_ritial_point" />
       </list>
     </recent_temporary>
   </component>
@@ -268,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650459802480</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="modifikasi region3.py">
+      <created>1650523794882</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1650523794882</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -299,6 +313,7 @@
     <MESSAGE value="memodifikasi class Boundary23, tes dan debug class Boundary23" />
     <MESSAGE value="membuat fungsi untuk persamaan boundary subregion3, tes dan debug boundaru subregion3" />
     <MESSAGE value="membuat modul _sub3a.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="membuat modul _sub3a.py" />
+    <MESSAGE value="modifikasi region3.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="modifikasi region3.py" />
   </component>
 </project>
