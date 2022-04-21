@@ -4,9 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="test dan debug region 1">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="mengganti nama modul di subpackage koefisien">
+      <change afterPath="$PROJECT_DIR$/if97/koefisien/_IJnBound.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/if97/koefisien/_IJnPTReg3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/if97/koefisien/_IJnReg1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/if97/koefisien/_IJnReg2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/if97/koefisien/_IJnReg3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/if97/koefisien/_IJnReg4.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/if97/koefisien/_IJnReg5.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/if97/koefisien/_const.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/koefisien/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/koefisien/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/_if97.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/_if97.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/cores/basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/basic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/cores/region1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/cores/region2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/cores/region3.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/cores/region4.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/cores/region5.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/koefisien/_IJnBound_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/koefisien/_IJnPTReg3_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/koefisien/_IJnReg1_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/koefisien/_IJnReg2_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/koefisien/_IJnReg3_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/koefisien/_IJnReg4_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/koefisien/_IJnReg5_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/koefisien/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/koefisien/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/koefisien/_const_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/tests/test_region2.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/tests/test_region2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/tests/test_region3.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/tests/test_region3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/tests/test_region4.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/tests/test_region4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/tests/test_region5.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/tests/test_region5.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -292,7 +319,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650559234898</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="mengganti nama modul di subpackage koefisien">
+      <created>1650559534936</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1650559534936</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -327,6 +361,7 @@
     <MESSAGE value="membuat modul backwardPT.py, test dan debug subregion 3" />
     <MESSAGE value="membuat modul basic.py" />
     <MESSAGE value="test dan debug region 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="test dan debug region 1" />
+    <MESSAGE value="mengganti nama modul di subpackage koefisien" />
+    <option name="LAST_COMMIT_MESSAGE" value="mengganti nama modul di subpackage koefisien" />
   </component>
 </project>

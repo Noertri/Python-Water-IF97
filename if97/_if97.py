@@ -1,5 +1,5 @@
 from .koefisien import BIGR, TEMPC, RHOC, TEMPT, PRESSC, PRESST
-from .cores import region1, region2, region3, region4, region5
+# from .cores import region1, region2, region3, region4, region5
 from .cores.boundary import Boundary23
 
 
@@ -9,7 +9,7 @@ def saturation(psat=None, tsat=None):
 
     if tsat and tsat >= 273.15 and tsat <= 623.15:
 
-        psat = region4.get_satur_press(tsat)
+        psat = region4.region4_press(tsat)
         props["psat"] = psat
         props["tsat"] = tsat
 
@@ -39,7 +39,7 @@ def saturation(psat=None, tsat=None):
 
     elif tsat and tsat > 623.15 and tsat <= TEMPC:
 
-        psat = region4.get_satur_press(tsat)
+        psat = region4.region4_press(tsat)
 
         props["psat"] = psat
         props["tsat"] = tsat
