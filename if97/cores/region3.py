@@ -31,6 +31,17 @@ class Region3:
         else:
             return None
 
+    def func(self, delta, p, t):
+        tau = TEMPC/t
+        # delta = rho/RHOC
+        c = p/(RHOC*BIGR*t)
+
+        dphiddel = self.phi(delta, tau, desc="dphiddelta")
+
+        f1 = (delta**2)*dphiddel-c
+
+        return f1
+
     def get_properties(self, rho, t, desc=None):
 
         props = dict()
