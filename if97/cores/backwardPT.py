@@ -2,7 +2,7 @@ from numpy import exp
 from ..koefisien import IJnSubReg3
 
 
-def region3(p, t, desc=None):
+def region3PT(p, t, desc=None):
 
     if desc and desc.lower() != "3n":
         a = IJnSubReg3[desc.lower()]["a"]

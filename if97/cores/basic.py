@@ -35,7 +35,7 @@ def region1(p, t, desc=None):
     props["s"] = BIGR*(tau*dgdtau-g)
     props["h"] = BIGR*t*tau*dgdtau
     props["cp"] = -1*BIGR*(tau**2)*dgdtau2
-    props["cv"] = -1*(tau**2)*dgdtau2 + ((dgdpi-tau*dgdpidtau)**2)/dgdpi2
+    props["cv"] = BIGR*(-1*(tau**2)*dgdtau2 + ((dgdpi-tau*dgdpidtau)**2)/dgdpi2)
 
     if desc and desc.lower() in props.keys():
         return props[desc.lower()]
@@ -87,7 +87,7 @@ def region2(p, t, desc=None):
     props["s"] = BIGR*(tau*(dgodtau+dgrdtau)-(go+gr))
     props["h"] = BIGR*t*tau*(dgodtau+dgrdtau)
     props["cp"] = -1*BIGR*(tau**2)*(dgodtau2+dgrdtau2)
-    props["cv"] = -1*(tau**2)*(dgodtau2+dgrdtau2)-(((1+pi*dgrdpi-tau*pi*dgrdpidtau)**2)/(1-(pi**2)*dgrdpi2))
+    props["cv"] = BIGR*(-1*(tau**2)*(dgodtau2+dgrdtau2)-(((1+pi*dgrdpi-tau*pi*dgrdpidtau)**2)/(1-(pi**2)*dgrdpi2)))
 
     if desc and desc.lower() in props.keys():
         return props[desc.lower()]
@@ -141,7 +141,7 @@ def supp_region2(p, t, desc=None):
     props["s"] = BIGR*(tau*(dgodtau+dgrdtau)-(go+gr))
     props["h"] = BIGR*t*tau*(dgodtau+dgrdtau)
     props["cp"] = -1*BIGR*(tau**2)*(dgodtau2+dgrdtau2)
-    props["cv"] = -1*(tau**2)*(dgodtau2+dgrdtau2)-(((1+pi*dgrdpi-tau*pi*dgrdpidtau)**2)/(1-(pi**2)*dgrdpi2))
+    props["cv"] = BIGR*(-1*(tau**2)*(dgodtau2+dgrdtau2)-(((1+pi*dgrdpi-tau*pi*dgrdpidtau)**2)/(1-(pi**2)*dgrdpi2)))
 
     if desc and desc.lower() in props.keys():
         return props[desc.lower()]
@@ -179,8 +179,9 @@ def region3(rho, t, desc):
     props["u"] = BIGR*t*tau*dfdtau
     props["s"] = BIGR*(tau*dfdtau-f)
     props["h"] = BIGR*t*(tau*dfdtau+delta*dfddel)
-    props["cv"] = -1*BIGR*(dfdtau2**2)
-    props["cp"] = BIGR*(-1*(tau**2)*dfdtau2+(((delta*dfddel-delta*tau*dfddeldtau)**2)/(2*delta*dfddel+(delta**2)*dfddel2)))
+    props["cv"] = -1*BIGR*(tau**2)*dfdtau2
+    sub = ((delta*dfddel-delta*tau*dfddeldtau)**2)/(2*delta*dfddel+(delta**2)*dfddel2)
+    props["cp"] = BIGR*(-1*(tau**2)*dfdtau2+sub)
 
     if desc and desc.lower() in props.keys():
         return props[desc.lower()]
@@ -189,7 +190,7 @@ def region3(rho, t, desc):
 
 
 #Region 4
-def region4_press(tsat):
+def region4_satpress(tsat):
     n = nReg4["n"]
     nu = (tsat/1)+(n[8]/((tsat/1)-n[9]))
     Ai = (nu**2)+n[0]*nu+n[1]
@@ -200,7 +201,7 @@ def region4_press(tsat):
 
 
 #Backward equation region 4
-def region4_temp(psat):
+def region4_sattemp(psat):
     n = nReg4["n"]
     beta = (psat/1000)**(1/4)
     Ei = (beta**2)+n[2]*beta+n[5]

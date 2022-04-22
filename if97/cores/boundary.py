@@ -21,7 +21,7 @@ class Boundary23:
         return ans*1
 
 
-def bound_subreg3(p, desc=None):
+def temp3(p, desc=None):
     """Persamaan batas untuk subregion3"""
 
     pi = p/1e3

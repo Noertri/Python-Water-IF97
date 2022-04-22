@@ -1,5 +1,5 @@
 import unittest
-from IF97.cores.boundary import bound_subreg3
+from IF97.cores.boundary import temp3
 
 
 class TestBoundSubReg3(unittest.TestCase):
@@ -18,21 +18,21 @@ class TestBoundSubReg3(unittest.TestCase):
         t3uv = 6.477996121e2
         t3wx = 6.482049480e2
 
-        self.assertAlmostEqual(bound_subreg3(p=40e3, desc="3ab"), t3ab, delta=1e-7)
-        self.assertAlmostEqual(bound_subreg3(p=25e3, desc="3cd"), t3cd, delta=1e-7)
-        self.assertAlmostEqual(bound_subreg3(p=40e3, desc="3ef"), t3ef, delta=1e-7)
-        self.assertAlmostEqual(bound_subreg3(p=23e3, desc="3gh"), t3gh, delta=1e-7)
-        self.assertAlmostEqual(bound_subreg3(p=23e3, desc="3ij"), t3ij, delta=1e-7)
-        self.assertAlmostEqual(bound_subreg3(p=23e3, desc="3jk"), t3jk, delta=1e-7)
-        self.assertAlmostEqual(bound_subreg3(p=22.8e3, desc="3mn"), t3mn, delta=1e-7)
-        self.assertAlmostEqual(bound_subreg3(p=22.8e3, desc="3op"), t3op, delta=1e-7)
-        self.assertAlmostEqual(bound_subreg3(p=22e3, desc="3qu"), t3qu, delta=1e-7)
-        self.assertAlmostEqual(bound_subreg3(p=22e3, desc="3rx"), t3rx, delta=1e-7)
-        self.assertAlmostEqual(bound_subreg3(p=22.3e3, desc="3uv"), t3uv, delta=1e-7)
-        self.assertAlmostEqual(bound_subreg3(p=22.3e3, desc="3wx"), t3wx, delta=1e-7)
+        self.assertAlmostEqual(temp3(p=40e3, desc="3ab"), t3ab, delta=1e-7)
+        self.assertAlmostEqual(temp3(p=25e3, desc="3cd"), t3cd, delta=1e-7)
+        self.assertAlmostEqual(temp3(p=40e3, desc="3ef"), t3ef, delta=1e-7)
+        self.assertAlmostEqual(temp3(p=23e3, desc="3gh"), t3gh, delta=1e-7)
+        self.assertAlmostEqual(temp3(p=23e3, desc="3ij"), t3ij, delta=1e-7)
+        self.assertAlmostEqual(temp3(p=23e3, desc="3jk"), t3jk, delta=1e-7)
+        self.assertAlmostEqual(temp3(p=22.8e3, desc="3mn"), t3mn, delta=1e-7)
+        self.assertAlmostEqual(temp3(p=22.8e3, desc="3op"), t3op, delta=1e-7)
+        self.assertAlmostEqual(temp3(p=22e3, desc="3qu"), t3qu, delta=1e-7)
+        self.assertAlmostEqual(temp3(p=22e3, desc="3rx"), t3rx, delta=1e-7)
+        self.assertAlmostEqual(temp3(p=22.3e3, desc="3uv"), t3uv, delta=1e-7)
+        self.assertAlmostEqual(temp3(p=22.3e3, desc="3wx"), t3wx, delta=1e-7)
 
     def test_result_none(self):
-        self.assertIsNone(bound_subreg3(p=22.3e3, desc="3yz"))
+        self.assertIsNone(temp3(p=22.3e3, desc="3yz"))
 
 
 if __name__ == "__main__":
