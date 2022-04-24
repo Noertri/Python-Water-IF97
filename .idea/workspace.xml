@@ -4,19 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="test dan debug untuk cv semua persamaan dasar region 1 sampai region 5">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="tes single rho">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/_if97.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/_if97.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/cores/backwardPT.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/backwardPT.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/cores/basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/basic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/cores/boundary.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/boundary.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/tests/test_backwardPT.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/tests/test_backwardPT.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/tests/test_bound_subreg3.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/tests/test_bound_subreg3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/tests/test_region1.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/tests/test_region1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/tests/test_region2.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/tests/test_region2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/tests/test_region3.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/tests/test_region3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/tests/test_region4.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/tests/test_region4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/tests/test_region5.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/tests/test_region5.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +59,9 @@
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
