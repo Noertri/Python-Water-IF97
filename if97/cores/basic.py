@@ -1,4 +1,4 @@
-"""Modul berisi persamaan dasar untuk region 1 sampai region 5"""
+"""Modul berisi persamaan dasar dan persamaan properties untuk region 1 sampai region 5"""
 
 import math
 import numpy as np
