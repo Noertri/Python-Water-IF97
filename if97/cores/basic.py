@@ -1,6 +1,8 @@
 """Modul berisi persamaan dasar untuk region 1 sampai region 5"""
 
+import math
 import numpy as np
+from scipy import optimize
 from ..koefisien import IJnReg1, IJnReg2, IJnReg2Supp, IJnReg3, nReg4, IJnReg5, BIGR, RHOC, TEMPC
 
 
@@ -150,38 +152,80 @@ def supp_region2(p, t, desc=None):
 
 
 #Region 3
+class Region3:
+
+    @classmethod
+    def phi(cls, delta, tau):
+        _n = IJnReg3["n"]
+        _I = IJnReg3["I"]
+        _J = IJnReg3["J"]
+
+        f = _n[0]*np.log(delta)
+        dfddel = _n[0]/delta
+        dfddel2 = (-1*_n[0])/(delta**2)
+        dfdtau = 0.
+        dfdtau2 = 0.
+        dfddeldtau = 0.
+
+        for Ii, Ji, ni in zip(_I[1:], _J[1:], _n[1:]):
+            f += ni*(delta**Ii)*(tau**Ji)
+            dfddel += ni*Ii*(delta**(Ii-1))*(tau**Ji)
+            dfddel2 += ni*Ii*(Ii-1)*(delta**(Ii-2))*(tau**Ji)
+            dfdtau += ni*Ji*(delta**Ii)*(tau**(Ji-1))
+            dfdtau2 += ni*Ji*(Ji-1)*(delta**Ii)*(tau**(Ji-2))
+            dfddeldtau += ni*Ii*Ji*(delta**(Ii-1))*(tau**(Ji-1))
+
+        return f, dfddel, dfddel2, dfdtau, dfdtau2, dfddeldtau
+
+    @classmethod
+    def satur_rho(cls, psat, tsat):
+        tau = TEMPC/tsat
+        c = psat/(RHOC*BIGR*tsat)
+
+        def func(delta):
+
+            f, dfddel, dfddel2, dfdtau, dfdtau2, dfddeldtau = cls.phi(delta=delta, tau=tau)
+            f1 = (delta**2)*dfddel-c
+            return f1
+
+        def dfunc(delta):
+
+            f, dfddel, dfddel2, dfdtau, dfdtau2, dfddeldtau = cls.phi(delta=delta, tau=tau)
+            f1 = 2*delta*dfddel+(delta**2)*dfddel2
+            return f1
+
+        delL = delV = 1.
+
+        if tsat <= 647:
+            delL = optimize.newton(func, x0=1.7, fprime=dfunc, tol=1e-9)
+            delV = optimize.newton(func, x0=0.4, fprime=dfunc, tol=1e-9)
+        elif 647 < tsat < TEMPC:
+            delL = optimize.newton(func, x0=0.999999999, fprime=dfunc, tol=1e-9)
+            delV = optimize.newton(func, x0=0.999999999, fprime=dfunc, tol=1e-9)
+
+        return delL*RHOC, delV*RHOC
+
+
 def region3(rho, t, desc):
 
     delta = rho/RHOC
     tau = TEMPC/t
 
-    _n = IJnReg3["n"]
-    _I = IJnReg3["I"]
-    _J = IJnReg3["J"]
-
-    f = _n[0]*np.log(abs(delta))
-    dfddel = _n[0]/delta
-    dfddel2 = (-1*_n[0])/(delta**2)
-    dfdtau = 0.
-    dfdtau2 = 0.
-    dfddeldtau = 0.
-
-    for Ii, Ji, ni in zip(_I[1:], _J[1:], _n[1:]):
-        f += ni*(delta**Ii)*(tau**Ji)
-        dfddel += ni*Ii*(delta**(Ii-1))*(tau**Ji)
-        dfddel2 += ni*Ii*(Ii-1)*(delta**(Ii-2))*(tau**Ji)
-        dfdtau += ni*Ji*(delta**Ii)*(tau**(Ji-1))
-        dfdtau2 += ni*Ji*(Ji-1)*(delta**Ii)*(tau**(Ji-2))
-        dfddeldtau += ni*Ii*Ji*(delta**(Ii-1))*(tau**(Ji-1))
+    f, dfddel, dfddel2, dfdtau, dfdtau2, dfddeldtau = Region3.phi(delta=delta, tau=tau)
 
     props = dict()
     props["p"] = rho*BIGR*t*delta*dfddel
     props["u"] = BIGR*t*tau*dfdtau
     props["s"] = BIGR*(tau*dfdtau-f)
     props["h"] = BIGR*t*(tau*dfdtau+delta*dfddel)
-    props["cv"] = -1*BIGR*(tau**2)*dfdtau2
-    sub = ((delta*dfddel-delta*tau*dfddeldtau)**2)/(2*delta*dfddel+(delta**2)*dfddel2)
-    props["cp"] = BIGR*(-1*(tau**2)*dfdtau2+sub)
+
+    if not (647 <= t < TEMPC):
+        props["cv"] = -1*BIGR*(tau**2)*dfdtau2
+        sub = ((delta*dfddel-delta*tau*dfddeldtau)**2)/(2*delta*dfddel+(delta**2)*dfddel2)
+        props["cp"] = BIGR*(-1*(tau**2)*dfdtau2+sub)
+    else:
+        props["cv"] = math.nan
+        props["cp"] = math.nan
 
     if desc and desc.lower() in props.keys():
         return props[desc.lower()]
