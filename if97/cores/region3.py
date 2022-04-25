@@ -42,6 +42,16 @@ class Region3:
 
         return f1
 
+    def dfunc(self, delta, p, t):
+        tau = TEMPC/t
+
+        dphiddel = self.phi(delta, tau, "dphiddelta")
+        dphiddel2 = self.phi(delta, tau, "dphiddelta2")
+
+        f = 2*delta*dphiddel+(delta**2)*dphiddel2
+
+        return f
+
     def get_properties(self, rho, t, desc=None):
 
         props = dict()
