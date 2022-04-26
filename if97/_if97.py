@@ -1,5 +1,5 @@
 from .koefisien import BIGR, TEMPC, RHOC, TEMPT, PRESSC, PRESST
-from .cores.basic import region1, region2, region3, region4, region5, region3SatRho
+from .cores.basic import region1, region2, supp_region2, region3, region4, region5, region3SatRho
 from .cores.backwardPT import region3PT
 from .cores.boundary import Boundary23, temp3
 
@@ -181,5 +181,51 @@ def saturationP(psat):
         return None
 
 
-def singlephase(p, t):
-    pass
+def singleReg12(p, t):
+    """Fungsi untuk mencari propertis pada titik satu fase antara suhu 273.15 K sampai 623.15 K dan tekanan antara 0
+    MPa sampai 100 MPa"""
+
+    props = dict()
+    if 273.15 <= t <= 623.15 and 0 < p <= 1e5:
+        psat = region4(tsat=t)
+        if psat < p <= 1e5:
+            props = {
+                    "v" : region1(p=p, t=t, desc="v"),
+                    "u" : region1(p=p, t=t, desc="u"),
+                    "h" : region1(p=p, t=t, desc="h"),
+                    "s" : region1(p=p, t=t, desc="s"),
+                    "cv": region1(p=p, t=t, desc="cv"),
+                    "cp": region1(p=p, t=t, desc="cp"),
+            }
+        elif 0 < p < psat:
+            props = {
+                    "v" : region2(p=p, t=t, desc="v"),
+                    "u" : region2(p=p, t=t, desc="u"),
+                    "h" : region2(p=p, t=t, desc="h"),
+                    "s" : region2(p=p, t=t, desc="s"),
+                    "cv": region2(p=p, t=t, desc="cv"),
+                    "cp": region2(p=p, t=t, desc="cp"),
+            }
+        return props
+    else:
+        return None
+
+
+def singleReg23(p, t):
+    props = dict()
+    p23 = Boundary23.getPress(t=t)
+    if p < p23:
+        props = {
+                "v" : region2(p=p, t=t, desc="v"),
+                "u" : region2(p=p, t=t, desc="u"),
+                "h" : region2(p=p, t=t, desc="h"),
+                "s" : region2(p=p, t=t, desc="s"),
+                "cv": region2(p=p, t=t, desc="cv"),
+                "cp": region2(p=p, t=t, desc="cp"),
+        }
+    elif p23 < p <= 1e5:
+        vol = 1.
+        t23 = Boundary23.getTemp(p=p)
+        pass
+
+    return props
