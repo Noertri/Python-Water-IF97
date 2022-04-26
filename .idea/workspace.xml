@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi modul basic.py">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi dokumentasi modul basic.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/_if97.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/_if97.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/cores/basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/basic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/tests/test_region4.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/tests/test_region4.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +63,7 @@
       </console-settings>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests in test_region3.py">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -92,20 +96,6 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests in test_region2.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="Python-Water-Properties-IF97" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/IF97/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/IF97/tests/test_region2.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="Python tests in test_region3.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -117,6 +107,20 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;$PROJECT_DIR$/IF97/tests/test_region3.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests in test_region4.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="Python-Water-Properties-IF97" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/IF97/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/IF97/tests/test_region4.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
@@ -136,11 +140,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests in test_region3.py" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python tests.Python tests in test_region4.py" />
+        <item itemvalue="Python tests.Python tests in test_region3.py" />
         <item itemvalue="Python tests.Python tests for test_backwardPT.TestBackwardPT.test_subreg3u" />
         <item itemvalue="Python tests.Python tests in test_region5.py" />
-        <item itemvalue="Python tests.Python tests in test_region2.py" />
       </list>
     </recent_temporary>
   </component>
@@ -335,7 +339,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650898031360</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="memodifikasi dokumentasi modul basic.py">
+      <created>1650898118811</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1650898118811</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -374,6 +385,7 @@
     <MESSAGE value="menambahkan dokumentasi di modul basic.py, memodifikasi semua modul" />
     <MESSAGE value="test dan debug untuk cv semua persamaan dasar region 1 sampai region 5" />
     <MESSAGE value="memodifikasi modul basic.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi modul basic.py" />
+    <MESSAGE value="memodifikasi dokumentasi modul basic.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi dokumentasi modul basic.py" />
   </component>
 </project>
