@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi fungsi region3 dan odul _if97.py">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi modul _if97.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +64,9 @@
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -350,7 +352,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650974718781</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="memodifikasi modul _if97.py">
+      <created>1650984666499</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1650984666499</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -365,7 +374,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update gitignore, tes dan debug region 4" />
     <MESSAGE value="tes dan debug region 4" />
     <MESSAGE value="memodifikasi, tes, dan debug region 4" />
     <MESSAGE value="memodifikasi modul region 1" />
@@ -390,6 +398,7 @@
     <MESSAGE value="memodifikasi modul basic.py" />
     <MESSAGE value="memodifikasi dokumentasi modul basic.py" />
     <MESSAGE value="memodifikasi fungsi region3 dan odul _if97.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi fungsi region3 dan odul _if97.py" />
+    <MESSAGE value="memodifikasi modul _if97.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi modul _if97.py" />
   </component>
 </project>

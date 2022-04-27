@@ -9,16 +9,22 @@ class Boundary23:
 
     @classmethod
     def getPress(cls, t):
-        _n = nb23
-        theta = t/1
-        ans = cls._n[0] + cls._n[1]*theta + cls._n[2]*(theta**2)
-        return ans*1000
+        if 623.15 <= t <= 863.15:
+            _n = nb23
+            theta = t/1
+            ans = cls._n[0] + cls._n[1]*theta + cls._n[2]*(theta**2)
+            return ans*1000
+        else:
+            return None
 
     @classmethod
     def getTemp(cls, p):
-        pi = p/1000
-        ans = cls._n[3] + sqrt((pi - cls._n[4])/cls._n[2])
-        return ans*1
+        if 16.5292e3 <= p <= 1e5:
+            pi = p/1000
+            ans = cls._n[3] + sqrt((pi - cls._n[4])/cls._n[2])
+            return ans*1
+        else:
+            return None
 
 
 def temp3(p, desc=None):

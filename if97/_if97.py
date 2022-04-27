@@ -1,6 +1,6 @@
 from .koefisien import BIGR, TEMPC, RHOC, TEMPT, PRESSC, PRESST
-from .cores.basic import region1, region2, supp_region2, region3, region4, region5, region3SatRho
-from .cores.backwardPT import region3PT
+from .cores.basic import region1, region2, supp_region2, region3, region4, region5, saturRho
+from .cores.backwardPT import Reg3RhoPT
 from .cores.boundary import Boundary23, temp3
 
 
@@ -42,7 +42,7 @@ def saturationT(tsat=None):
         rhoL = rhoV = 1.
 
         if psat:
-            rhoL, rhoV = region3SatRho(psat, tsat)
+            rhoL, rhoV = saturRho(psat, tsat)
 
         props = {
                 "psat"  : psat,
@@ -130,7 +130,7 @@ def saturationP(psat):
         rhoL = rhoV = 1.
 
         if psat:
-            rhoL, rhoV = region3SatRho(psat, tsat)
+            rhoL, rhoV = saturRho(psat, tsat)
 
         props = {
                 "psat"  : psat,
@@ -181,51 +181,68 @@ def saturationP(psat):
         return None
 
 
-def singleReg12(p, t):
-    """Fungsi untuk mencari propertis pada titik satu fase antara suhu 273.15 K sampai 623.15 K dan tekanan antara 0
-    MPa sampai 100 MPa"""
+def singlephase(p, t):
 
-    props = dict()
-    if 273.15 <= t <= 623.15 and 0 < p <= 1e5:
-        psat = region4(tsat=t)
-        if psat < p <= 1e5:
-            props = {
-                    "v" : region1(p=p, t=t, desc="v"),
-                    "u" : region1(p=p, t=t, desc="u"),
-                    "h" : region1(p=p, t=t, desc="h"),
-                    "s" : region1(p=p, t=t, desc="s"),
-                    "cv": region1(p=p, t=t, desc="cv"),
-                    "cp": region1(p=p, t=t, desc="cp"),
-            }
-        elif 0 < p < psat:
-            props = {
-                    "v" : region2(p=p, t=t, desc="v"),
-                    "u" : region2(p=p, t=t, desc="u"),
-                    "h" : region2(p=p, t=t, desc="h"),
-                    "s" : region2(p=p, t=t, desc="s"),
-                    "cv": region2(p=p, t=t, desc="cv"),
-                    "cp": region2(p=p, t=t, desc="cp"),
-            }
+    if 0 < p <= region4(tsat=t) and 273.15 <= t <= 623.15:
+        props = {
+                "v" : region2(p, t, desc="v"),
+                "u" : region2(p, t, desc="u"),
+                "h" : region2(p, t, desc="h"),
+                "s" : region2(p, t, desc="s"),
+                "cv": region2(p, t, desc="cv"),
+                "cp": region2(p, t, desc="cp"),
+        }
+        return props
+    elif region4(tsat=t) <= p <= 1e5 and 273.15 <= t <= 623.15:
+        props = {
+                "v" : region1(p, t, desc="v"),
+                "u" : region1(p, t, desc="u"),
+                "h" : region1(p, t, desc="h"),
+                "s" : region1(p, t, desc="s"),
+                "cv": region1(p, t, desc="cv"),
+                "cp": region1(p, t, desc="cp"),
+        }
+        return props
+    elif Boundary23.getTemp(p) and Boundary23.getPress(t) and 0 < p <= Boundary23.getPress(t) and 623.15 < t <= 863.15:
+        props = {
+                "v" : region2(p, t, desc="v"),
+                "u" : region2(p, t, desc="u"),
+                "h" : region2(p, t, desc="h"),
+                "s" : region2(p, t, desc="s"),
+                "cv": region2(p, t, desc="cv"),
+                "cp": region2(p, t, desc="cp"),
+        }
+        return props
+    elif Boundary23.getTemp(p) and Boundary23.getPress(t) and Boundary23.getPress(t) <= p <= 1e5 and 623.15 < t <= Boundary23.getTemp(p):
+        rho = Reg3RhoPT.singleRho(p, t)
+        props = {
+                "v" : 1/rho,
+                "u" : region3(rho, t, desc="u"),
+                "h" : region3(rho, t, desc="h"),
+                "s" : region3(rho, t, desc="s"),
+                "cv": region3(rho, t, desc="cv"),
+                "cp": region3(rho, t, desc="cp"),
+        }
+        return props
+    elif 0 < p <= 1e5 and 863.15 < t <= 1073.15:
+        props = {
+                "v" : region2(p, t, desc="v"),
+                "u" : region2(p, t, desc="u"),
+                "h" : region2(p, t, desc="h"),
+                "s" : region2(p, t, desc="s"),
+                "cv": region2(p, t, desc="cv"),
+                "cp": region2(p, t, desc="cp"),
+        }
+        return props
+    elif 0 < p <= 5e4 and 1073.15 < t <= 2273.15:
+        props = {
+                "v" : region5(p, t, desc="v"),
+                "u" : region5(p, t, desc="u"),
+                "h" : region5(p, t, desc="h"),
+                "s" : region5(p, t, desc="s"),
+                "cv": region5(p, t, desc="cv"),
+                "cp": region5(p, t, desc="cp"),
+        }
         return props
     else:
         return None
-
-
-def singleReg23(p, t):
-    props = dict()
-    p23 = Boundary23.getPress(t=t)
-    if p < p23:
-        props = {
-                "v" : region2(p=p, t=t, desc="v"),
-                "u" : region2(p=p, t=t, desc="u"),
-                "h" : region2(p=p, t=t, desc="h"),
-                "s" : region2(p=p, t=t, desc="s"),
-                "cv": region2(p=p, t=t, desc="cv"),
-                "cp": region2(p=p, t=t, desc="cp"),
-        }
-    elif p23 < p <= 1e5:
-        vol = 1.
-        t23 = Boundary23.getTemp(p=p)
-        pass
-
-    return props

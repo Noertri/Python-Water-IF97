@@ -174,7 +174,7 @@ def _phi(delta, tau):
     return f, dfddel, dfddel2, dfdtau, dfdtau2, dfddeldtau
 
 
-def region3SatRho(psat, tsat):
+def saturRho(psat, tsat):
     tau = TEMPC/tsat
     c = psat/(RHOC*BIGR*tsat)
 
@@ -259,6 +259,9 @@ def region5(p, t, desc=None):
 
     _Jo = IJnReg5["Jo"]
     _no = IJnReg5["no"]
+    _I = IJnReg5["I"]
+    _J = IJnReg5["J"]
+    _n = IJnReg5["n"]
 
     go = np.log(pi)
     dgodpi = 1./pi
@@ -271,10 +274,6 @@ def region5(p, t, desc=None):
         go += nio*(tau**Jio)
         dgodtau += nio*Jio*(tau**(Jio-1))
         dgodtau2 += nio*Jio*(Jio-1)*(tau**(Jio-2))
-
-    _I = IJnReg5["I"]
-    _J = IJnReg5["J"]
-    _n = IJnReg5["n"]
 
     gr = 0.
     dgrdpi = 0.
