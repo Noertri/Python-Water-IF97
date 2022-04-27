@@ -177,7 +177,14 @@ def singlephase(p, t):
         return None
 
 
-def properties(**kwargs):
+def allphase(**kwargs):
     default_keys = ["p", "t", "x"]
     inputs = list(kwargs.keys())
-    pass
+    ans = dict()
+    if len(inputs) == 2:
+        if inputs[0].lower() in default_keys and inputs[1].lower() in default_keys:
+            if inputs[0].lower() == "t" and inputs[1].lower() == "x":
+                props = saturationT(tsat=kwargs[inputs[0]])
+                vf, vg = props["v"]
+                ans["v"] = vf + kwargs[inputs[1]]*(vg-vf)
+                return ans

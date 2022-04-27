@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="membuat class Reg3RhoPT, melengkapi fungsi singlephase, tes dan debug">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi modul _if97.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/if97/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/if97/_if97.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/_if97.py" afterDir="false" />
@@ -368,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651070533393</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="memodifikasi modul _if97.py">
+      <created>1651073015025</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1651073015025</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -406,8 +413,8 @@
     <MESSAGE value="memodifikasi modul basic.py" />
     <MESSAGE value="memodifikasi dokumentasi modul basic.py" />
     <MESSAGE value="memodifikasi fungsi region3 dan odul _if97.py" />
-    <MESSAGE value="memodifikasi modul _if97.py" />
     <MESSAGE value="membuat class Reg3RhoPT, melengkapi fungsi singlephase, tes dan debug" />
-    <option name="LAST_COMMIT_MESSAGE" value="membuat class Reg3RhoPT, melengkapi fungsi singlephase, tes dan debug" />
+    <MESSAGE value="memodifikasi modul _if97.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi modul _if97.py" />
   </component>
 </project>
