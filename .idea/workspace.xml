@@ -7,10 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi fungsi allphase">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="menambahkan dokumentasi">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/_if97.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/_if97.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/cores/backwardPT.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/backwardPT.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,9 +68,6 @@
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -393,7 +388,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651129815836</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="menambahkan dokumentasi">
+      <created>1651131839384</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1651131839384</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -408,7 +410,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="memodifikasi semua modul di subpackage cores" />
     <MESSAGE value="memodifikasi semua modul di subpackage cores, tes dan debug region1" />
     <MESSAGE value="memodifikasi modul region1 dan region2 di subpackage cores, tes dan debug region1" />
     <MESSAGE value="tes dan debug region2" />
@@ -433,6 +434,7 @@
     <MESSAGE value="memodifikasi modul _if97.py" />
     <MESSAGE value="membuat fungsi allphase" />
     <MESSAGE value="memodifikasi fungsi allphase" />
-    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi fungsi allphase" />
+    <MESSAGE value="menambahkan dokumentasi" />
+    <option name="LAST_COMMIT_MESSAGE" value="menambahkan dokumentasi" />
   </component>
 </project>

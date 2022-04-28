@@ -115,17 +115,18 @@ def saturationP(psat):
 def singlephase(p, t):
     """Fungsi untuk mencari propertis pada titik satu fase dengan input tekanan dan suhu"""
 
-    if 0 < p <= region4(tsat=t) and 273.15 <= t <= 623.15:
+    p23 = 0.
+    if 0 < p <= (psat := region4(tsat=t)) and 273.15 <= t <= 623.15:
         props = {
-                "v" : region2(p, t, desc="v"),
-                "u" : region2(p, t, desc="u"),
-                "h" : region2(p, t, desc="h"),
-                "s" : region2(p, t, desc="s"),
+                "v": region2(p, t, desc="v"),
+                "u": region2(p, t, desc="u"),
+                "h": region2(p, t, desc="h"),
+                "s": region2(p, t, desc="s"),
                 "cv": region2(p, t, desc="cv"),
                 "cp": region2(p, t, desc="cp"),
         }
         return props
-    elif region4(tsat=t) <= p <= 1e5 and 273.15 <= t <= 623.15:
+    elif (psat := region4(tsat=t)) <= p <= 1e5 and 273.15 <= t <= 623.15:
         props = {
                 "v" : region1(p, t, desc="v"),
                 "u" : region1(p, t, desc="u"),
@@ -135,7 +136,7 @@ def singlephase(p, t):
                 "cp": region1(p, t, desc="cp"),
         }
         return props
-    elif Boundary23.getTemp(p) and Boundary23.getPress(t) and 0 < p <= Boundary23.getPress(t) and 623.15 < t <= 863.15:
+    elif (p23 := Boundary23.getPress(t)) and 0 < p <= p23 and 623.15 < t <= 863.15:
         props = {
                 "v" : region2(p, t, desc="v"),
                 "u" : region2(p, t, desc="u"),
@@ -145,7 +146,7 @@ def singlephase(p, t):
                 "cp": region2(p, t, desc="cp"),
         }
         return props
-    elif Boundary23.getTemp(p) and Boundary23.getPress(t) and Boundary23.getPress(t) <= p <= 1e5 and 623.15 < t <= Boundary23.getTemp(p):
+    elif (t23 := Boundary23.getTemp(p)) and (p23 := Boundary23.getPress(t)) and p23 <= p <= 1e5 and 623.15 < t <= t23:
         rho = Reg3RhoPT.singleRho(p, t)
         props = {
                 "v" : 1/rho,
