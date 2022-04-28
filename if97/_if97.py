@@ -179,12 +179,16 @@ def singlephase(p, t):
 
 def allphase(**kwargs):
     default_keys = ["p", "t", "x"]
-    inputs = list(kwargs.keys())
     ans = dict()
-    if len(inputs) == 2:
-        if inputs[0].lower() in default_keys and inputs[1].lower() in default_keys:
-            if inputs[0].lower() == "t" and inputs[1].lower() == "x":
-                props = saturationT(tsat=kwargs[inputs[0]])
+    if len(kwargs.keys()) == 2:
+        a, b = list(kwargs.keys())
+        if a.lower() in default_keys and b.lower() in default_keys:
+            if a.lower() == "t" and b.lower() == "x":
+                props = saturationT(tsat=kwargs[a])
                 vf, vg = props["v"]
-                ans["v"] = vf + kwargs[inputs[1]]*(vg-vf)
+                ans["v"] = vf + kwargs[b]*(vg-vf)
                 return ans
+            else:
+                return None
+    else:
+        return None
