@@ -19,7 +19,7 @@ class Boundary23:
 
     @classmethod
     def getTemp(cls, p):
-        if 16.5292e3 <= p <= 1e5:
+        if 16.5291643e3 <= p <= 1e5:
             pi = p/1000
             ans = cls._n[3] + sqrt((pi - cls._n[4])/cls._n[2])
             return ans*1

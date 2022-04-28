@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="membuat fungsi allphase">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi fungsi allphase">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/_if97.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/_if97.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +53,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -381,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651074138945</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="memodifikasi fungsi allphase">
+      <created>1651129815836</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1651129815836</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -396,7 +406,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="memodifikasi modul region 1" />
     <MESSAGE value="memodifikasi semua modul di subpackage cores" />
     <MESSAGE value="memodifikasi semua modul di subpackage cores, tes dan debug region1" />
     <MESSAGE value="memodifikasi modul region1 dan region2 di subpackage cores, tes dan debug region1" />
@@ -421,6 +430,7 @@
     <MESSAGE value="membuat class Reg3RhoPT, melengkapi fungsi singlephase, tes dan debug" />
     <MESSAGE value="memodifikasi modul _if97.py" />
     <MESSAGE value="membuat fungsi allphase" />
-    <option name="LAST_COMMIT_MESSAGE" value="membuat fungsi allphase" />
+    <MESSAGE value="memodifikasi fungsi allphase" />
+    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi fungsi allphase" />
   </component>
 </project>
