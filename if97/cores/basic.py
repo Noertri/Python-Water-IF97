@@ -7,6 +7,7 @@ from ..koefisien import IJnReg1, IJnReg2, IJnReg2Supp, IJnReg3, nReg4, IJnReg5, 
 
 #Region 1
 def region1(p, t, desc=None):
+    """Fungsi persamaan dasar dan propertis untuk region 1"""
 
     pi = p/16.53e3
     tau = 1386/t
@@ -46,6 +47,7 @@ def region1(p, t, desc=None):
 
 #Region 2
 def region2(p, t, desc=None):
+    """Fungsi persamaan dasar dan propertis untuk region 2"""
 
     pi = p/1e3
     tau = 540/t
@@ -98,6 +100,7 @@ def region2(p, t, desc=None):
 
 #Supplementary equations of region 2
 def supp_region2(p, t, desc=None):
+    """Fungsi persamaan tambahan untuk region 2"""
 
     pi = p/1e3
     tau = 540/t
@@ -152,6 +155,8 @@ def supp_region2(p, t, desc=None):
 
 #Region 3
 def _phi(delta, tau):
+    """Fungsi persamaan dasar untuk region 3"""
+
     _n = IJnReg3["n"]
     _I = IJnReg3["I"]
     _J = IJnReg3["J"]
@@ -175,6 +180,8 @@ def _phi(delta, tau):
 
 
 def saturRho(psat, tsat):
+    """Fungsi untuk mencari rho pada fase saturasi"""
+
     tau = TEMPC/tsat
     c = psat/(RHOC*BIGR*tsat)
 
@@ -203,6 +210,7 @@ def saturRho(psat, tsat):
 
 
 def region3(rho, t, desc):
+    """Fungsi untuk mencari propertis untuk region 3"""
 
     delta = rho/RHOC
     tau = TEMPC/t
@@ -231,6 +239,7 @@ def region3(rho, t, desc):
 
 #Region 4
 def region4(psat=None, tsat=None):
+    """Fungsi untuk mencari suhu dan tekanan pada titik saturasi"""
 
     n = nReg4["n"]
 
@@ -253,6 +262,7 @@ def region4(psat=None, tsat=None):
 
 #Region 5
 def region5(p, t, desc=None):
+    """Fungsi untuk persamaan dasar dan propertis untuk region 5"""
 
     pi = p/1e3
     tau = 1000/t

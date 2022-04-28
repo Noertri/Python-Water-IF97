@@ -5,6 +5,7 @@ from .basic import region4
 
 
 def region3PT(p, t, desc=None):
+    """Persamaan balik untuk region 3"""
 
     if desc and desc.lower() != "3n":
         a = IJnSubReg3[desc.lower()]["a"]
@@ -50,10 +51,11 @@ def region3PT(p, t, desc=None):
 
 
 class Reg3RhoPT:
-    """Implementasi persamaan terbalik region 3 v(P, T)"""
+    """Implementasi persamaan balik region 3 v(P, T)"""
 
     @classmethod
     def singleRho(cls, p, t):
+        """Implementasi persamaan subregion 3a sampai 3t"""
 
         vol = 0.
         p23 = Boundary23.getPress(t)
@@ -157,6 +159,7 @@ class Reg3RhoPT:
 
     @classmethod
     def auxEqs(cls, p, t):
+        """Persamaan bantuan untuk subregion 3u sampai 3z untuk daerah mendekati titik kritis"""
 
         vol = 0.
         pmin = region4(tsat=643.15)

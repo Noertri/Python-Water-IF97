@@ -5,6 +5,7 @@ from .koefisien import PRESSC, RHOC, TEMPC
 
 
 def saturationT(tsat=None):
+    """Fungsi untuk mencari propertis pada titik saturasi dengan input suhu saturasi"""
 
     props = dict()
 
@@ -58,6 +59,7 @@ def saturationT(tsat=None):
 
 
 def saturationP(psat):
+    """Fungsi untuk mencari propertis pada titik saturasi dengan input tekanan saturasi"""
 
     props = dict()
 
@@ -111,6 +113,7 @@ def saturationP(psat):
 
 
 def singlephase(p, t):
+    """Fungsi untuk mencari propertis pada titik satu fase dengan input tekanan dan suhu"""
 
     if 0 < p <= region4(tsat=t) and 273.15 <= t <= 623.15:
         props = {
