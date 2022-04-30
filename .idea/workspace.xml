@@ -7,9 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="menambahkan notasi walrus">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="membuat fungsi if97">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/if97/_if97.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/_if97.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -403,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651135863299</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="membuat fungsi if97">
+      <created>1651279899204</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1651279899204</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -418,7 +424,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="memodifikasi modul region1 dan region2 di subpackage cores, tes dan debug region1" />
     <MESSAGE value="tes dan debug region2" />
     <MESSAGE value="tes dan debug region3" />
     <MESSAGE value="mengganti nama dari if97 ke IF97" />
@@ -443,6 +448,7 @@
     <MESSAGE value="memodifikasi fungsi allphase" />
     <MESSAGE value="menambahkan dokumentasi" />
     <MESSAGE value="menambahkan notasi walrus" />
-    <option name="LAST_COMMIT_MESSAGE" value="menambahkan notasi walrus" />
+    <MESSAGE value="membuat fungsi if97" />
+    <option name="LAST_COMMIT_MESSAGE" value="membuat fungsi if97" />
   </component>
 </project>
