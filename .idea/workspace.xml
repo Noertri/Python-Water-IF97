@@ -7,11 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="mengubah rhoL, rhoV menjadi rhof, dan rhog, menghapus subpackage _SubReg3, membuat folder desktop_app">
-      <change afterPath="$PROJECT_DIR$/desktop/gui.py" afterDir="false" />
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="mengganti nama folder desktop_app menjadi desktop, mengubah nama modul menjadi gui.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop_app/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop_app/waterprops_ui.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/gui.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +54,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/desktop/gui.py" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
@@ -75,11 +74,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/desktop_app" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/desktop" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\Python\Python-Water-Properties-IF97\desktop_app\gui.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/desktop/gui.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -151,6 +150,13 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.gui" />
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python tests.Python tests in test_bound23.py" />
+      <item itemvalue="Python tests.Python tests in test_region3.py" />
+      <item itemvalue="Python tests.Python tests in test_region4.py" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.gui" />
@@ -436,7 +442,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651281173030</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="mengganti nama folder desktop_app menjadi desktop, mengubah nama modul menjadi gui.py">
+      <created>1651281773995</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1651281773995</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -451,7 +464,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="mengganti nama dari if97 ke IF97" />
     <MESSAGE value="tes dan debug region5" />
     <MESSAGE value="memodifikasi region3, tes dan debug region3" />
     <MESSAGE value="memodifikasi class Boundary23, tes dan debug class Boundary23" />
@@ -476,6 +488,7 @@
     <MESSAGE value="membuat fungsi if97" />
     <MESSAGE value="mengubah rhoL, rhoV menjadi rhof, dan rhog, enghapus subpackage _SubReg3" />
     <MESSAGE value="mengubah rhoL, rhoV menjadi rhof, dan rhog, menghapus subpackage _SubReg3, membuat folder desktop_app" />
-    <option name="LAST_COMMIT_MESSAGE" value="mengubah rhoL, rhoV menjadi rhof, dan rhog, menghapus subpackage _SubReg3, membuat folder desktop_app" />
+    <MESSAGE value="mengganti nama folder desktop_app menjadi desktop, mengubah nama modul menjadi gui.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="mengganti nama folder desktop_app menjadi desktop, mengubah nama modul menjadi gui.py" />
   </component>
 </project>

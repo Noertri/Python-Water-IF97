@@ -8,10 +8,8 @@ from tkinter import font
 class PyWater(tk.Tk):
 
     def __init__(self):
-
-        #Inisialisasi
         super().__init__()
         self.mainloop()
 
 
-_ui_ = PyWater()
+_ui = PyWater()
