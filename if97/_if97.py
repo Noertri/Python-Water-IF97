@@ -7,30 +7,21 @@ from .koefisien import PRESSC, RHOC, TEMPC
 def saturationT(tsat=None):
     """Fungsi untuk mencari propertis pada titik saturasi dengan input suhu saturasi"""
 
-    props = dict()
-
-    if tsat and 273.15 <= tsat <= 623.15:
-        psat = region4(tsat=tsat)
-
-        if psat and psat > 0.:
-            props = {
-                "psat": psat,
-                "tsat": tsat,
-                "v": [region1(p=psat, t=tsat, desc="v"), region2(p=psat, t=tsat, desc="v")],
-                "u": [region1(p=psat, t=tsat, desc="u"), region2(p=psat, t=tsat, desc="u")],
-                "h": [region1(p=psat, t=tsat, desc="h"), region2(p=psat, t=tsat, desc="h")],
-                "s": [region1(p=psat, t=tsat, desc="s"), region2(p=psat, t=tsat, desc="s")],
-                "cv": [region1(p=psat, t=tsat, desc="cv"), region2(p=psat, t=tsat, desc="cv")],
-                "cp": [region1(p=psat, t=tsat, desc="cp"), region2(p=psat, t=tsat, desc="cp")]
-            }
+    psat = 0.
+    if tsat and (psat := region4(tsat=tsat)) and 273.15 <= tsat <= 623.15 and 0. < psat < PRESSC:
+        props = {
+            "psat": psat,
+            "tsat": tsat,
+            "v": [region1(p=psat, t=tsat, desc="v"), region2(p=psat, t=tsat, desc="v")],
+            "u": [region1(p=psat, t=tsat, desc="u"), region2(p=psat, t=tsat, desc="u")],
+            "h": [region1(p=psat, t=tsat, desc="h"), region2(p=psat, t=tsat, desc="h")],
+            "s": [region1(p=psat, t=tsat, desc="s"), region2(p=psat, t=tsat, desc="s")],
+            "cv": [region1(p=psat, t=tsat, desc="cv"), region2(p=psat, t=tsat, desc="cv")],
+            "cp": [region1(p=psat, t=tsat, desc="cp"), region2(p=psat, t=tsat, desc="cp")]
+        }
         return props
-    elif tsat and 623.15 < tsat < TEMPC:
-        psat = region4(tsat=tsat)
-        rhoL = rhoV = 1.
-
-        if psat:
-            rhoL, rhoV = saturRho(psat, tsat)
-
+    elif tsat and (psat := region4(tsat=tsat)) and 623.15 < tsat < TEMPC and 0. < psat < PRESSC:
+        rhoL, rhoV = saturRho(psat, tsat)
         props = {
                 "psat": psat,
                 "tsat": tsat,
@@ -61,30 +52,21 @@ def saturationT(tsat=None):
 def saturationP(psat):
     """Fungsi untuk mencari propertis pada titik saturasi dengan input tekanan saturasi"""
 
-    props = dict()
-
-    if psat and 0.6112127 <= psat <= 16529.2:
-        tsat = region4(psat=psat)
-        if tsat:
-            props = {
-                    "psat": psat,
-                    "tsat": tsat,
-                    "v": [region1(p=psat, t=tsat, desc="v"), region2(p=psat, t=tsat, desc="v")],
-                    "u": [region1(p=psat, t=tsat, desc="u"), region2(p=psat, t=tsat, desc="u")],
-                    "h": [region1(p=psat, t=tsat, desc="h"), region2(p=psat, t=tsat, desc="h")],
-                    "s": [region1(p=psat, t=tsat, desc="s"), region2(p=psat, t=tsat, desc="s")],
-                    "cv": [region1(p=psat, t=tsat, desc="cv"), region2(p=psat, t=tsat, desc="cv")],
-                    "cp": [region1(p=psat, t=tsat, desc="cp"), region2(p=psat, t=tsat, desc="cp")]
-            }
+    tsat = 0.
+    if psat and (tsat := region4(psat=psat)) and 0.6112127 <= psat <= 16529.2 and 273.15 <= tsat < TEMPC:
+        props = {
+                "psat": psat,
+                "tsat": tsat,
+                "v": [region1(p=psat, t=tsat, desc="v"), region2(p=psat, t=tsat, desc="v")],
+                "u": [region1(p=psat, t=tsat, desc="u"), region2(p=psat, t=tsat, desc="u")],
+                "h": [region1(p=psat, t=tsat, desc="h"), region2(p=psat, t=tsat, desc="h")],
+                "s": [region1(p=psat, t=tsat, desc="s"), region2(p=psat, t=tsat, desc="s")],
+                "cv": [region1(p=psat, t=tsat, desc="cv"), region2(p=psat, t=tsat, desc="cv")],
+                "cp": [region1(p=psat, t=tsat, desc="cp"), region2(p=psat, t=tsat, desc="cp")]
+        }
         return props
-    elif psat and 16529.2 < psat < PRESSC:
-
-        tsat = region4(psat=psat)
-        rhoL = rhoV = 1.
-
-        if psat:
-            rhoL, rhoV = saturRho(psat, tsat)
-
+    elif psat and (tsat := region4(psat=psat)) and 16529.2 < psat < PRESSC and 273.15 <= tsat < TEMPC:
+        rhoL, rhoV = saturRho(psat, tsat)
         props = {
                 "psat": psat,
                 "tsat": tsat,
@@ -115,8 +97,8 @@ def saturationP(psat):
 def singlephase(p, t):
     """Fungsi untuk mencari propertis pada titik satu fase dengan input tekanan dan suhu"""
 
-    p23 = 0.
-    if 0 < p <= (psat := region4(tsat=t)) and 273.15 <= t <= 623.15:
+    t23 = 0.
+    if 0 < p < (psat := region4(tsat=t)) and 273.15 <= t <= 623.15:
         props = {
                 "v": region2(p, t, desc="v"),
                 "u": region2(p, t, desc="u"),
@@ -124,75 +106,110 @@ def singlephase(p, t):
                 "s": region2(p, t, desc="s"),
                 "cv": region2(p, t, desc="cv"),
                 "cp": region2(p, t, desc="cp"),
+                "region": "II"
         }
         return props
     elif (psat := region4(tsat=t)) <= p <= 1e5 and 273.15 <= t <= 623.15:
         props = {
-                "v" : region1(p, t, desc="v"),
-                "u" : region1(p, t, desc="u"),
-                "h" : region1(p, t, desc="h"),
-                "s" : region1(p, t, desc="s"),
+                "psat": psat,
+                "v": region1(p, t, desc="v"),
+                "u": region1(p, t, desc="u"),
+                "h": region1(p, t, desc="h"),
+                "s": region1(p, t, desc="s"),
                 "cv": region1(p, t, desc="cv"),
                 "cp": region1(p, t, desc="cp"),
+                "region": "I"
         }
         return props
     elif (p23 := Boundary23.getPress(t)) and 0 < p <= p23 and 623.15 < t <= 863.15:
         props = {
-                "v" : region2(p, t, desc="v"),
-                "u" : region2(p, t, desc="u"),
-                "h" : region2(p, t, desc="h"),
-                "s" : region2(p, t, desc="s"),
+                "v": region2(p, t, desc="v"),
+                "u": region2(p, t, desc="u"),
+                "h": region2(p, t, desc="h"),
+                "s": region2(p, t, desc="s"),
                 "cv": region2(p, t, desc="cv"),
                 "cp": region2(p, t, desc="cp"),
+                "region": "II"
         }
         return props
-    elif (t23 := Boundary23.getTemp(p)) and (p23 := Boundary23.getPress(t)) and p23 <= p <= 1e5 and 623.15 < t <= t23:
+    elif (p23 := Boundary23.getPress(t)) and (t23 := Boundary23.getTemp(p)) and p23 < p <= 1e5 and 623.15 < t <= t23:
         rho = Reg3RhoPT.singleRho(p, t)
         props = {
-                "v" : 1/rho,
-                "u" : region3(rho, t, desc="u"),
-                "h" : region3(rho, t, desc="h"),
-                "s" : region3(rho, t, desc="s"),
+                "v": 1/rho,
+                "u": region3(rho, t, desc="u"),
+                "h": region3(rho, t, desc="h"),
+                "s": region3(rho, t, desc="s"),
                 "cv": region3(rho, t, desc="cv"),
                 "cp": region3(rho, t, desc="cp"),
+                "region": "III"
         }
         return props
     elif 0 < p <= 1e5 and 863.15 < t <= 1073.15:
         props = {
-                "v" : region2(p, t, desc="v"),
-                "u" : region2(p, t, desc="u"),
-                "h" : region2(p, t, desc="h"),
-                "s" : region2(p, t, desc="s"),
+                "v": region2(p, t, desc="v"),
+                "u": region2(p, t, desc="u"),
+                "h": region2(p, t, desc="h"),
+                "s": region2(p, t, desc="s"),
                 "cv": region2(p, t, desc="cv"),
                 "cp": region2(p, t, desc="cp"),
+                "region": "II"
         }
         return props
     elif 0 < p <= 5e4 and 1073.15 < t <= 2273.15:
         props = {
-                "v" : region5(p, t, desc="v"),
-                "u" : region5(p, t, desc="u"),
-                "h" : region5(p, t, desc="h"),
-                "s" : region5(p, t, desc="s"),
+                "v": region5(p, t, desc="v"),
+                "u": region5(p, t, desc="u"),
+                "h": region5(p, t, desc="h"),
+                "s": region5(p, t, desc="s"),
                 "cv": region5(p, t, desc="cv"),
                 "cp": region5(p, t, desc="cp"),
+                "region": "V"
         }
         return props
     else:
         return None
 
 
-def allphase(**kwargs):
-    default_keys = ["p", "t", "x"]
+def if97(p=None, t=None, x=None):
+
     ans = dict()
-    if len(kwargs.keys()) == 2:
-        a, b = list(kwargs.keys())
-        if a.lower() in default_keys and b.lower() in default_keys:
-            if a.lower() == "t" and b.lower() == "x":
-                props = saturationT(tsat=kwargs[a])
-                vf, vg = props["v"]
-                ans["v"] = vf + kwargs[b]*(vg-vf)
-                return ans
-            else:
-                return None
+    if (not p) and t and (x is not None) and 273.15 <= t <= TEMPC and 0. <= x <= 1.:
+        props = saturationT(tsat=t)
+        v = props["v"]
+        u = props["u"]
+        h = props["h"]
+        s = props["s"]
+        cp = props["cp"]
+        cv = props["cv"]
+
+        ans["psat"] = props["psat"]
+        ans["tsat"] = props["tsat"]
+        ans["v"] = v[0] + x*(v[1]-v[0])
+        ans["u"] = u[0] + x*(u[1]-u[0])
+        ans["s"] = s[0] + x*(s[1]-s[0])
+        ans["h"] = h[0] + x*(h[1]-h[0])
+        ans["cp"] = cp[0] + x*(cp[1]-cp[0])
+        ans["cv"] = cv[0] + x*(cv[1]-cv[0])
+        return ans
+    elif p and (not t) and (x is not None) and 0.6112127 <= p <= PRESSC and 0. <= x <= 1.:
+        props = saturationP(psat=p)
+        v = props["v"]
+        u = props["u"]
+        h = props["h"]
+        s = props["s"]
+        cp = props["cp"]
+        cv = props["cv"]
+
+        ans["psat"] = props["psat"]
+        ans["tsat"] = props["tsat"]
+        ans["v"] = v[0]+x*(v[1]-v[0])
+        ans["u"] = u[0]+x*(u[1]-u[0])
+        ans["s"] = s[0]+x*(s[1]-s[0])
+        ans["h"] = h[0]+x*(h[1]-h[0])
+        ans["cp"] = cp[0]+x*(cp[1]-cp[0])
+        ans["cv"] = cv[0]+x*(cv[1]-cv[0])
+        return ans
+    elif p and t and (not x) and p <= 1e5 and 273.15 <= t <= 2273.15:
+        return singlephase(p, t)
     else:
         return None
