@@ -5,4 +5,4 @@ from ._IJnReg3 import IJnReg3
 from ._IJnReg4 import nReg4
 from ._IJnReg5 import IJnReg5
 from ._IJnBound import *
-from ._IJnPTReg3 import IJnSubReg3
+from ._IJnVPTReg3 import IJnVPTReg3

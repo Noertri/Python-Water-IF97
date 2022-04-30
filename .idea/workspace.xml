@@ -7,8 +7,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="membuat fungsi if97">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="mengubah rhoL, rhoV menjadi rhof, dan rhog, enghapus subpackage _SubReg3">
+      <change afterPath="$PROJECT_DIR$/if97/koefisien/_IJnVPTReg3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/cores/backwardPT.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/cores/backwardPT.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/koefisien/_IJnPTReg3.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/koefisien/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/koefisien/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -412,7 +416,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651279899204</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="mengubah rhoL, rhoV menjadi rhof, dan rhog, enghapus subpackage _SubReg3">
+      <created>1651280477066</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1651280477066</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -427,7 +438,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="tes dan debug region2" />
     <MESSAGE value="tes dan debug region3" />
     <MESSAGE value="mengganti nama dari if97 ke IF97" />
     <MESSAGE value="tes dan debug region5" />
@@ -452,6 +462,7 @@
     <MESSAGE value="menambahkan dokumentasi" />
     <MESSAGE value="menambahkan notasi walrus" />
     <MESSAGE value="membuat fungsi if97" />
-    <option name="LAST_COMMIT_MESSAGE" value="membuat fungsi if97" />
+    <MESSAGE value="mengubah rhoL, rhoV menjadi rhof, dan rhog, enghapus subpackage _SubReg3" />
+    <option name="LAST_COMMIT_MESSAGE" value="mengubah rhoL, rhoV menjadi rhof, dan rhog, enghapus subpackage _SubReg3" />
   </component>
 </project>
