@@ -207,9 +207,9 @@ def if97(p=None, t=None, x=None):
     elif (x is not None) and (x < 0 or x > 1):
         raise ValueError(f"Fraction(x) value must be 0 <= x <= 1 ")
     elif (p is None) and (t is not None) and (t < 273.15 or t > TEMPC):
-        raise ValueError(f"Saturation temperature(t) value must be 273.15 <= t(in K) <= {TEMPC} or 0 <= t(in C) <= 373.946")
+        raise ValueError(f"Saturation temperature(t) value must be 273.15 K <= t <= {TEMPC} K or 0 C <= t <= 373.946 C")
     elif (t is None) and (p is not None) and (p < 0.6112127 or p > PRESSC):
-        raise ValueError(f"Saturation pressure(p) value must be 0.6112127 <= p(in KPa) <= {PRESSC} (in KPa)")
+        raise ValueError(f"Saturation pressure(p) value must be 0.6112127 KPa <= p <= {PRESSC} KPa")
     elif (p <= 0 or p > 1e5) or (t < 273.15 or t > 2273.15) and x is None:
-        raise ValueError(f"Temperature(t) must be 273.15 <= t(in K) <= 10273.15 or 0 <= t(in C) <= 800 for pressure(p) 0 < p(in KPa) <= 100000, "
-                         f"and 10273.15 < t(in K) <= 2273.15 or 800 <= t(in C) <= 2000 for pressure(p) 0 < p(in KPa) <= 50000")
+        raise ValueError(f"Temperature(t) must be 273.15 K <= t <= 10273.15 K or 0 C <= t <= 800 C for pressure(p) 0 KPa < p <= 100000 KPa, "
+                         f"and 10273.15 K < t <= 2273.15 K or 800 C <= t <= 2000 C for pressure(p) 0 KPa < p <= 50000 KPa")
