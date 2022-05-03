@@ -7,9 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="mengganti nama folder desktop menjadi GUI, mengubah nama modul menjadi app.py">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi app.py">
+      <change afterPath="$PROJECT_DIR$/GUI/_converter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GUI/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/_if97.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/_if97.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +58,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/desktop/gui.py" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -166,8 +168,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.gui" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.gui" />
         <item itemvalue="Python tests.Python tests in test_bound23.py" />
         <item itemvalue="Python tests.Python tests in test_region4.py" />
       </list>
@@ -462,7 +464,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651282098752</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="memodifikasi app.py">
+      <created>1651282465991</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1651282465991</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -477,7 +486,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="memodifikasi region3, tes dan debug region3" />
     <MESSAGE value="memodifikasi class Boundary23, tes dan debug class Boundary23" />
     <MESSAGE value="membuat fungsi untuk persamaan boundary subregion3, tes dan debug boundaru subregion3" />
     <MESSAGE value="membuat modul _sub3a.py" />
@@ -502,6 +510,7 @@
     <MESSAGE value="mengubah rhoL, rhoV menjadi rhof, dan rhog, menghapus subpackage _SubReg3, membuat folder desktop_app" />
     <MESSAGE value="mengganti nama folder desktop_app menjadi desktop, mengubah nama modul menjadi gui.py" />
     <MESSAGE value="mengganti nama folder desktop menjadi GUI, mengubah nama modul menjadi app.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="mengganti nama folder desktop menjadi GUI, mengubah nama modul menjadi app.py" />
+    <MESSAGE value="memodifikasi app.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi app.py" />
   </component>
 </project>

@@ -167,8 +167,7 @@ def singlephase(p, t):
 def if97(p=None, t=None, x=None):
 
     ans = dict()
-    if (not p) and t and (x is not None) and 273.15 <= t <= TEMPC and 0. <= x <= 1.:
-        props = saturationT(tsat=t)
+    if (not p) and t and (x is not None) and 273.15 <= t <= TEMPC and 0. <= x <= 1. and (props := saturationT(tsat=t)):
         v = props["v"]
         u = props["u"]
         h = props["h"]
@@ -182,11 +181,14 @@ def if97(p=None, t=None, x=None):
         ans["u"] = u[0] + x*(u[1]-u[0])
         ans["s"] = s[0] + x*(s[1]-s[0])
         ans["h"] = h[0] + x*(h[1]-h[0])
-        ans["cp"] = cp[0] + x*(cp[1]-cp[0])
-        ans["cv"] = cv[0] + x*(cv[1]-cv[0])
+        if cp[0] is not None and cp[1] is not None and cv[0] is not None and cv[1] is not None:
+            ans["cp"] = cp[0] + x*(cp[1]-cp[0])
+            ans["cv"] = cv[0] + x*(cv[1]-cv[0])
+        else:
+            ans["cp"] = None
+            ans["cv"] = None
         return ans
-    elif p and (not t) and (x is not None) and 0.6112127 <= p <= PRESSC and 0. <= x <= 1.:
-        props = saturationP(psat=p)
+    elif p and (not t) and (x is not None) and 0.6112127 <= p <= PRESSC and 0. <= x <= 1. and (props := saturationP(psat=p)) is not None:
         v = props["v"]
         u = props["u"]
         h = props["h"]
@@ -200,10 +202,15 @@ def if97(p=None, t=None, x=None):
         ans["u"] = u[0]+x*(u[1]-u[0])
         ans["s"] = s[0]+x*(s[1]-s[0])
         ans["h"] = h[0]+x*(h[1]-h[0])
-        ans["cp"] = cp[0]+x*(cp[1]-cp[0])
-        ans["cv"] = cv[0]+x*(cv[1]-cv[0])
+        if cp[0] is not None and cp[1] is not None and cv[0] is not None and cv[1] is not None:
+            ans["cp"] = cp[0] + x*(cp[1]-cp[0])
+            ans["cv"] = cv[0] + x*(cv[1]-cv[0])
+        else:
+            ans["cp"] = None
+            ans["cv"] = None
         return ans
-    elif p and t and (not x) and p <= 1e5 and 273.15 <= t <= 2273.15:
-        return singlephase(p, t)
+    elif p and t and (not x) and p <= 1e5 and 273.15 <= t <= 2273.15 and (props := singlephase(p, t)):
+        props["Tsat"] = region4(psat=p)
+        return props
     else:
         return None
