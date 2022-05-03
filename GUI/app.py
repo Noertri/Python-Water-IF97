@@ -34,7 +34,7 @@ class PyWater(tk.Tk):
         self.output8Var = tk.DoubleVar()
         self.output9Var = tk.DoubleVar()
 
-        #frame
+        #frames
         self.inputs_frame = ttk.Frame(self, padding=(5, 5, 5, 5), width=300)
         self.buttons_frame = ttk.Frame(self, padding=(5, 5, 5, 5), width=300)
         self.outputs_frame = ttk.Frame(self, padding=(5, 5, 5, 5), width=300)
@@ -42,7 +42,7 @@ class PyWater(tk.Tk):
         self.buttons_frame.grid(row=1, column=0, padx=12, pady=12)
         self.outputs_frame.grid(row=2, column=0, padx=12, pady=(0, 12))
 
-        #label
+        #labels
         self.label1 = ttk.Label(self.inputs_frame, text="Fungsi", justify="left", width=8)
         self.label2 = ttk.Label(self.inputs_frame, textvariable=self.label2Val, justify="left", width=8)
         self.label3 = ttk.Label(self.inputs_frame, textvariable=self.label3Val, justify="left", width=8)
@@ -90,7 +90,7 @@ class PyWater(tk.Tk):
         self.label20.grid(row=11, column=2, pady=(0, 5))
         # self.label21.grid(row=12, column=2, pady=(0, 5))
 
-        #combobox
+        #comboboxes
         self.menu = ttk.Combobox(self.inputs_frame, width=14, state="readonly", textvariable=self.menuVar)
         self.menu["values"] = self.menuVal
         self.menu.current(2)
@@ -105,7 +105,7 @@ class PyWater(tk.Tk):
         self.unit1.grid(column=2, row=1, sticky="nw", pady=(0, 5))
         self.unit2.grid(column=2, row=2, sticky="nw", pady=(0, 5))
 
-        #entrybox
+        #entryboxes
         self.input1 = ttk.Entry(self.inputs_frame, width=16, textvariable=self.input1Var)
         self.input2 = ttk.Entry(self.inputs_frame, width=16, textvariable=self.input2Var)
         self.output1 = ttk.Entry(self.outputs_frame, width=16, state="readonly", textvariable=self.output1Var)
