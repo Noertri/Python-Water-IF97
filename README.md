@@ -1,2 +1,1 @@
-# Python Water Region1 IF97
- implementasi IAPWS-IF97 dengan python
+# Implementasi IAPWS-IF97 dengan python
