@@ -137,6 +137,7 @@ class PyWater(tk.Tk):
         self.btn2.grid(column=1, row=3, padx=10)
 
         self.resizable(False, False)
+        self.mainloop()
 
     def combo1_callback(self, event=None):
 
@@ -257,4 +258,3 @@ class PyWater(tk.Tk):
 
 if __name__ == "__main__":
     ui = PyWater()
-    ui.mainloop()
