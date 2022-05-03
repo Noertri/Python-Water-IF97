@@ -45,8 +45,6 @@ def saturationT(tsat=None):
                 "cp": [None, None]
         }
         return props
-    else:
-        return None
 
 
 def saturationP(psat):
@@ -90,8 +88,6 @@ def saturationP(psat):
                 "cp": [None, None]
         }
         return props
-    else:
-        return None
 
 
 def singlephase(p, t):
@@ -110,7 +106,6 @@ def singlephase(p, t):
         return props
     elif (psat := region4(tsat=t)) <= p <= 1e5 and 273.15 <= t <= 623.15:
         props = {
-                "psat": psat,
                 "v": region1(p, t, desc="v"),
                 "u": region1(p, t, desc="u"),
                 "h": region1(p, t, desc="h"),
@@ -160,14 +155,12 @@ def singlephase(p, t):
                 "cp": region5(p, t, desc="cp")
         }
         return props
-    else:
-        return None
 
 
 def if97(p=None, t=None, x=None):
 
     ans = dict()
-    if (not p) and t and (x is not None) and 273.15 <= t <= TEMPC and 0. <= x <= 1. and (props := saturationT(tsat=t)):
+    if (not p) and t and (x is not None) and 273.15 <= t <= TEMPC and 0. <= x <= 1. and (props := saturationT(tsat=t)) is not None:
         v = props["v"]
         u = props["u"]
         h = props["h"]
@@ -209,8 +202,13 @@ def if97(p=None, t=None, x=None):
             ans["cp"] = None
             ans["cv"] = None
         return ans
-    elif p and t and (not x) and p <= 1e5 and 273.15 <= t <= 2273.15 and (props := singlephase(p, t)):
-        props["Tsat"] = region4(psat=p)
+    elif p and t and (not x) and 0 < p <= 1e5 and 273.15 <= t <= 2273.15 and (props := singlephase(p, t)) is not None:
         return props
-    else:
-        return None
+    elif (x is not None) and (x < 0 or x > 1):
+        raise ValueError(f"Fraction(x) value must be 0 <= x <= 1 ")
+    elif (p is None) and (t is not None) and (t < 273.15 or t > TEMPC):
+        raise ValueError(f"Saturation temperature(t) value must be 273.15 <= t(in K) <= {TEMPC} or 0 <= t(in C) <= 373.946")
+    elif (t is None) and (p is not None) and (p < 0.6112127 or p > PRESSC):
+        raise ValueError(f"Saturation pressure(p) value must be 0.6112127 <= p(in KPa) <= {PRESSC} (in KPa)")
+    elif (p <= 0 or p > 1e5) or (t < 273.15 or t > 2273.15) and x is None:
+        raise ValueError(f"Temperature(t) must be 273.15 <= t(in K) <= 10273.15 or 0 <= t(in C) <= 800 for pressure(p) 0 < p(in KPa) <= 100000, and 10273.15 < t(in K) <= 2273.15 or 800 <= t(in C) <= 2000 for pressure(p) 0 < p(in KPa) <= 50000")

@@ -483,7 +483,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651553043251</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="memodifikasi modul if97.py dan menghapus modul _converter.py">
+      <created>1651553103656</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1651553103656</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

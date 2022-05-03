@@ -1,8 +1,7 @@
 from IF97 import if97, PRESSC, PRESST, TEMPC, TEMPT, BIGR
 import math
 import tkinter as tk
-from tkinter import ttk
-from tkinter import font
+from tkinter import ttk, messagebox
 
 
 class PyWater(tk.Tk):
@@ -69,9 +68,10 @@ class PyWater(tk.Tk):
         self.label1.grid(row=0, column=0, pady=(0, 5))
         self.label2.grid(row=1, column=0, pady=(0, 5))
         self.label3.grid(row=2, column=0, pady=(0, 5))
-        self.label4.grid(row=4, column=0, pady=(0, 5))
+        # self.label4.grid(row=4, column=0, pady=(0, 5))
         self.label4.grid_forget()
-        self.label5.grid(row=5, column=0, pady=(0, 5))
+        # self.label5.grid(row=5, column=0, pady=(0, 5))
+        self.label5.grid_forget()
         self.label6.grid(row=6, column=0, pady=(0, 5))
         self.label7.grid(row=7, column=0, pady=(0, 5))
         self.label8.grid(row=8, column=0, pady=(0, 5))
@@ -79,9 +79,10 @@ class PyWater(tk.Tk):
         self.label10.grid(row=10, column=0, pady=(0, 5))
         self.label11.grid(row=11, column=0, pady=(0, 5))
         # self.label12.grid(row=12, column=0, pady=(0, 5))
-        self.label13.grid(row=4, column=2, pady=(0, 5))
+        # self.label13.grid(row=4, column=2, pady=(0, 5))
         self.label13.grid_forget()
-        self.label14.grid(row=5, column=2, pady=(0, 5))
+        # self.label14.grid(row=5, column=2, pady=(0, 5))
+        self.label14.grid_forget()
         self.label15.grid(row=6, column=2, pady=(0, 5))
         self.label16.grid(row=7, column=2, pady=(0, 5))
         self.label17.grid(row=8, column=2, pady=(0, 5))
@@ -119,9 +120,10 @@ class PyWater(tk.Tk):
         self.output9 = ttk.Entry(self.outputs_frame, width=16, state="readonly", textvariable=self.output9Var)
         self.input1.grid(row=1, column=1, padx=5, pady=(0, 5))
         self.input2.grid(row=2, column=1, padx=5, pady=(0, 5))
-        self.output1.grid(row=4, column=1, padx=5, pady=(0, 5))
+        # self.output1.grid(row=4, column=1, padx=5, pady=(0, 5))
         self.output1.grid_forget()
-        self.output2.grid(row=5, column=1, padx=5, pady=(0, 5))
+        # self.output2.grid(row=5, column=1, padx=5, pady=(0, 5))
+        self.output2.grid_forget()
         self.output3.grid(row=6, column=1, padx=5, pady=(0, 5))
         self.output4.grid(row=7, column=1, padx=5, pady=(0, 5))
         self.output5.grid(row=8, column=1, padx=5, pady=(0, 5))
@@ -143,25 +145,31 @@ class PyWater(tk.Tk):
 
         match self.menuVar.get():
             case "T-x":
-                self.label2Val.set("T")
+                self.label2Val.set("Tsat")
                 self.label3Val.set("x")
                 self.unit1["values"] = self.tempUnit
                 self.unit1.current(1)
                 self.unit2["values"] = self.xUnit
                 self.unit2.current(0)
                 self.label4.grid(row=4, column=0, pady=(0, 5))
+                self.label5.grid(row=5, column=0, pady=(0, 5))
                 self.output1.grid(row=4, column=1, padx=5, pady=(0, 5))
+                self.output2.grid(row=5, column=1, padx=5, pady=(0, 5))
                 self.label13.grid(row=4, column=2, pady=(0, 5))
+                self.label14.grid(row=5, column=2, pady=(0, 5))
             case "P-x":
-                self.label2Val.set("P")
+                self.label2Val.set("Psat")
                 self.label3Val.set("x")
                 self.unit1["values"] = self.pressUnit
                 self.unit1.current(2)
                 self.unit2["values"] = self.xUnit
                 self.unit2.current(0)
                 self.label4.grid(row=4, column=0, pady=(0, 5))
+                self.label5.grid(row=5, column=0, pady=(0, 5))
                 self.output1.grid(row=4, column=1, padx=5, pady=(0, 5))
+                self.output2.grid(row=5, column=1, padx=5, pady=(0, 5))
                 self.label13.grid(row=4, column=2, pady=(0, 5))
+                self.label14.grid(row=5, column=2, pady=(0, 5))
             case "P-T":
                 self.label2Val.set("P")
                 self.label3Val.set("T")
@@ -170,47 +178,51 @@ class PyWater(tk.Tk):
                 self.unit2["values"] = self.tempUnit
                 self.unit2.current(1)
                 self.label4.grid_forget()
+                self.label5.grid_forget()
                 self.output1.grid_forget()
+                self.output2.grid_forget()
                 self.label13.grid_forget()
+                self.label14.grid_forget()
             case _:
                 self.menuVar.set(self.menuVal[0])
 
     def btn1_callback(self):
-
-        if self.menuVar.get() == self.menuVal[0] and (tsat := self._convertT(self.input1Var.get(), self.unit1Var.get())) is not None and (x := self.input2Var.get()) is not None and (ans := if97(t=tsat, x=x)) is not None:
-            self.output1Var.set(round(ans['psat'], 9))
-            self.output2Var.set(round(ans['tsat'], 9))
-            self.output3Var.set(round(ans['v'], 9))
-            self.output4Var.set(round(ans['u'], 9))
-            self.output5Var.set(round(ans['h'], 9))
-            self.output6Var.set(round(ans['s'], 9))
-            if ans["cp"] is not None and ans["cv"] is not None:
+        try:
+            if self.menuVar.get() == self.menuVal[0] and (tsat := self._convertT(self.input1Var.get(), self.unit1Var.get())) is not None and (x := self.input2Var.get()) is not None and (ans := if97(t=tsat, x=x)):
+                self.output1Var.set(round(ans['psat'], 9))
+                self.output2Var.set(round(ans['tsat'], 9))
+                self.output3Var.set(round(ans['v'], 9))
+                self.output4Var.set(round(ans['u'], 9))
+                self.output5Var.set(round(ans['h'], 9))
+                self.output6Var.set(round(ans['s'], 9))
+                if ans["cp"] is not None and ans["cv"] is not None:
+                    self.output7Var.set(round(ans['cp'], 9))
+                    self.output8Var.set(round(ans['cv'], 9))
+                else:
+                    self.output7Var.set("~")
+                    self.output8Var.set("~")
+            elif self.menuVar.get() == self.menuVal[1] and (psat := self._convertP(self.input1Var.get(), self.unit1Var.get())) is not None and (x := self.input2Var.get()) is not None and (ans := if97(p=psat, x=x)) is not None:
+                self.output1Var.set(round(ans['psat'], 9))
+                self.output2Var.set(round(ans['tsat'], 9))
+                self.output3Var.set(round(ans['v'], 9))
+                self.output4Var.set(round(ans['u'], 9))
+                self.output5Var.set(round(ans['h'], 9))
+                self.output6Var.set(round(ans['s'], 9))
+                if ans["cp"] is not None and ans["cv"] is not None:
+                    self.output7Var.set(round(ans['cp'], 9))
+                    self.output8Var.set(round(ans['cv'], 9))
+                else:
+                    self.output7Var.set("~")
+                    self.output8Var.set("~")
+            elif self.menuVar.get() == self.menuVal[2] and (p := self._convertP(self.input1Var.get(), self.unit1Var.get())) is not None and (t := self._convertT(self.input2Var.get(), self.unit2Var.get())) is not None and (ans := if97(p=p, t=t)) is not None:
+                self.output3Var.set(round(ans['v'], 9))
+                self.output4Var.set(round(ans['u'], 9))
+                self.output5Var.set(round(ans['h'], 9))
+                self.output6Var.set(round(ans['s'], 9))
                 self.output7Var.set(round(ans['cp'], 9))
                 self.output8Var.set(round(ans['cv'], 9))
-            else:
-                self.output7Var.set("~")
-                self.output8Var.set("~")
-        elif self.menuVar.get() == self.menuVal[1] and (psat := self._convertP(self.input1Var.get(), self.unit1Var.get())) is not None and (x := self.input2Var.get()) is not None and (ans := if97(p=psat, x=x)) is not None:
-            self.output1Var.set(round(ans['psat'], 9))
-            self.output2Var.set(round(ans['tsat'], 9))
-            self.output3Var.set(round(ans['v'], 9))
-            self.output4Var.set(round(ans['u'], 9))
-            self.output5Var.set(round(ans['h'], 9))
-            self.output6Var.set(round(ans['s'], 9))
-            if ans["cp"] is not None and ans["cv"] is not None:
-                self.output7Var.set(round(ans['cp'], 9))
-                self.output8Var.set(round(ans['cv'], 9))
-            else:
-                self.output7Var.set("~")
-                self.output8Var.set("~")
-        elif self.menuVar.get() == self.menuVal[2] and (p := self._convertP(self.input1Var.get(), self.unit1Var.get())) is not None and (t := self._convertT(self.input2Var.get(), self.unit2Var.get())) is not None and (ans := if97(p=p, t=t)) is not None:
-            self.output2Var.set(round(ans["Tsat"], 9))
-            self.output3Var.set(round(ans['v'], 9))
-            self.output4Var.set(round(ans['u'], 9))
-            self.output5Var.set(round(ans['h'], 9))
-            self.output6Var.set(round(ans['s'], 9))
-            self.output7Var.set(round(ans['cp'], 9))
-            self.output8Var.set(round(ans['cv'], 9))
+        except Exception as e:
+            messagebox.showerror(title="Value Error!!!", message=e)
 
     def btn2_callback(self):
         self.input1Var.set(0.)
