@@ -7,9 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi modul if97.py dan menghapus modul _converter.py">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="menambah exception di modul if97.py dan memodifikasi gui">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/if97/_if97.py" beforeDir="false" afterPath="$PROJECT_DIR$/if97/_if97.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -490,7 +490,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651553103656</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="menambah exception di modul if97.py dan memodifikasi gui">
+      <created>1651562279790</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1651562279790</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -505,7 +512,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="membuat modul _sub3a.py" />
     <MESSAGE value="modifikasi region3.py" />
     <MESSAGE value="membuat modul backwardPT.py, test dan debug subregion 3" />
     <MESSAGE value="membuat modul basic.py" />
@@ -530,6 +536,7 @@
     <MESSAGE value="memodifikasi app.py" />
     <MESSAGE value="memodifikasi modul app.py dan if97.py" />
     <MESSAGE value="memodifikasi modul if97.py dan menghapus modul _converter.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi modul if97.py dan menghapus modul _converter.py" />
+    <MESSAGE value="menambah exception di modul if97.py dan memodifikasi gui" />
+    <option name="LAST_COMMIT_MESSAGE" value="menambah exception di modul if97.py dan memodifikasi gui" />
   </component>
 </project>
