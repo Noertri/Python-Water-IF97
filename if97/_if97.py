@@ -1,5 +1,5 @@
 from .cores.backwardPT import Reg3RhoPT
-from .cores.basic import region1, region2, region3, region4, region5, saturRho
+from .cores.basic import region1, region2, region3, region4, region5, saturRhoReg3
 from .cores.boundary import Boundary23
 from .koefisien import PRESSC, RHOC, TEMPC
 
@@ -21,7 +21,7 @@ def saturationT(tsat=None):
         }
         return props
     elif tsat and (psat := region4(tsat=tsat)) and 623.15 < tsat < TEMPC and 0. < psat < PRESSC:
-        rhof, rhog = saturRho(psat, tsat)
+        rhof, rhog = saturRhoReg3(psat, tsat)
         props = {
                 "psat": psat,
                 "tsat": tsat,
@@ -64,7 +64,7 @@ def saturationP(psat):
         }
         return props
     elif psat and (tsat := region4(psat=psat)) and 16529.2 < psat < PRESSC and 273.15 <= tsat < TEMPC:
-        rhof, rhog = saturRho(psat, tsat)
+        rhof, rhog = saturRhoReg3(psat, tsat)
         props = {
                 "psat": psat,
                 "tsat": tsat,

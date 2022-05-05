@@ -1,5 +1,3 @@
-"""Modul berisi persamaan dasar dan persamaan properties untuk region 1 sampai region 5"""
-
 import numpy as np
 from scipy import optimize
 from ..koefisien import IJnReg1, IJnReg2, IJnReg2Supp, IJnReg3, nReg4, IJnReg5, BIGR, RHOC, TEMPC
@@ -179,7 +177,7 @@ def _phi(delta, tau):
     return f, dfddel, dfddel2, dfdtau, dfdtau2, dfddeldtau
 
 
-def saturRho(psat, tsat):
+def saturRhoReg3(psat, tsat):
     """Fungsi untuk mencari rho pada fase saturasi"""
 
     tau = TEMPC/tsat
