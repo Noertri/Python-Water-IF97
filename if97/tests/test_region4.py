@@ -25,8 +25,8 @@ class TestRegion4(unittest.TestCase):
 
     def test_triple_point(self):
 
-        self.assertAlmostEqual(Region4.getSaturPress(tsat=273.16), PRESST, delta=1e-6)
-        self.assertAlmostEqual(Region4.getSaturTemp(psat=PRESST), 273.16, delta=1e-6)
+        self.assertAlmostEqual(Region4.getSaturPress(tsat=TEMPT), PRESST, delta=1e-6)
+        self.assertAlmostEqual(Region4.getSaturTemp(psat=PRESST), TEMPT, delta=1e-6)
 
     def test_critical_point(self):
 

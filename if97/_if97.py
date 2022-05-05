@@ -174,7 +174,7 @@ def if97(p=None, t=None, x=None):
         ans["u"] = u[0] + x*(u[1]-u[0])
         ans["s"] = s[0] + x*(s[1]-s[0])
         ans["h"] = h[0] + x*(h[1]-h[0])
-        if cp[0] is not None and cp[1] is not None and cv[0] is not None and cv[1] is not None:
+        if all(_ is not None for _ in cp) and all(_ is not None for _ in cv):
             ans["cp"] = cp[0] + x*(cp[1]-cp[0])
             ans["cv"] = cv[0] + x*(cv[1]-cv[0])
         else:
@@ -195,7 +195,7 @@ def if97(p=None, t=None, x=None):
         ans["u"] = u[0]+x*(u[1]-u[0])
         ans["s"] = s[0]+x*(s[1]-s[0])
         ans["h"] = h[0]+x*(h[1]-h[0])
-        if cp[0] is not None and cp[1] is not None and cv[0] is not None and cv[1] is not None:
+        if all(_ is not None for _ in cp) and all(_ is not None for _ in cv):
             ans["cp"] = cp[0] + x*(cp[1]-cp[0])
             ans["cv"] = cv[0] + x*(cv[1]-cv[0])
         else:

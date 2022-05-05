@@ -64,8 +64,8 @@
       </console-settings>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests in test_region4.py">
-    <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.app">
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -180,11 +180,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.app" />
         <item itemvalue="Python tests.Python tests in test_region4.py" />
         <item itemvalue="Python tests.Python tests in test_region3.py" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.gui" />
-        <item itemvalue="Python tests.Python tests in test_bound23.py" />
       </list>
     </recent_temporary>
   </component>

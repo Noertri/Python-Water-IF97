@@ -5,7 +5,33 @@ from ..koefisien import IJnReg1, IJnReg2, IJnReg2Supp, IJnReg3, nReg4, IJnReg5, 
 
 #Region 1
 def region1(p, t, desc=None):
-    """Fungsi persamaan dasar dan propertis untuk region 1"""
+    """Basic and property equations for region 1
+
+    Parameters
+    ----------
+    p: float
+        pressure (KPa)
+    t: float
+        temperature (K)
+    desc: str
+        key of property to return, one of v, u, h, s, cp, and cv
+
+    Returns
+    -------
+    v: float
+        specific volume (Kg/m^3)
+    u: float
+        specific internal energy (KJ/Kg)
+    h: float
+        specific enthalpy (KJ/Kg)
+    s: float
+        specific entropy (KJ/Kg*K)
+    cp: float
+        specific isobaric heat capacity (KJ/Kg*K)
+    cv: float
+        specific isochoric heat capacity (KJ/Kg*K)
+
+    """
 
     pi = p/16.53e3
     tau = 1386/t
@@ -45,7 +71,32 @@ def region1(p, t, desc=None):
 
 #Region 2
 def region2(p, t, desc=None):
-    """Fungsi persamaan dasar dan propertis untuk region 2"""
+    """Basic and property equations for region 2
+
+    Parameters
+    ----------
+    p: float
+        pressure (KPa)
+    t: float
+        temperature (K)
+    desc: str
+        key of property to return, one of v, u, h, s, cp, and cv
+
+    Returns
+    -------
+    v: float
+        specific volume (m^3/Kg)
+    u: float
+        specific internal energy (KJ/Kg)
+    h: float
+        specific enthalpy (KJ/Kg)
+    s: float
+        specific entropy (KJ/Kg*K)
+    cp: float
+        specific isobaric heat capacity (KJ/Kg*K)
+    cv: float
+        specific isochoric heat capacity (KJ/Kg*K)
+    """
 
     pi = p/1e3
     tau = 540/t
@@ -97,7 +148,32 @@ def region2(p, t, desc=None):
 
 #Supplementary equations of region 2
 def supp_region2(p, t, desc=None):
-    """Fungsi persamaan tambahan untuk region 2"""
+    """Supplementary equations for region 2
+
+    Parameters
+    ----------
+    p: float
+        pressure (KPa)
+    t: float
+        temperature (K)
+    desc: str
+        key of property to return, one of v, u, h, s, cp, and cv
+
+    Returns
+    -------
+    v: float
+        specific volume (m^3/Kg)
+    u: float
+        specific internal energy (KJ/Kg)
+    h: float
+        specific enthalpy (KJ/Kg)
+    s: float
+        specific entropy (KJ/Kg*K)
+    cp: float
+        specific isobaric heat capacity (KJ/Kg*K)
+    cv: float
+        specific isochoric heat capacity (KJ/Kg*K)
+    """
 
     pi = p/1e3
     tau = 540/t
@@ -150,10 +226,44 @@ def supp_region2(p, t, desc=None):
 
 #Region 3
 class Region3:
+    """Class for region 3
+
+    Static Methods:
+    --------------
+    _phi(delta, tau)
+        Basic equation for region 3
+    saturRho(psat, tsat)
+        Method to calculate saturation densities in region 3
+    region3(rho, t, desc=None)
+        Method to calculate properties in region 3
+    """
 
     @staticmethod
     def _phi(delta, tau):
-        """Fungsi persamaan dasar untuk region 3"""
+        """Basic equations for region 3
+
+        Parameters
+        ----------
+        delta: float
+            delta = rho/RHOC (dimensionless)
+        tau: float
+            tau = TEMPC/t (dimensionless)
+
+        Returns
+        -------
+        f: float
+           specific Helmhotz free energy.
+        dfddel: float
+            first partial derivative of f to delta
+        dfddel2: float
+            second partial derivative of f to delta
+        dfdtau: float
+            first partial derivative of f to tau
+        dfdtau2: float
+            second partial derivative of f to tau
+        dfddeldtau: float
+            partial derivative of f to delta and tau
+        """
 
         _n = IJnReg3["n"]
         _I = IJnReg3["I"]
@@ -178,7 +288,22 @@ class Region3:
 
     @classmethod
     def saturRho(cls, psat, tsat):
-        """Fungsi untuk mencari rho pada fase saturasi"""
+        """Basic equations for region 3
+
+        Parameters
+        ----------
+        psat: float
+            saturation pressure (KPa)
+        tsat: float
+            saturation temperature (K)
+
+        Returns
+        -------
+        rhoL: float
+            Liquid density in saturation point (Kg/m^3)
+        rhoV: float
+            Vapor density in saturation point (Kg/m^3)
+        """
 
         tau = TEMPC/tsat
         c = psat/(RHOC*BIGR*tsat)
@@ -204,11 +329,37 @@ class Region3:
             delL = optimize.newton(func, x0=0.999999999, fprime=dfunc, tol=1e-9)
             delV = optimize.newton(func, x0=0.999999999, fprime=dfunc, tol=1e-9)
 
-        return delL*RHOC, delV*RHOC
+        rhoL, rhoV = delL*RHOC, delV*RHOC
+        return rhoL, rhoV
 
     @classmethod
     def region3(cls, rho, t, desc):
-        """Fungsi untuk mencari propertis untuk region 3"""
+        """Property equations in region 3
+
+        Parameters
+        ----------
+        rho: float
+            density (Kg/m^3)
+        t: float
+            temperature (K)
+        desc: str
+            key of property to return, one of p, u, h, s, cp, and cv
+
+        Returns
+        -------
+        p: float
+            pressure (KPa)
+        u: float
+            specific internal energy (KJ/Kg)
+        h: float
+            specific enthalpy (KJ/Kg)
+        s: float
+            specific entropy (KJ/Kg*K)
+        cp: float
+            specific isobaric heat capacity (KJ/Kg*K)
+        cv: float
+            specific isochoric heat capacity (KJ/Kg*K)
+        """
 
         delta = rho/RHOC
         tau = TEMPC/t
@@ -237,9 +388,31 @@ class Region3:
 
 #Region 4
 class Region4:
+    """Class for region 4
+
+    Static Methods
+    --------------
+    getSaturPress(cls, tsat)
+        calculate saturation pressure
+    getSaturTemp(cls, psat)
+        calculate saturation temperature
+    """
 
     @classmethod
     def getSaturPress(cls, tsat):
+        """Method to calculate saturation pressure
+
+        Parameters
+        ----------
+        tsat: float
+            Saturation temperature (K)
+
+        Returns
+        -------
+        ans: float
+            Saturation pressure (KPa)
+        """
+
         n = nReg4["n"]
         nu = (tsat/1)+(n[8]/((tsat/1)-n[9]))
         Ai = (nu**2)+n[0]*nu+n[1]
@@ -250,6 +423,19 @@ class Region4:
 
     @classmethod
     def getSaturTemp(cls, psat):
+        """Method to calculate saturation pressure
+
+        Parameters
+        ----------
+        psat: float
+            Saturation presssure (KPa)
+
+        Returns
+        -------
+        ans: float
+            Saturation temperature (K)
+        """
+
         n = nReg4["n"]
         beta = (psat/1000)**(1/4)
         Ei = (beta**2)+n[2]*beta+n[5]
@@ -262,7 +448,32 @@ class Region4:
 
 #Region 5
 def region5(p, t, desc=None):
-    """Fungsi untuk persamaan dasar dan propertis untuk region 5"""
+    """Basic and property equations for region 5
+
+    Parameters
+    ----------
+    p: float
+        pressure (KPa)
+    t: float
+        temperature (K)
+    desc: str
+        key of property to return, one of v, u, h, s, cp, and cv
+
+    Returns
+    -------
+    v: float
+        specific volume (m^3/Kg)
+    u: float
+        specific internal energy (KJ/Kg)
+    h: float
+        specific enthalpy (KJ/Kg)
+    s: float
+        specific entropy (KJ/Kg*K)
+    cp: float
+        specific isobaric heat capacity (KJ/Kg*K)
+    cv: float
+        specific isochoric heat capacity (KJ/Kg*K)
+    """
 
     pi = p/1e3
     tau = 1000/t
