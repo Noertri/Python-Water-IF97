@@ -1,7 +1,7 @@
 from numpy import exp
 from ..koefisien import IJnVPTReg3
 from .boundary import Boundary23, temp3
-from .basic import region4
+from .basic import Region4
 
 
 def region3PT(p, t, desc=None):
@@ -118,7 +118,7 @@ class Reg3RhoPT:
                     vol = region3PT(p, t, "3j")
                 elif t > (t3jk := temp3(p, "3jk")):
                     vol = region3PT(p, t, "3k")
-            elif (p643 := region4(tsat=643.15)) < p <= 22.5e3:
+            elif (p643 := Region4.getSaturPress(tsat=643.15)) < p <= 22.5e3:
                 if t <= (t3cd := temp3(p, "3cd")):
                     vol = region3PT(p, t, "3c")
                 elif (t3cd := temp3(p, "3cd")) < t <= (t3qu := temp3(p, "3qu")):
@@ -129,26 +129,26 @@ class Reg3RhoPT:
                     vol = region3PT(p, t, "3r")
                 elif t > (t3jk := temp3(p, "3jk")):
                     vol = region3PT(p, t, "3k")
-            elif 20.5e3 < p <= (p643 := region4(tsat=643.15)):
+            elif 20.5e3 < p <= (p643 := Region4.getSaturPress(tsat=643.15)):
                 if t <= (t3cd := temp3(p, "3cd")):
                     vol = region3PT(p, t, "3c")
-                elif (t3cd := temp3(p, "3cd")) < t <= region4(psat=p):
+                elif (t3cd := temp3(p, "3cd")) < t <= Region4.getSaturTemp(psat=p):
                     vol = region3PT(p, t, "3s")
-                elif region4(psat=p) < t <= (t3jk := temp3(p, "3jk")):
+                elif Region4.getSaturTemp(psat=p) < t <= (t3jk := temp3(p, "3jk")):
                     vol = region3PT(p, t, "3r")
                 elif t > (t3jk := temp3(p, "3jk")):
                     vol = region3PT(p, t, "3k")
             elif p3cd < p <= 20.5e3:
                 if t <= (t3cd := temp3(p, "3cd")):
                     vol = region3PT(p, t, "3c")
-                elif (t3cd := temp3(p, "3cd")) < t <= region4(psat=p):
+                elif (t3cd := temp3(p, "3cd")) < t <= Region4.getSaturTemp(psat=p):
                     vol = region3PT(p, t, "3s")
-                elif t >= region4(psat=p):
+                elif t >= (tsat := Region4.getSaturTemp(psat=p)):
                     vol = region3PT(p, t, "3t")
-            elif (pmin := region4(tsat=623.15)) < p <= p3cd:
-                if t <= region4(psat=p):
+            elif (pmin := Region4.getSaturPress(tsat=623.15)) < p <= p3cd:
+                if t <= (tsat := Region4.getSaturTemp(psat=p)):
                     vol = region3PT(p, t, "3c")
-                elif t >= region4(psat=p):
+                elif t >= (tsat := Region4.getSaturTemp(psat=p)):
                     vol = region3PT(p, t, "3t")
             return 1/vol
         else:
@@ -160,22 +160,21 @@ class Reg3RhoPT:
 
         vol = 0.
 
-        if (t3qu := temp3(p, "3qu")) < t <= (t3rx := temp3(p, "3rx")) and (pmin := region4(tsat=643.15)) < p <= 22.5e3:
-
-            if 21.93161551e3 < p <= 22.064e3 and t < (tsat := region4(psat=p)):
+        if (t3qu := temp3(p, "3qu")) < t <= (t3rx := temp3(p, "3rx")) and (pmin := Region4.getSaturPress(tsat=643.15)) < p <= 22.5e3:
+            if 21.93161551e3 < p <= 22.064e3 and t < (tsat := Region4.getSaturTemp(psat=p)):
                 if (t3qu := temp3(p, "3qu")) < p <= (t3uv := temp3(p, "3uv")):
                     vol = region3PT(p, t, "3u")
                 elif t > (t3uv := temp3(p, "3uv")):
                     vol = region3PT(p, t, "3y")
-            elif (pmin := region4(tsat=643.15)) < p <= 21.93161551e3 and t < (tsat := region4(psat=p)):
+            elif (pmin := Region4.getSaturPress(tsat=643.15)) < p <= 21.93161551e3 and t < (tsat := Region4.getSaturTemp(psat=p)):
                 if t > (t3qu := temp3(p, "3qu")):
                     vol = region3PT(p, t, "3u")
-            elif 21.90096265e3 < p <= 22.064e3 and t > (tsat := region4(psat=p)):
+            elif 21.90096265e3 < p <= 22.064e3 and t > (tsat := Region4.getSaturTemp(psat=p)):
                 if t <= (t3wx := temp3(p, "3wx")):
                     vol = region3PT(p, t, "3z")
                 elif (t3wx := temp3(p, "3wx")) < t <= (t3rx := temp3(p, "3rx")):
                     vol = region3PT(p, t, "3x")
-            elif (pmin := region4(tsat=643.15)) < p <= 21.90096265e3 and t > region4(psat=p):
+            elif (pmin := Region4.getSaturPress(tsat=643.15)) < p <= 21.90096265e3 and t > Region4.getSaturTemp(psat=p):
                 if t <= (t3rx := temp3(p, "3rx")):
                     vol = region3PT(p, t, "3x")
             elif 22.11e3 < p <= 22.5e3:

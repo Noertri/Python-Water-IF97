@@ -61,18 +61,17 @@ def region2(p, t, desc=None):
     dgodtau = 0.
     dgodtau2 = 0.
     # dgodpidtau = 0.
-
-    for Jio, nio in zip(_Jo, _no):
-        go += nio*(tau**Jio)
-        dgodtau += nio*Jio*(tau**(Jio-1))
-        dgodtau2 += nio*Jio*(Jio-1)*(tau**(Jio-2))
-
     gr = 0.
     dgrdpi = 0.
     dgrdpi2 = 0.
     dgrdtau = 0.
     dgrdtau2 = 0.
     dgrdpidtau = 0.
+
+    for Jio, nio in zip(_Jo, _no):
+        go += nio*(tau**Jio)
+        dgodtau += nio*Jio*(tau**(Jio-1))
+        dgodtau2 += nio*Jio*(Jio-1)*(tau**(Jio-2))
 
     for Ii, Ji, ni in zip(_I, _J, _n):
         gr += ni*(pi**Ii)*((tau-0.5)**Ji)
@@ -105,6 +104,9 @@ def supp_region2(p, t, desc=None):
 
     _Jo = IJnReg2Supp["Jo"]
     _no = IJnReg2Supp["no"]
+    _I = IJnReg2Supp["I"]
+    _J = IJnReg2Supp["J"]
+    _n = IJnReg2Supp["n"]
 
     go = np.log(pi)
     dgodpi = 1./pi
@@ -112,22 +114,17 @@ def supp_region2(p, t, desc=None):
     dgodtau = 0.
     dgodtau2 = 0.
     # dgodpidtau = 0.
-
-    for Jio, nio in zip(_Jo, _no):
-        go += nio*(tau**Jio)
-        dgodtau += nio*Jio*(tau**(Jio-1))
-        dgodtau2 += nio*Jio*(Jio-1)*(tau**(Jio-2))
-
-    _I = IJnReg2Supp["I"]
-    _J = IJnReg2Supp["J"]
-    _n = IJnReg2Supp["n"]
-
     gr = 0.
     dgrdpi = 0.
     dgrdpi2 = 0.
     dgrdtau = 0.
     dgrdtau2 = 0.
     dgrdpidtau = 0.
+
+    for Jio, nio in zip(_Jo, _no):
+        go += nio*(tau**Jio)
+        dgodtau += nio*Jio*(tau**(Jio-1))
+        dgodtau2 += nio*Jio*(Jio-1)*(tau**(Jio-2))
 
     for Ii, Ji, ni in zip(_I, _J, _n):
         gr += ni*(pi**Ii)*((tau-0.5)**Ji)
@@ -152,103 +149,108 @@ def supp_region2(p, t, desc=None):
 
 
 #Region 3
-def _phi(delta, tau):
-    """Fungsi persamaan dasar untuk region 3"""
+class Region3:
 
-    _n = IJnReg3["n"]
-    _I = IJnReg3["I"]
-    _J = IJnReg3["J"]
+    @staticmethod
+    def _phi(delta, tau):
+        """Fungsi persamaan dasar untuk region 3"""
 
-    f = _n[0]*np.log(delta)
-    dfddel = _n[0]/delta
-    dfddel2 = (-1*_n[0])/(delta**2)
-    dfdtau = 0.
-    dfdtau2 = 0.
-    dfddeldtau = 0.
+        _n = IJnReg3["n"]
+        _I = IJnReg3["I"]
+        _J = IJnReg3["J"]
 
-    for Ii, Ji, ni in zip(_I[1:], _J[1:], _n[1:]):
-        f += ni*(delta**Ii)*(tau**Ji)
-        dfddel += ni*Ii*(delta**(Ii-1))*(tau**Ji)
-        dfddel2 += ni*Ii*(Ii-1)*(delta**(Ii-2))*(tau**Ji)
-        dfdtau += ni*Ji*(delta**Ii)*(tau**(Ji-1))
-        dfdtau2 += ni*Ji*(Ji-1)*(delta**Ii)*(tau**(Ji-2))
-        dfddeldtau += ni*Ii*Ji*(delta**(Ii-1))*(tau**(Ji-1))
+        f = _n[0]*np.log(delta)
+        dfddel = _n[0]/delta
+        dfddel2 = (-1*_n[0])/(delta**2)
+        dfdtau = 0.
+        dfdtau2 = 0.
+        dfddeldtau = 0.
 
-    return f, dfddel, dfddel2, dfdtau, dfdtau2, dfddeldtau
+        for Ii, Ji, ni in zip(_I[1:], _J[1:], _n[1:]):
+            f += ni*(delta**Ii)*(tau**Ji)
+            dfddel += ni*Ii*(delta**(Ii-1))*(tau**Ji)
+            dfddel2 += ni*Ii*(Ii-1)*(delta**(Ii-2))*(tau**Ji)
+            dfdtau += ni*Ji*(delta**Ii)*(tau**(Ji-1))
+            dfdtau2 += ni*Ji*(Ji-1)*(delta**Ii)*(tau**(Ji-2))
+            dfddeldtau += ni*Ii*Ji*(delta**(Ii-1))*(tau**(Ji-1))
 
+        return f, dfddel, dfddel2, dfdtau, dfdtau2, dfddeldtau
 
-def saturRhoReg3(psat, tsat):
-    """Fungsi untuk mencari rho pada fase saturasi"""
+    @classmethod
+    def saturRho(cls, psat, tsat):
+        """Fungsi untuk mencari rho pada fase saturasi"""
 
-    tau = TEMPC/tsat
-    c = psat/(RHOC*BIGR*tsat)
+        tau = TEMPC/tsat
+        c = psat/(RHOC*BIGR*tsat)
 
-    def func(delta):
+        def func(delta):
 
-        f, dfddel, dfddel2, dfdtau, dfdtau2, dfddeldtau = _phi(delta=delta, tau=tau)
-        f1 = (delta**2)*dfddel-c
-        return f1
+            f, dfddel, dfddel2, dfdtau, dfdtau2, dfddeldtau = cls._phi(delta=delta, tau=tau)
+            f1 = (delta**2)*dfddel-c
+            return f1
 
-    def dfunc(delta):
+        def dfunc(delta):
 
-        f, dfddel, dfddel2, dfdtau, dfdtau2, dfddeldtau = _phi(delta=delta, tau=tau)
-        f1 = 2*delta*dfddel+(delta**2)*dfddel2
-        return f1
+            f, dfddel, dfddel2, dfdtau, dfdtau2, dfddeldtau = cls._phi(delta=delta, tau=tau)
+            f1 = 2*delta*dfddel+(delta**2)*dfddel2
+            return f1
 
-    delL = delV = 1.
+        delL = delV = 1.
 
-    if tsat <= 647:
-        delL = optimize.newton(func, x0=1.7, fprime=dfunc, tol=1e-9)
-        delV = optimize.newton(func, x0=0.4, fprime=dfunc, tol=1e-9)
-    elif 647 < tsat < TEMPC:
-        delL = optimize.newton(func, x0=0.999999999, fprime=dfunc, tol=1e-9)
-        delV = optimize.newton(func, x0=0.999999999, fprime=dfunc, tol=1e-9)
+        if tsat <= 647:
+            delL = optimize.newton(func, x0=1.7, fprime=dfunc, tol=1e-9)
+            delV = optimize.newton(func, x0=0.4, fprime=dfunc, tol=1e-9)
+        elif 647 < tsat < TEMPC:
+            delL = optimize.newton(func, x0=0.999999999, fprime=dfunc, tol=1e-9)
+            delV = optimize.newton(func, x0=0.999999999, fprime=dfunc, tol=1e-9)
 
-    return delL*RHOC, delV*RHOC
+        return delL*RHOC, delV*RHOC
 
+    @classmethod
+    def region3(cls, rho, t, desc):
+        """Fungsi untuk mencari propertis untuk region 3"""
 
-def region3(rho, t, desc):
-    """Fungsi untuk mencari propertis untuk region 3"""
+        delta = rho/RHOC
+        tau = TEMPC/t
 
-    delta = rho/RHOC
-    tau = TEMPC/t
+        f, dfddel, dfddel2, dfdtau, dfdtau2, dfddeldtau = cls._phi(delta=delta, tau=tau)
 
-    f, dfddel, dfddel2, dfdtau, dfdtau2, dfddeldtau = _phi(delta=delta, tau=tau)
+        props = dict()
+        props["p"] = rho*BIGR*t*delta*dfddel
+        props["u"] = BIGR*t*tau*dfdtau
+        props["s"] = BIGR*(tau*dfdtau-f)
+        props["h"] = BIGR*t*(tau*dfdtau+delta*dfddel)
 
-    props = dict()
-    props["p"] = rho*BIGR*t*delta*dfddel
-    props["u"] = BIGR*t*tau*dfdtau
-    props["s"] = BIGR*(tau*dfdtau-f)
-    props["h"] = BIGR*t*(tau*dfdtau+delta*dfddel)
+        if not (647 <= t < TEMPC):
+            props["cv"] = -1*BIGR*(tau**2)*dfdtau2
+            sub = ((delta*dfddel-delta*tau*dfddeldtau)**2)/(2*delta*dfddel+(delta**2)*dfddel2)
+            props["cp"] = BIGR*(-1*(tau**2)*dfdtau2+sub)
+        else:
+            props["cv"] = None
+            props["cp"] = None
 
-    if not (647 <= t < TEMPC):
-        props["cv"] = -1*BIGR*(tau**2)*dfdtau2
-        sub = ((delta*dfddel-delta*tau*dfddeldtau)**2)/(2*delta*dfddel+(delta**2)*dfddel2)
-        props["cp"] = BIGR*(-1*(tau**2)*dfdtau2+sub)
-    else:
-        props["cv"] = None
-        props["cp"] = None
-
-    if desc and desc.lower() in props.keys():
-        return props[desc.lower()]
-    else:
-        return None
+        if desc and desc.lower() in props.keys():
+            return props[desc.lower()]
+        else:
+            return None
 
 
 #Region 4
-def region4(psat=None, tsat=None):
-    """Fungsi untuk mencari suhu dan tekanan pada titik saturasi"""
+class Region4:
 
-    n = nReg4["n"]
-
-    if tsat and psat is None:
+    @classmethod
+    def getSaturPress(cls, tsat):
+        n = nReg4["n"]
         nu = (tsat/1)+(n[8]/((tsat/1)-n[9]))
         Ai = (nu**2)+n[0]*nu+n[1]
         Bi = n[2]*(nu**2)+n[3]*nu+n[4]
         Ci = n[5]*(nu**2)+n[6]*nu+n[7]
         ans = 1e3*((2*Ci/(-Bi + np.sqrt(Bi**2 - 4*Ai*Ci)))**4)
         return ans
-    elif psat and tsat is None:
+
+    @classmethod
+    def getSaturTemp(cls, psat):
+        n = nReg4["n"]
         beta = (psat/1000)**(1/4)
         Ei = (beta**2)+n[2]*beta+n[5]
         Fi = n[0]*(beta**2)+n[3]*beta+n[6]
@@ -277,18 +279,17 @@ def region5(p, t, desc=None):
     dgodtau = 0.
     dgodtau2 = 0.
     # dgodpidtau = 0.
-
-    for Jio, nio in zip(_Jo, _no):
-        go += nio*(tau**Jio)
-        dgodtau += nio*Jio*(tau**(Jio-1))
-        dgodtau2 += nio*Jio*(Jio-1)*(tau**(Jio-2))
-
     gr = 0.
     dgrdpi = 0.
     dgrdpi2 = 0.
     dgrdtau = 0.
     dgrdtau2 = 0.
     dgrdpidtau = 0.
+
+    for Jio, nio in zip(_Jo, _no):
+        go += nio*(tau**Jio)
+        dgodtau += nio*Jio*(tau**(Jio-1))
+        dgodtau2 += nio*Jio*(Jio-1)*(tau**(Jio-2))
 
     for Ii, Ji, ni in zip(_I, _J, _n):
         gr += ni*(pi**Ii)*(tau**Ji)
