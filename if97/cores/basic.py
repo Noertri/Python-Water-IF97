@@ -18,18 +18,20 @@ def region1(p, t, desc=None):
 
     Returns
     -------
-    v: float
-        specific volume (Kg/m^3)
-    u: float
-        specific internal energy (KJ/Kg)
-    h: float
-        specific enthalpy (KJ/Kg)
-    s: float
-        specific entropy (KJ/Kg*K)
-    cp: float
-        specific isobaric heat capacity (KJ/Kg*K)
-    cv: float
-        specific isochoric heat capacity (KJ/Kg*K)
+    props: dict
+        return one of:
+        v: float
+            specific volume (Kg/m^3)
+        u: float
+            specific internal energy (KJ/Kg)
+        h: float
+            specific enthalpy (KJ/Kg)
+        s: float
+            specific entropy (KJ/Kg*K)
+        cp: float
+            specific isobaric heat capacity (KJ/Kg*K)
+        cv: float
+            specific isochoric heat capacity (KJ/Kg*K)
 
     """
 
