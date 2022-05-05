@@ -7,7 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi modul _if97.py">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi modul basic.py, _if97.py, backwardPT.py, test_region3.py, test_region4.py, tes dn debug region 3 dan region 4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -519,7 +519,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651565158196</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="memodifikasi modul basic.py, _if97.py, backwardPT.py, test_region3.py, test_region4.py, tes dn debug region 3 dan region 4">
+      <created>1651731953786</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1651731953786</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -534,7 +541,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="modifikasi region3.py" />
     <MESSAGE value="membuat modul backwardPT.py, test dan debug subregion 3" />
     <MESSAGE value="membuat modul basic.py" />
     <MESSAGE value="test dan debug region 1" />
@@ -559,6 +565,7 @@
     <MESSAGE value="memodifikasi modul if97.py dan menghapus modul _converter.py" />
     <MESSAGE value="menambah exception di modul if97.py dan memodifikasi gui" />
     <MESSAGE value="memodifikasi modul _if97.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi modul _if97.py" />
+    <MESSAGE value="memodifikasi modul basic.py, _if97.py, backwardPT.py, test_region3.py, test_region4.py, tes dn debug region 3 dan region 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi modul basic.py, _if97.py, backwardPT.py, test_region3.py, test_region4.py, tes dn debug region 3 dan region 4" />
   </component>
 </project>
