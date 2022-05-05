@@ -18,20 +18,19 @@ def region1(p, t, desc=None):
 
     Returns
     -------
-    props: dict
-        return one of:
-        v: float
-            specific volume (Kg/m^3)
-        u: float
-            specific internal energy (KJ/Kg)
-        h: float
-            specific enthalpy (KJ/Kg)
-        s: float
-            specific entropy (KJ/Kg*K)
-        cp: float
-            specific isobaric heat capacity (KJ/Kg*K)
-        cv: float
-            specific isochoric heat capacity (KJ/Kg*K)
+    return one of:
+    v: float
+        specific volume (Kg/m^3)
+    u: float
+        specific internal energy (KJ/Kg)
+    h: float
+        specific enthalpy (KJ/Kg)
+    s: float
+        specific entropy (KJ/Kg*K)
+    cp: float
+        specific isobaric heat capacity (KJ/Kg*K)
+    cv: float
+        specific isochoric heat capacity (KJ/Kg*K)
 
     """
 
@@ -86,6 +85,7 @@ def region2(p, t, desc=None):
 
     Returns
     -------
+    return one of:
     v: float
         specific volume (m^3/Kg)
     u: float
@@ -163,6 +163,7 @@ def supp_region2(p, t, desc=None):
 
     Returns
     -------
+    return one of:
     v: float
         specific volume (m^3/Kg)
     u: float
@@ -349,6 +350,7 @@ class Region3:
 
         Returns
         -------
+        return one of:
         p: float
             pressure (KPa)
         u: float
@@ -463,6 +465,7 @@ def region5(p, t, desc=None):
 
     Returns
     -------
+    return one of:
     v: float
         specific volume (m^3/Kg)
     u: float
