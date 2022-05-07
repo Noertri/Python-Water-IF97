@@ -54,7 +54,7 @@ Note: temperature must be in kelvin(K), pressure must be in kilopascal(KPa)
 
 ## Requirements
 1. Python >= 3.10
-2. Scipy
+2. scipy
 3. numpy
 
 ## References
