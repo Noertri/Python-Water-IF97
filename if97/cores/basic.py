@@ -31,7 +31,6 @@ def region1(p, t, desc=None):
         specific isobaric heat capacity (KJ/Kg*K)
     cv: float
         specific isochoric heat capacity (KJ/Kg*K)
-
     """
 
     pi = p/16.53e3

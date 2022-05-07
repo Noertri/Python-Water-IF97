@@ -1,11 +1,39 @@
+import math
 from .cores.backwardPT import Reg3RhoPT
 from .cores.basic import region1, region2, supp_region2, Region3, Region4, region5
 from .cores.boundary import Boundary23
 from .koefisien import PRESSC, RHOC, TEMPC
 
 
-def saturationT(tsat=None):
-    """Fungsi untuk mencari propertis pada titik saturasi dengan input suhu saturasi"""
+def saturationT(tsat):
+    """Calculate properties at saturation line using saturation temperature as input
+
+    Parameters
+    ----------
+    tsat: float
+       saturation temperature (K)
+
+    Returns
+    -------
+    psat: float
+        saturation pressure (KPa)
+    tsat: float
+        saturation temperature (K)
+    v: float
+        specific volume of liquid and vapor phase (m^3/Kg)
+    u: float
+        specific internal energy of liquid and vapor phase (KJ/Kg)
+    h: float
+        specific enthalpy of liquid and vapor phase (KJ/Kg)
+    s: float
+        specific entropy of liquid and vapor phase (KJ/Kg*K)
+    cp: float or inf
+        specific isobaric heat capacity of liquid and vapor phase (KJ/Kg*K),
+        return inf when tsat near critical temperature, because near critical temperature value of cp is not accurate
+    cv: float or inf
+        specific isohoric heat capacity of liquid and vapor phase (KJ/Kg*K),
+        return inf when tsat near critical temperature, because near critical temperature value of cv is not accurate
+    """
 
     psat = 0.
     if tsat and (psat := Region4.getSaturPress(tsat=tsat)) and 273.15 <= tsat <= 623.15 and 0. < psat < PRESSC:
@@ -41,14 +69,41 @@ def saturationT(tsat=None):
                 "u": [Region3.region3(rho=RHOC, t=tsat, desc="u"), Region3.region3(rho=RHOC, t=tsat, desc="u")],
                 "h": [Region3.region3(rho=RHOC, t=tsat, desc="h"), Region3.region3(rho=RHOC, t=tsat, desc="h")],
                 "s": [Region3.region3(rho=RHOC, t=tsat, desc="s"), Region3.region3(rho=RHOC, t=tsat, desc="s")],
-                "cv": [None, None],
-                "cp": [None, None]
+                "cv": [math.inf, math.inf],
+                "cp": [math.inf, math.inf]
         }
         return props
 
 
 def saturationP(psat):
-    """Fungsi untuk mencari propertis pada titik saturasi dengan input tekanan saturasi"""
+    """Calculate properties at saturation line using saturation pressure as input
+
+    Parameters
+    ----------
+    psat: float
+       saturation pressure (KPa)
+
+    Returns
+    -------
+    psat: float
+        saturation pressure (KPa)
+    tsat: float
+        saturation temperature (K)
+    v: float
+        specific volume of liquid and vapor phase (m^3/Kg)
+    u: float
+        specific internal energy of liquid and vapor phase (KJ/Kg)
+    h: float
+        specific enthalpy of liquid and vapor phase (KJ/Kg)
+    s: float
+        specific entropy of liquid and vapor phase (KJ/Kg*K)
+    cp: float or inf
+        specific isobaric heat capacity of liquid and vapor phase (KJ/Kg*K),
+        return inf when psat near critical temperature, because near critical temperature value of cp is not accurate
+    cv: float or inf
+        specific isohoric heat capacity of liquid and vapor phase (KJ/Kg*K),
+        return inf when psat near critical temperature, because near critical temperature value of cv is not accurate
+    """
 
     tsat = 0.
     if psat and (tsat := Region4.getSaturTemp(psat=psat)) and 0.6112127 <= psat <= 16529.2 and 273.15 <= tsat < TEMPC:
@@ -84,14 +139,37 @@ def saturationP(psat):
                 "u": [Region3.region3(rho=RHOC, t=TEMPC, desc="u"), Region3.region3(rho=RHOC, t=TEMPC, desc="u")],
                 "h": [Region3.region3(rho=RHOC, t=TEMPC, desc="h"), Region3.region3(rho=RHOC, t=TEMPC, desc="h")],
                 "s": [Region3.region3(rho=RHOC, t=TEMPC, desc="s"), Region3.region3(rho=RHOC, t=TEMPC, desc="s")],
-                "cv": [None, None],
-                "cp": [None, None]
+                "cv": [math.inf, math.inf],
+                "cp": [math.inf, math.inf]
         }
         return props
 
 
 def singlephase(p, t):
-    """Fungsi untuk mencari propertis pada titik satu fase dengan input tekanan dan suhu"""
+    """Calculate properties at single phase
+
+    Parameters
+    ----------
+    p: float
+        pressure (KPa)
+    t: float
+        temperature (K)
+
+    Returns
+    -------
+    v: float
+        specific volume (m^3/Kg)
+    u: float
+        specific internal energy (KJ/Kg)
+    h: float
+        specific enthalpy (KJ/Kg)
+    s: float
+        specific entropy (KJ/Kg*K)
+    cp: float
+        specific isobaric heat capacity (KJ/Kg*K)
+    cv: float
+        specific isochoric heat capacity (KJ/Kg*K)
+    """
 
     t23 = 0.
     if 0 < p < (psat := Region4.getSaturPress(tsat=t)) and 273.15 <= t <= 623.15:
@@ -158,6 +236,49 @@ def singlephase(p, t):
 
 
 def if97(p=None, t=None, x=None):
+    """Implementation of IAPWS-IF97 to calculate ordinary/pure water properties at mixed and single phase
+
+    Range of validity
+    -----------------
+    Mixed phase
+        273.15 K <= t <= 647.096 K or 0 C <= t <= 373.946 C and
+        0.6112127 KPa <= p <= 22064 KPa and
+        0. <= x <= 1.
+    Single phase
+        273.15 K <= t <= 1073 K or 0 C <= t <= 800 C for 0 < p <= 100 MPa or 0 < p <= 100000 KPa,
+        1073.15 K <= t <= 2273 K or 800 C <= t <= 2000 C for 0 < p <= 50 MPa or 0 < p <= 50000 KPa
+
+    Parameters
+    ----------
+    p: float or None
+        pressure (KPa)
+    t: float or None
+        temperature (K)
+    x: float or None
+        quality
+
+    Returns
+    -------
+    v: float
+        specific volume (m^3/Kg)
+    u: float
+        specific internal energy (KJ/Kg)
+    h: float
+        specific enthalpy (KJ/Kg)
+    s: float
+        specific entropy (KJ/Kg*K)
+    cp: float or inf
+        specific isobaric heat capacity (KJ/Kg*K),
+        return inf when t near critical temperature, because near critical temperature value of cp is not accurate
+    cv: float or inf
+        specific isohoric heat capacity (KJ/Kg*K),
+        return inf when t near critical temperature, because near critical temperature value of cv is not accurate
+
+    Raises
+    ------
+    ValueError
+        when value of inputs exceed range of validity.
+    """
 
     ans = dict()
     if (not p) and t and (x is not None) and 273.15 <= t <= TEMPC and 0. <= x <= 1. and (props := saturationT(tsat=t)) is not None:
@@ -174,12 +295,12 @@ def if97(p=None, t=None, x=None):
         ans["u"] = u[0] + x*(u[1]-u[0])
         ans["s"] = s[0] + x*(s[1]-s[0])
         ans["h"] = h[0] + x*(h[1]-h[0])
-        if all(_ is not None for _ in cp) and all(_ is not None for _ in cv):
+        if all(math.isfinite(_) for _ in cp) and all(math.isfinite(_) for _ in cv):
             ans["cp"] = cp[0] + x*(cp[1]-cp[0])
             ans["cv"] = cv[0] + x*(cv[1]-cv[0])
         else:
-            ans["cp"] = None
-            ans["cv"] = None
+            ans["cp"] = math.inf
+            ans["cv"] = math.inf
         return ans
     elif p and (not t) and (x is not None) and 0.6112127 <= p <= PRESSC and 0. <= x <= 1. and (props := saturationP(psat=p)) is not None:
         v = props["v"]
@@ -195,21 +316,20 @@ def if97(p=None, t=None, x=None):
         ans["u"] = u[0]+x*(u[1]-u[0])
         ans["s"] = s[0]+x*(s[1]-s[0])
         ans["h"] = h[0]+x*(h[1]-h[0])
-        if all(_ is not None for _ in cp) and all(_ is not None for _ in cv):
+        if all(math.isfinite(_) for _ in cp) and all(math.isfinite(_) for _ in cv):
             ans["cp"] = cp[0] + x*(cp[1]-cp[0])
             ans["cv"] = cv[0] + x*(cv[1]-cv[0])
         else:
-            ans["cp"] = None
-            ans["cv"] = None
+            ans["cp"] = math.inf
+            ans["cv"] = math.inf
         return ans
     elif p and t and (not x) and 0 < p <= 1e5 and 273.15 <= t <= 2273.15 and (props := singlephase(p, t)) is not None:
         return props
     elif (x is not None) and (x < 0 or x > 1):
-        raise ValueError(f"Fraction(x) value must be 0 <= x <= 1 ")
+        raise ValueError(f"Quality(x) value exceed range")
     elif (p is None) and (t is not None) and (t < 273.15 or t > TEMPC):
-        raise ValueError(f"Saturation temperature(t) value must be 273.15 K <= t <= {TEMPC} K or 0 C <= t <= 373.946 C")
+        raise ValueError(f"Saturation temperature(t) value exceed range")
     elif (t is None) and (p is not None) and (p < 0.6112127 or p > PRESSC):
-        raise ValueError(f"Saturation pressure(p) value must be 0.6112127 KPa <= p <= {PRESSC} KPa")
+        raise ValueError(f"Saturation pressure(p) value exceed range")
     elif (p <= 0 or p > 1e5) or (t < 273.15 or t > 2273.15) and x is None:
-        raise ValueError(f"Temperature(t) must be 273.15 K <= t <= 10273.15 K or 0 C <= t <= 800 C for pressure(p) 0 KPa < p <= 100000 KPa, "
-                         f"and 10273.15 K < t <= 2273.15 K or 800 C <= t <= 2000 C for pressure(p) 0 KPa < p <= 50000 KPa")
+        raise ValueError(f"Temperature(t) value or pressure(p) value exceed range")
