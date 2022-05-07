@@ -1,5 +1,5 @@
 ## About
-This repository contains program of implementation IAPWS-IF97 using python. This program can be used to calculate ordinary/pure water properties such as specific volume, specific internal energy, specific enthalpy, specific entropy, etc. This program has been verified with values from journals/books in [References]. In folder GUI there is simple calculator as an example of implementaion of this program as backend/engine/library.
+This repository contains program of implementation IAPWS-IF97 using python. This program can be used to calculate ordinary/pure water properties such as specific volume, specific internal energy, specific enthalpy, specific entropy, etc. This program has been verified with values from journals/books in [references](#References). In folder GUI there is simple calculator as an example of implementaion of this program as backend/engine/library.
 
 ## What is IAPWS-IF97?
 IAPWS-IF97 is formulation to calculate thermodynamical properties of ordinary/pure water for industrial use (primarily in the steam power industry). It approximate IAPWS-95 (formulation for general and scientific use) but with faster computational speed. The formulation is valid fro 273.15 K to 1073.15 K at pressure to 100 MPa and from 1073.15 K to 2273.15 K at 50 MPa.
@@ -51,6 +51,11 @@ Output
 ```
 
 Note: temperature must be in kelvin(K), pressure must be in kilopascal(KPa)
+
+## Requirements
+1. Python >= 3.10
+2. Scipy
+3. numpy
 
 ## References
 1. IAPWS, R7-97(2012), *Revised Release on the IAPWS Industrial Formulation 1997 for the Thermodynamic Properties of Water and Steam (The revision only relates to the extension of region 5 to 50 MPa)* (August 2007), Available from http://www.iapws.org/relguide/IF97-Rev.pdf
