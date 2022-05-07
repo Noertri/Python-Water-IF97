@@ -53,3 +53,8 @@ Output
 Note: temperature must be in kelvin(K), pressure must be in kilopascal(KPa)
 
 ## References
+1. IAPWS, R7-97(2012), *Revised Release on the IAPWS Industrial Formulation 1997 for the Thermodynamic Properties of Water and Steam (The revision only relates to the extension of region 5 to 50 MPa)* (August 2007), Available from http://www.iapws.org/relguide/IF97-Rev.pdf
+
+2. IAPWS, SR5-05(2016), *Revised Supplementary Release on Backward Equations for Specific Volume as a Function of Pressure and Temperature v(p,T) for Region 3 of the IAPWS Industrial Formulation 1997 for the Thermodynamic Properties of Water and Steam* (June 2014), Available from http://www.iapws.org/relguide/Supp-VPT3-2016.pdf
+
+3. Kretzschmar, Hans-Joachim, Wagner, Wolfgang. (2019). *International Steam Tables Properties of Water and Steam based on the Industrial Formulation IAPWS-IF97 (3rd Edition) Tables, Algorithms, and Diagrams*. Berlin: Springer Vieweg. Doi: https://doi.org/10.1007/978-3-662-53219-5
