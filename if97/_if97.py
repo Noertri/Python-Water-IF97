@@ -334,4 +334,4 @@ def if97(p=None, t=None, x=None):
     elif (t is None) and (p is not None) and (p < 0.6112127 or p > PRESSC):
         raise ValueError(f"Saturation pressure(p) value exceed or not in range")
     elif (p <= 0 or p > 1e5) or (t < 273.15 or t > 2273.15) and x is None:
-        raise ValueError(f"Temperature(t) value or pressure(p) value exceed or not in range of validity")
+        raise ValueError(f"Temperature(t) or pressure(p) value exceed or not in range of validity")
