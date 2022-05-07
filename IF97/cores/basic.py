@@ -1,6 +1,6 @@
 import numpy as np
 from scipy import optimize
-from ..koefisien import IJnReg1, IJnReg2, IJnReg2Supp, IJnReg3, nReg4, IJnReg5, BIGR, RHOC, TEMPC
+from ..coefficients import IJnReg1, IJnReg2, IJnReg2Supp, IJnReg3, nReg4, IJnReg5, BIGR, RHOC, TEMPC
 
 
 #Region 1

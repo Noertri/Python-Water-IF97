@@ -1,5 +1,5 @@
 from numpy import exp
-from ..koefisien import IJnVPTReg3
+from ..coefficients import IJnVPTReg3
 from .boundary import Boundary23, temp3
 from .basic import Region4
 
