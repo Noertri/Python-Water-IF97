@@ -255,7 +255,7 @@ def if97(p=None, t=None, x=None):
     t: float or None
         temperature (K)
     x: float or None
-        quality
+        quality of vapor
 
     Returns
     -------
@@ -277,11 +277,12 @@ def if97(p=None, t=None, x=None):
     Raises
     ------
     ValueError
-        when value of inputs exceed range of validity.
+        when value of inputs exceed or not in range of validity.
     """
 
     ans = dict()
     if (not p) and t and (x is not None) and 273.15 <= t <= TEMPC and 0. <= x <= 1. and (props := saturationT(tsat=t)) is not None:
+
         v = props["v"]
         u = props["u"]
         h = props["h"]
@@ -303,6 +304,7 @@ def if97(p=None, t=None, x=None):
             ans["cv"] = math.inf
         return ans
     elif p and (not t) and (x is not None) and 0.6112127 <= p <= PRESSC and 0. <= x <= 1. and (props := saturationP(psat=p)) is not None:
+
         v = props["v"]
         u = props["u"]
         h = props["h"]
@@ -326,10 +328,10 @@ def if97(p=None, t=None, x=None):
     elif p and t and (not x) and 0 < p <= 1e5 and 273.15 <= t <= 2273.15 and (props := singlephase(p, t)) is not None:
         return props
     elif (x is not None) and (x < 0 or x > 1):
-        raise ValueError(f"Quality(x) value exceed range")
+        raise ValueError(f"Quality(x) value exceed or not in range of validity")
     elif (p is None) and (t is not None) and (t < 273.15 or t > TEMPC):
-        raise ValueError(f"Saturation temperature(t) value exceed range")
+        raise ValueError(f"Saturation temperature(t) value exceed or not in range of validity")
     elif (t is None) and (p is not None) and (p < 0.6112127 or p > PRESSC):
-        raise ValueError(f"Saturation pressure(p) value exceed range")
+        raise ValueError(f"Saturation pressure(p) value exceed or not in range")
     elif (p <= 0 or p > 1e5) or (t < 273.15 or t > 2273.15) and x is None:
-        raise ValueError(f"Temperature(t) value or pressure(p) value exceed range")
+        raise ValueError(f"Temperature(t) value or pressure(p) value exceed or not in range of validity")
