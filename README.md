@@ -1,3 +1,3 @@
-# IMPLEMENTATION OF IAPWS-IF97 IN PYTHON    
+# IMPLEMENTATION OF IAPWS-IF97 IN PYTHON
 ## What is IAPWS-IF97???
-IAPWS-IF97 is 
+IAPWS-IF97 is formulation to calculate thermodynamical properties of ordinary/pure water for industrial use (primarily in the steam power industry). It approximate IAPWS-95 (formulation for general and scientific use) but with faster computational speed. The formulation is valid fro 273.15 K to 1073.15 K at pressure to 100 MPa and from 1073.15 K to 2273.15 K at 50 MPa.

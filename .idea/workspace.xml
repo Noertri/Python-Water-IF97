@@ -7,9 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi dan menambahkan dokumentasi di modul basic.py dan _if97.py">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi README.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,13 +194,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1650182031901</updated>
-    </task>
-    <task id="LOCAL-00004" summary="tes dan debug region 4">
-      <created>1650201388390</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1650201388390</updated>
     </task>
     <task id="LOCAL-00005" summary="memodifikasi, tes, dan debug region 4">
       <created>1650201457747</created>
@@ -539,7 +531,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651895438260</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="memodifikasi README.md">
+      <created>1651895689203</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1651895689203</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -554,7 +553,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="mengganti nama modul di subpackage koefisien" />
     <MESSAGE value="menambahkan dokumentasi di modul basic.py, memodifikasi semua modul" />
     <MESSAGE value="test dan debug untuk cv semua persamaan dasar region 1 sampai region 5" />
     <MESSAGE value="memodifikasi modul basic.py" />
@@ -579,6 +577,7 @@
     <MESSAGE value="menambahkan dokumentasi di modul basic.py" />
     <MESSAGE value="memodifikasi dokumentasi di modul basic.py" />
     <MESSAGE value="memodifikasi dan menambahkan dokumentasi di modul basic.py dan _if97.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi dan menambahkan dokumentasi di modul basic.py dan _if97.py" />
+    <MESSAGE value="memodifikasi README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi README.md" />
   </component>
 </project>

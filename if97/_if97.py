@@ -242,10 +242,13 @@ def if97(p=None, t=None, x=None):
     -----------------
     Mixed phase
         273.15 K <= t <= 647.096 K or 0 C <= t <= 373.946 C and
+
         0.6112127 KPa <= p <= 22064 KPa and
-        0. <= x <= 1.
+
+        0 <= x <= 1
     Single phase
         273.15 K <= t <= 1073 K or 0 C <= t <= 800 C for 0 < p <= 100 MPa or 0 < p <= 100000 KPa,
+
         1073.15 K <= t <= 2273 K or 800 C <= t <= 2000 C for 0 < p <= 50 MPa or 0 < p <= 50000 KPa
 
     Parameters
