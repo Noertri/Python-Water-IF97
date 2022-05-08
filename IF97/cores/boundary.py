@@ -76,7 +76,7 @@ class Boundary23:
 
 
 def temp3(p, desc=""):
-    """Boundary eequations for subregion 3
+    """Boundary equations for subregion 3
 
 
     Parameters
@@ -84,7 +84,7 @@ def temp3(p, desc=""):
     p: float
         presssure (KPa)
     desc: str
-        one of input keys, see below
+        input key, one of: "3ab", "3cd", "3gh", "3ij", "3jk", "3mn", "3op", "3qu", "3rx", "3uv", "3wx"
 
 
     Returns
@@ -92,30 +92,6 @@ def temp3(p, desc=""):
     t: float or None
         return temperature (K) or if value of desc is wrong return None instead
 
-
-    Input keys
-    ----------
-    "3ab": Represent the boundary equation between subregion 3a and 3d
-
-    "3cd": Represent the boundary equation between subregion 3d, 3g, 3l, 3q, or 3s and subregion 3c
-
-    "3gh": Represent the boundary equation between subregion 3h or 3m and subregion 3g or 3l
-
-    "3ij": Represent the boundary equation between subregion 3j and subregion 3i or 3p
-
-    "3jk":
-
-    "3mn":
-
-    "3op":
-
-    "3qu":
-
-    "3rx":
-
-    "3uv":
-
-    "3wx":
 
     For further details see http://www.iapws.org/relguide/Supp-VPT3-2016.pdf
     """
