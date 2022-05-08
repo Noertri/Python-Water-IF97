@@ -2,7 +2,7 @@ import math
 from .cores.backwardPT import Region3VPT
 from .cores.basic import region1, region2, supp_region2, Region3, Region4, region5
 from .cores.boundary import Boundary23
-from .coefficients import PRESSC, RHOC, TEMPC
+from .constants import PRESSC, RHOC, TEMPC
 
 
 def saturationT(tsat):
