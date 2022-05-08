@@ -1,5 +1,5 @@
 import math
-from .cores.backwardPT import Reg3RhoPT
+from .cores.backwardPT import Region3VPT
 from .cores.basic import region1, region2, supp_region2, Region3, Region4, region5
 from .cores.boundary import Boundary23
 from .coefficients import PRESSC, RHOC, TEMPC
@@ -203,7 +203,7 @@ def singlephase(p, t):
         }
         return props
     elif (p23 := Boundary23.getPress(t)) and (t23 := Boundary23.getTemp(p)) and p23 < p <= 1e5 and 623.15 < t <= t23:
-        rho = Reg3RhoPT.singleRho(p, t)
+        rho = Region3VPT.singleRho(p, t)
         props = {
                 "v": 1/rho,
                 "u": Region3.region3(rho, t, desc="u"),
