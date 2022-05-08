@@ -7,13 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi modul backwardPT.py, test_backwardPT.py, _if97.py">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memindahkan modul _const.py dari folder coefficients ke folder IF97 dan mengganti nama modul _const.py menjadi constants.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/_if97.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/_if97.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/coefficients/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/coefficients/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/coefficients/_const.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/cores/backwardPT.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/cores/backwardPT.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IF97/cores/basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/cores/basic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/cores/boundary.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/cores/boundary.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,13 +218,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1650182031901</updated>
-    </task>
-    <task id="LOCAL-00008" summary="memodifikasi semua modul di subpackage cores">
-      <created>1650259547498</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1650259547498</updated>
     </task>
     <task id="LOCAL-00009" summary="memodifikasi semua modul di subpackage cores, tes dan debug region1">
       <created>1650266280309</created>
@@ -564,7 +555,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652012332152</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="memindahkan modul _const.py dari folder coefficients ke folder IF97 dan mengganti nama modul _const.py menjadi constants.py">
+      <created>1652016109204</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1652016109204</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -579,7 +577,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="memodifikasi dokumentasi modul basic.py" />
     <MESSAGE value="memodifikasi fungsi region3 dan odul _if97.py" />
     <MESSAGE value="membuat class Reg3RhoPT, melengkapi fungsi singlephase, tes dan debug" />
     <MESSAGE value="membuat fungsi allphase" />
@@ -604,6 +601,7 @@
     <MESSAGE value="menambahkan dokumentasi di modul boundary.py dan sedikit memodifikasi modul boundary.py" />
     <MESSAGE value="menambahkan dokumentasi di modul boundary.py" />
     <MESSAGE value="memodifikasi modul backwardPT.py, test_backwardPT.py, _if97.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi modul backwardPT.py, test_backwardPT.py, _if97.py" />
+    <MESSAGE value="memindahkan modul _const.py dari folder coefficients ke folder IF97 dan mengganti nama modul _const.py menjadi constants.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="memindahkan modul _const.py dari folder coefficients ke folder IF97 dan mengganti nama modul _const.py menjadi constants.py" />
   </component>
 </project>

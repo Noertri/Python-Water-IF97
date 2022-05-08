@@ -231,10 +231,13 @@ def supp_region2(p, t, desc=None):
 class Region3:
     """Class for region 3
 
-    Static Methods:
-    --------------
+    staticmethods
+    -------------
     _phi(delta, tau)
         Basic equation for region 3
+
+    classsmethods
+    -------------
     saturRho(psat, tsat)
         Method to calculate saturation densities in region 3
     region3(rho, t, desc=None)

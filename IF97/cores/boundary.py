@@ -5,8 +5,8 @@ from ..coefficients import nb23, InBoundT3
 class Boundary23:
     """Class for boundary equations between region 2 and 3
 
-    classmethod
-    -------------
+    classmethods
+    ------------
     getPress(cls, t)
         return pressure at boundary line between region 2 and region 3
     getTemp(cls, p)
@@ -19,17 +19,15 @@ class Boundary23:
     def getPress(cls, t):
         """Get pressure at boundary line between region 2 and region 3
 
-
         Parameters
         ----------
         t: float
             temperature (K)
 
-
         Returns
         -------
         ans: float or None
-            return presssure (KPa) or if value of t not in range or exceed range of validity return None instead
+            return presssure (KPa) or None if value of temperature(t) is not in or exceed range of validity
 
 
         Range of validity
@@ -49,17 +47,15 @@ class Boundary23:
     def getTemp(cls, p):
         """Get temperature at boundary line between region 2 and region 3
 
-
         Parameters
         ----------
         p: float
             presssure (KPa)
 
-
         Returns
         -------
         ans: float or None
-            return temperature (K) or if value of p is not in range or exceed range of validity return None instead
+            return temperature (K) or None if value of pressure(p) is not in or exceed range of validity return None instead
 
 
         Range of validity
@@ -78,7 +74,6 @@ class Boundary23:
 def temp3(p, desc=""):
     """Boundary equations for subregion 3
 
-
     Parameters
     ----------
     p: float
@@ -86,14 +81,13 @@ def temp3(p, desc=""):
     desc: str
         input key, one of: "3ab", "3cd", "3gh", "3ij", "3jk", "3mn", "3op", "3qu", "3rx", "3uv", "3wx"
 
-
     Returns
     -------
     t: float or None
-        return temperature (K) or if value of desc is wrong return None instead
+        return temperature (K) or None if value of desc is wrong key
 
 
-    For further details see http://www.iapws.org/relguide/Supp-VPT3-2016.pdf
+    For more details see http://www.iapws.org/relguide/Supp-VPT3-2016.pdf
     """
 
     pi = p/1e3

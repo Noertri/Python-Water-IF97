@@ -5,11 +5,43 @@ from .basic import Region4
 
 
 class Region3VPT:
-    """Implementasi persamaan balik region 3 v(P, T)"""
+    """Class for backward equations of region 3
 
-    @classmethod
-    def volPT(cls, p, t, desc=""):
-        """Persamaan balik untuk region 3"""
+    staticmethods
+    -------------
+    volPT(p, t, desc="")
+        Backward equation for region 3
+
+    classmethods
+    ------------
+    singleRho(cls, p, t)
+        Method for subregion 3a to 3t to get value of density at single phase
+    auxEqs(cls, p, t)
+        Auxillary equations for subregion 3u to 3z that near critical point
+    """
+
+    @staticmethod
+    def volPT(p, t, desc=""):
+        """Backward equations for subregion 3 to get value of specific volume(v) using presssure(p) and temperature(t) as inputs
+
+        Parameters
+        ----------
+        p: float
+            pressure (KPa)
+        t: float
+            temperature (K)
+        desc: str
+            input key, one of: "3a", "3b", "3c", "3d", "3e", "3f", "3g", "3h", "3i", "3j", "3k", "3l",
+            "3m", "3n", "3o", "3p", "3q", "3r", "3s", "3t", "3u", "3v", "3w", "3x", "3y",  "3z"
+
+        Returns
+        -------
+        v: float
+            specific volume (m^3/Kg)
+
+
+        For more details see http://www.iapws.org/relguide/Supp-VPT3-2016.pdf
+        """
 
         if desc and desc.lower() != "3n":
             a = IJnVPTReg3[desc.lower()]["a"]
@@ -57,7 +89,27 @@ class Region3VPT:
 
     @classmethod
     def singleRho(cls, p, t):
-        """Implementasi persamaan subregion 3a sampai 3t"""
+        """Method to get value of density at single phase for subregion 3a to 3t
+
+        Parameters
+        ----------
+        p: float
+            pressure (KPa)
+        t: float
+            temperature (K)
+
+        Returns
+        -------
+        rho: float or None
+            return density (Kg/m^3) or None if pressure(p) and/or temperature(t) are not in range or exceed range of validity
+
+
+        Range of validity
+        -----------------
+        623.15 K < t <= 863.15 K and p23 < p <= 100 MPa or 350 C < t <= 800 C and p23 < p <= 100000 KPa, p23 represent boundary equation between region 2 and region 3
+
+        For more details see http://www.iapws.org/relguide/Supp-VPT3-2016.pdf
+        """
 
         vol = 0.
         p3cd = 19.00881189173929e3
@@ -152,13 +204,35 @@ class Region3VPT:
                     vol = cls.volPT(p, t, "3c")
                 elif t >= (tsat := Region4.getSaturTemp(psat=p)):
                     vol = cls.volPT(p, t, "3t")
-            return 1/vol
+
+            rho = 1/vol
+            return rho
         else:
             return None
 
     @classmethod
     def auxEqs(cls, p, t):
-        """Persamaan bantuan untuk subregion 3u sampai 3z untuk daerah mendekati titik kritis"""
+        """Auxillary equation for subregion 3u to 3z near critical point
+
+        Parameters
+        ----------
+        p: float
+            pressure (KPa)
+        t: float
+            temperature (K)
+
+        Returns
+        -------
+        vol: float or None
+            return specific volume (m^3/Kg) or None if pressure(p) and/or temperature(t) are not in or exceed range of validity
+
+
+        Range of validity
+        -----------------
+        T3qu < t <= T3rx and psat(643.15 K) < p <= 22.5 MPa
+
+        For more details see http://www.iapws.org/relguide/Supp-VPT3-2016.pdf
+        """
 
         vol = 0.
 
