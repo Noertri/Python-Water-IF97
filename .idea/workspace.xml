@@ -7,8 +7,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi dokumentasi">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="menambahkan dokumentasi di modul constants.py dan sedikit memodifikasi odul app.py">
+      <change afterPath="$PROJECT_DIR$/IF97/coefficients/_IJnBasic.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/coefficients/_IJnReg1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/coefficients/_IJnReg2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/coefficients/_IJnReg3.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/coefficients/_IJnReg4.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/coefficients/_IJnReg5.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/coefficients/_IJnVPTReg3.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/coefficients/_IJnVPTReg3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/coefficients/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/coefficients/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/cores/basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/cores/basic.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +34,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="versi-0.2" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -215,13 +224,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1650182031901</updated>
-    </task>
-    <task id="LOCAL-00010" summary="memodifikasi modul region1 dan region2 di subpackage cores, tes dan debug region1">
-      <created>1650287439892</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1650287439892</updated>
     </task>
     <task id="LOCAL-00011" summary="tes dan debug region2">
       <created>1650346793651</created>
@@ -559,7 +561,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652018569951</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="menambahkan dokumentasi di modul constants.py dan sedikit memodifikasi odul app.py">
+      <created>1652163353667</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1652163353667</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -574,7 +583,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="membuat class Reg3RhoPT, melengkapi fungsi singlephase, tes dan debug" />
     <MESSAGE value="membuat fungsi allphase" />
     <MESSAGE value="memodifikasi fungsi allphase" />
     <MESSAGE value="menambahkan dokumentasi" />
@@ -599,6 +607,7 @@
     <MESSAGE value="memodifikasi modul backwardPT.py, test_backwardPT.py, _if97.py" />
     <MESSAGE value="memindahkan modul _const.py dari folder coefficients ke folder IF97 dan mengganti nama modul _const.py menjadi constants.py" />
     <MESSAGE value="memodifikasi dokumentasi" />
-    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi dokumentasi" />
+    <MESSAGE value="menambahkan dokumentasi di modul constants.py dan sedikit memodifikasi odul app.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="menambahkan dokumentasi di modul constants.py dan sedikit memodifikasi odul app.py" />
   </component>
 </project>
