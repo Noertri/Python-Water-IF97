@@ -1,5 +1,5 @@
-import tkinter as tk
 import math
+import tkinter as tk
 from tkinter import messagebox, ttk
 from IF97 import if97
 

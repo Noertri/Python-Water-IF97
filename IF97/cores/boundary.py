@@ -1,5 +1,5 @@
-from math import sqrt, log
-from ..coefficients import nb23, InBoundT3
+from math import log, sqrt
+from ..coefficients import InBoundT3, nb23
 
 
 class Boundary23:

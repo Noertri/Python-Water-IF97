@@ -1,7 +1,7 @@
 from numpy import exp
-from ..coefficients import IJnVPTReg3
-from .boundary import Boundary23, temp3
 from .basic import Region4
+from .boundary import Boundary23, temp3
+from ..coefficients import IJnVPTReg3
 
 
 class Region3VPT:
