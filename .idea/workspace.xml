@@ -7,17 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="menambahkan dokumentasi di modul constants.py dan sedikit memodifikasi odul app.py">
-      <change afterPath="$PROJECT_DIR$/IF97/coefficients/_IJnBasic.py" afterDir="false" />
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="membuat modul _IJnBasic.py, meimndahkan semua koefisien dari region 1 sampai region 5 ke modul _IJnBasic.py, memodifikasi modul _IJnVPTReg3.py, menghapus mmodul _IJnReg1.py, _IJnReg2.py, _IJnReg3.py, _IJnReg4.py, _IJnReg5.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/coefficients/_IJnReg1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/coefficients/_IJnReg2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/coefficients/_IJnReg3.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/coefficients/_IJnReg4.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/coefficients/_IJnReg5.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/coefficients/_IJnVPTReg3.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/coefficients/_IJnVPTReg3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/coefficients/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/coefficients/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/cores/basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/cores/basic.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,13 +215,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1650182031901</updated>
-    </task>
-    <task id="LOCAL-00011" summary="tes dan debug region2">
-      <created>1650346793651</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1650346793651</updated>
     </task>
     <task id="LOCAL-00012" summary="tes dan debug region3">
       <created>1650351011616</created>
@@ -568,7 +552,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652163353667</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="membuat modul _IJnBasic.py, meimndahkan semua koefisien dari region 1 sampai region 5 ke modul _IJnBasic.py, memodifikasi modul _IJnVPTReg3.py, menghapus mmodul _IJnReg1.py, _IJnReg2.py, _IJnReg3.py, _IJnReg4.py, _IJnReg5.py">
+      <created>1652167200250</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1652167200250</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -583,7 +574,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="membuat fungsi allphase" />
     <MESSAGE value="memodifikasi fungsi allphase" />
     <MESSAGE value="menambahkan dokumentasi" />
     <MESSAGE value="menambahkan notasi walrus" />
@@ -608,6 +598,7 @@
     <MESSAGE value="memindahkan modul _const.py dari folder coefficients ke folder IF97 dan mengganti nama modul _const.py menjadi constants.py" />
     <MESSAGE value="memodifikasi dokumentasi" />
     <MESSAGE value="menambahkan dokumentasi di modul constants.py dan sedikit memodifikasi odul app.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="menambahkan dokumentasi di modul constants.py dan sedikit memodifikasi odul app.py" />
+    <MESSAGE value="membuat modul _IJnBasic.py, meimndahkan semua koefisien dari region 1 sampai region 5 ke modul _IJnBasic.py, memodifikasi modul _IJnVPTReg3.py, menghapus mmodul _IJnReg1.py, _IJnReg2.py, _IJnReg3.py, _IJnReg4.py, _IJnReg5.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="membuat modul _IJnBasic.py, meimndahkan semua koefisien dari region 1 sampai region 5 ke modul _IJnBasic.py, memodifikasi modul _IJnVPTReg3.py, menghapus mmodul _IJnReg1.py, _IJnReg2.py, _IJnReg3.py, _IJnReg4.py, _IJnReg5.py" />
   </component>
 </project>
