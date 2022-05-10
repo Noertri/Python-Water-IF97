@@ -1,7 +1,7 @@
-from IF97 import if97, PRESSC, PRESST, TEMPC, TEMPT, BIGR
-import math
 import tkinter as tk
-from tkinter import ttk, messagebox
+import math
+from tkinter import messagebox, ttk
+from IF97 import if97
 
 
 class PyWater(tk.Tk):
@@ -199,8 +199,8 @@ class PyWater(tk.Tk):
                     self.output7Var.set(round(ans['cp'], 9))
                     self.output8Var.set(round(ans['cv'], 9))
                 else:
-                    self.output7Var.set("~")
-                    self.output8Var.set("~")
+                    self.output7Var.set(math.inf)
+                    self.output8Var.set(math.inf)
             elif self.menuVar.get() == self.menuVal[1] and (psat := self._convertP(self.input1Var.get(), self.unit1Var.get())) is not None and (x := self.input2Var.get()) is not None and (ans := if97(p=psat, x=x)) is not None:
                 self.output1Var.set(round(ans['psat'], 9))
                 self.output2Var.set(round(ans['tsat'], 9))
@@ -212,8 +212,8 @@ class PyWater(tk.Tk):
                     self.output7Var.set(round(ans['cp'], 9))
                     self.output8Var.set(round(ans['cv'], 9))
                 else:
-                    self.output7Var.set("~")
-                    self.output8Var.set("~")
+                    self.output7Var.set(math.inf)
+                    self.output8Var.set(math.inf)
             elif self.menuVar.get() == self.menuVal[2] and (p := self._convertP(self.input1Var.get(), self.unit1Var.get())) is not None and (t := self._convertT(self.input2Var.get(), self.unit2Var.get())) is not None and (ans := if97(p=p, t=t)) is not None:
                 self.output3Var.set(round(ans['v'], 9))
                 self.output4Var.set(round(ans['u'], 9))
