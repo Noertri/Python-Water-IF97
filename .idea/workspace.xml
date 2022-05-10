@@ -7,10 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="update workspace.xml">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="tes dan debug">
+      <change afterPath="$PROJECT_DIR$/IF97/coefficients/_IJHVisc.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/coefficients/_IJnBasic.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/coefficients/_IJnBasic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/coefficients/_IJnVPTReg3.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/coefficients/_IJnVPTReg3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/cores/backwardPT.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/cores/backwardPT.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,13 +211,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1650182031901</updated>
-    </task>
-    <task id="LOCAL-00014" summary="tes dan debug region5">
-      <created>1650375085463</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1650375085463</updated>
     </task>
     <task id="LOCAL-00015" summary="memodifikasi region3, tes dan debug region3">
       <created>1650375768741</created>
@@ -555,7 +548,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652167939184</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="tes dan debug">
+      <created>1652168817962</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1652168817962</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -570,7 +570,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="menambahkan notasi walrus" />
     <MESSAGE value="membuat fungsi if97" />
     <MESSAGE value="mengubah rhoL, rhoV menjadi rhof, dan rhog, enghapus subpackage _SubReg3" />
     <MESSAGE value="mengubah rhoL, rhoV menjadi rhof, dan rhog, menghapus subpackage _SubReg3, membuat folder desktop_app" />
@@ -595,6 +594,7 @@
     <MESSAGE value="membuat modul _IJnBasic.py, meimndahkan semua koefisien dari region 1 sampai region 5 ke modul _IJnBasic.py, memodifikasi modul _IJnVPTReg3.py, menghapus mmodul _IJnReg1.py, _IJnReg2.py, _IJnReg3.py, _IJnReg4.py, _IJnReg5.py" />
     <MESSAGE value="optimisasi import" />
     <MESSAGE value="update workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="update workspace.xml" />
+    <MESSAGE value="tes dan debug" />
+    <option name="LAST_COMMIT_MESSAGE" value="tes dan debug" />
   </component>
 </project>

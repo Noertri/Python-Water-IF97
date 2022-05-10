@@ -40,7 +40,7 @@ class Region3VPT:
             specific volume (m^3/Kg)
 
 
-        For more details see http://www.iapws.org/relguide/Supp-VPT3-2016.pdf
+        For more details see References[2, 3]
         """
 
         if desc and desc.lower() != "3n":
@@ -108,7 +108,7 @@ class Region3VPT:
         -----------------
         623.15 K < t <= 863.15 K and p23 < p <= 100 MPa or 350 C < t <= 800 C and p23 < p <= 100000 KPa, p23 represent boundary equation between region 2 and region 3
 
-        For more details see http://www.iapws.org/relguide/Supp-VPT3-2016.pdf
+        For more details see References[2, 3]
         """
 
         vol = 0.
@@ -231,7 +231,7 @@ class Region3VPT:
         -----------------
         T3qu < t <= T3rx and psat(643.15 K) < p <= 22.5 MPa
 
-        For more details see http://www.iapws.org/relguide/Supp-VPT3-2016.pdf
+        For more details see References[2, 3]
         """
 
         vol = 0.
