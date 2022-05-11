@@ -7,10 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="tes dan debug">
-      <change afterPath="$PROJECT_DIR$/IF97/coefficients/_IJHVisc.py" afterDir="false" />
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi dokumentasi di modul backwardPT.py, membuat modul _IJHVisc.py di subpackage coefficients">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/cores/backwardPT.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/cores/backwardPT.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,13 +209,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1650182031901</updated>
-    </task>
-    <task id="LOCAL-00015" summary="memodifikasi region3, tes dan debug region3">
-      <created>1650375768741</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1650375768741</updated>
     </task>
     <task id="LOCAL-00016" summary="memodifikasi class Boundary23, tes dan debug class Boundary23">
       <created>1650377020101</created>
@@ -555,7 +546,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652168817962</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="memodifikasi dokumentasi di modul backwardPT.py, membuat modul _IJHVisc.py di subpackage coefficients">
+      <created>1652171415340</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1652171415340</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -570,7 +568,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="membuat fungsi if97" />
     <MESSAGE value="mengubah rhoL, rhoV menjadi rhof, dan rhog, enghapus subpackage _SubReg3" />
     <MESSAGE value="mengubah rhoL, rhoV menjadi rhof, dan rhog, menghapus subpackage _SubReg3, membuat folder desktop_app" />
     <MESSAGE value="mengganti nama folder desktop_app menjadi desktop, mengubah nama modul menjadi gui.py" />
@@ -595,6 +592,7 @@
     <MESSAGE value="optimisasi import" />
     <MESSAGE value="update workspace.xml" />
     <MESSAGE value="tes dan debug" />
-    <option name="LAST_COMMIT_MESSAGE" value="tes dan debug" />
+    <MESSAGE value="memodifikasi dokumentasi di modul backwardPT.py, membuat modul _IJHVisc.py di subpackage coefficients" />
+    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi dokumentasi di modul backwardPT.py, membuat modul _IJHVisc.py di subpackage coefficients" />
   </component>
 </project>
