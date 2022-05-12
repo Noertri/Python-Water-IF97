@@ -8,8 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi semua region di modul basic.py, test dan debug region 1 sampai region 5">
+      <change afterPath="$PROJECT_DIR$/IF97/tests/test_visc.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/cores/basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/cores/basic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/coefficients/_IJHVisc.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/coefficients/_IJHVisc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/visc.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/visc.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +73,7 @@
       <recent name="D:\Python\Python-Water-Properties-IF97\IF97" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python tests.Python tests for test_visc.TestVisc.test_visc">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -113,20 +116,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_region2.TestRegion2.test_supp_properties1" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="Python-Water-Properties-IF97" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/IF97/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_region2.TestRegion2.test_supp_properties1&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="Python tests for test_region2.TestRegion2.test_supp_properties2" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -152,6 +141,20 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_region2.TestRegion2.test_supp_properties3&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_visc.TestVisc.test_visc" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="Python-Water-Properties-IF97" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/IF97/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_visc.TestVisc.test_visc&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -186,19 +189,19 @@
     <list>
       <item itemvalue="Python.app" />
       <item itemvalue="Python.main" />
-      <item itemvalue="Python tests.Python tests for test_region2.TestRegion2.test_supp_properties1" />
       <item itemvalue="Python tests.Python tests for test_region2.TestRegion2.test_supp_properties2" />
       <item itemvalue="Python tests.Python tests for test_region2.TestRegion2.test_supp_properties3" />
       <item itemvalue="Python tests.Python tests in test_region3.py" />
       <item itemvalue="Python tests.Python tests in test_region5.py" />
+      <item itemvalue="Python tests.Python tests for test_visc.TestVisc.test_visc" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for test_visc.TestVisc.test_visc" />
         <item itemvalue="Python tests.Python tests in test_region5.py" />
         <item itemvalue="Python tests.Python tests in test_region3.py" />
         <item itemvalue="Python tests.Python tests for test_region2.TestRegion2.test_supp_properties3" />
         <item itemvalue="Python tests.Python tests for test_region2.TestRegion2.test_supp_properties2" />
-        <item itemvalue="Python tests.Python tests for test_region2.TestRegion2.test_supp_properties1" />
       </list>
     </recent_temporary>
   </component>
@@ -210,13 +213,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1650182031901</updated>
-    </task>
-    <task id="LOCAL-00018" summary="membuat modul _sub3a.py">
-      <created>1650459802480</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1650459802480</updated>
     </task>
     <task id="LOCAL-00019" summary="modifikasi region3.py">
       <created>1650523794882</created>
@@ -554,7 +550,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652334441336</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="memodifikasi semua region di modul basic.py, test dan debug region 1 sampai region 5">
+      <created>1652334499241</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1652334499241</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

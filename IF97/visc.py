@@ -1,28 +1,27 @@
 import numpy as np
+import math
 from .coefficients import IJH
 from .constants import *
 
 
-def _myu0(tbar):
+def visc(rho, t):
 
-    H = IJH["H"]
-    n = len(H)
-    sub = 0.
+    delta = rho/RHOC
+    tau = t/TEMPC
+    theta = 1/tau
 
-    for i in range(n):
-        sub += H[i]/(tbar**i)
-
-    ans = (100*np.sqrt(tbar))/sub
-
-    return ans
-
-
-def _myu1(tbar, rhobar):
-
+    Hi = IJH["Hi"]
     I = IJH["I"]
     J = IJH["J"]
-    H = IJH["Hij"]
+    Hij = IJH["Hij"]
 
-    sub1 = 0.
-    for i in range(5):
-        sub1 += ((1/tbar)-1)**i
+    suma = sum((hi/(tau**i) for hi, i in zip(Hi, range(len(Hi)))))
+    myu0 = (100*np.sqrt(tau))/suma
+
+    sumb = sum((hij*((delta-1)**Ji)*((theta-1)**Ii) for Ii, Ji, hij in zip(I, J, Hij)))
+
+    pw = delta*sumb
+    myu1 = np.exp(pw)
+
+    _myu = myu0*myu1*1e-6
+    return _myu
