@@ -7,12 +7,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi dokumentasi di modul backwardPT.py, membuat modul _IJHVisc.py di subpackage coefficients">
-      <change afterPath="$PROJECT_DIR$/IF97/visc.py" afterDir="false" />
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi region 1 di odul basic.py dan membuat modul visc.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/coefficients/_IJHVisc.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/coefficients/_IJHVisc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/coefficients/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/coefficients/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/_if97.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/_if97.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/IF97/cores/basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/cores/basic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/tests/test_region1.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/tests/test_region1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/tests/test_region2.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/tests/test_region2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/tests/test_region3.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/tests/test_region3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/tests/test_region5.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/tests/test_region5.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +76,7 @@
       <recent name="D:\Python\Python-Water-Properties-IF97\IF97" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests in test_region5.py">
+  <component name="RunManager" selected="Python.main">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -116,7 +119,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests in test_region1.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_region2.TestRegion2.test_supp_properties1" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -126,11 +129,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/IF97/tests/test_region1.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <option name="_new_target" value="&quot;test_region2.TestRegion2.test_supp_properties1&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests in test_region2.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_region2.TestRegion2.test_supp_properties2" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -140,8 +143,22 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/IF97/tests/test_region2.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <option name="_new_target" value="&quot;test_region2.TestRegion2.test_supp_properties2&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_region2.TestRegion2.test_supp_properties3" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="Python-Water-Properties-IF97" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/IF97/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_region2.TestRegion2.test_supp_properties3&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <configuration name="Python tests in test_region3.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
@@ -155,20 +172,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;$PROJECT_DIR$/IF97/tests/test_region3.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests in test_region4.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="Python-Water-Properties-IF97" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/IF97/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/IF97/tests/test_region4.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
@@ -189,19 +192,19 @@
     <list>
       <item itemvalue="Python.app" />
       <item itemvalue="Python.main" />
-      <item itemvalue="Python tests.Python tests in test_region1.py" />
-      <item itemvalue="Python tests.Python tests in test_region2.py" />
+      <item itemvalue="Python tests.Python tests for test_region2.TestRegion2.test_supp_properties1" />
+      <item itemvalue="Python tests.Python tests for test_region2.TestRegion2.test_supp_properties2" />
+      <item itemvalue="Python tests.Python tests for test_region2.TestRegion2.test_supp_properties3" />
       <item itemvalue="Python tests.Python tests in test_region3.py" />
-      <item itemvalue="Python tests.Python tests in test_region4.py" />
       <item itemvalue="Python tests.Python tests in test_region5.py" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Python tests in test_region5.py" />
-        <item itemvalue="Python tests.Python tests in test_region4.py" />
         <item itemvalue="Python tests.Python tests in test_region3.py" />
-        <item itemvalue="Python tests.Python tests in test_region2.py" />
-        <item itemvalue="Python tests.Python tests in test_region1.py" />
+        <item itemvalue="Python tests.Python tests for test_region2.TestRegion2.test_supp_properties3" />
+        <item itemvalue="Python tests.Python tests for test_region2.TestRegion2.test_supp_properties2" />
+        <item itemvalue="Python tests.Python tests for test_region2.TestRegion2.test_supp_properties1" />
       </list>
     </recent_temporary>
   </component>
@@ -213,13 +216,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1650182031901</updated>
-    </task>
-    <task id="LOCAL-00016" summary="memodifikasi class Boundary23, tes dan debug class Boundary23">
-      <created>1650377020101</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1650377020101</updated>
     </task>
     <task id="LOCAL-00017" summary="membuat fungsi untuk persamaan boundary subregion3, tes dan debug boundaru subregion3">
       <created>1650459407130</created>
@@ -557,7 +553,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652171415340</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="memodifikasi region 1 di odul basic.py dan membuat modul visc.py">
+      <created>1652328149198</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1652328149198</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -572,7 +575,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="mengubah rhoL, rhoV menjadi rhof, dan rhog, enghapus subpackage _SubReg3" />
     <MESSAGE value="mengubah rhoL, rhoV menjadi rhof, dan rhog, menghapus subpackage _SubReg3, membuat folder desktop_app" />
     <MESSAGE value="mengganti nama folder desktop_app menjadi desktop, mengubah nama modul menjadi gui.py" />
     <MESSAGE value="mengganti nama folder desktop menjadi GUI, mengubah nama modul menjadi app.py" />
@@ -597,6 +599,7 @@
     <MESSAGE value="update workspace.xml" />
     <MESSAGE value="tes dan debug" />
     <MESSAGE value="memodifikasi dokumentasi di modul backwardPT.py, membuat modul _IJHVisc.py di subpackage coefficients" />
-    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi dokumentasi di modul backwardPT.py, membuat modul _IJHVisc.py di subpackage coefficients" />
+    <MESSAGE value="memodifikasi region 1 di odul basic.py dan membuat modul visc.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi region 1 di odul basic.py dan membuat modul visc.py" />
   </component>
 </project>

@@ -1,6 +1,6 @@
 import math
 from .cores.backwardPT import Region3VPT
-from .cores.basic import region1, region2, supp_region2, Region3, Region4, region5
+from .cores.basic import Region1, Region2, SuppRegion2, Region3, Region4, Region5
 from .cores.boundary import Boundary23
 from .constants import PRESSC, RHOC, TEMPC
 
@@ -40,12 +40,12 @@ def saturationT(tsat):
         props = {
             "psat": psat,
             "tsat": tsat,
-            "v": [region1(p=psat, t=tsat, desc="v"), region2(p=psat, t=tsat, desc="v")],
-            "u": [region1(p=psat, t=tsat, desc="u"), region2(p=psat, t=tsat, desc="u")],
-            "h": [region1(p=psat, t=tsat, desc="h"), region2(p=psat, t=tsat, desc="h")],
-            "s": [region1(p=psat, t=tsat, desc="s"), region2(p=psat, t=tsat, desc="s")],
-            "cv": [region1(p=psat, t=tsat, desc="cv"), region2(p=psat, t=tsat, desc="cv")],
-            "cp": [region1(p=psat, t=tsat, desc="cp"), region2(p=psat, t=tsat, desc="cp")]
+            "v": [Region1.props(p=psat, t=tsat, desc="v"), Region2.props(p=psat, t=tsat, desc="v")],
+            "u": [Region1.props(p=psat, t=tsat, desc="u"), Region2.props(p=psat, t=tsat, desc="u")],
+            "h": [Region1.props(p=psat, t=tsat, desc="h"), Region2.props(p=psat, t=tsat, desc="h")],
+            "s": [Region1.props(p=psat, t=tsat, desc="s"), Region2.props(p=psat, t=tsat, desc="s")],
+            "cv": [Region1.props(p=psat, t=tsat, desc="cv"), Region2.props(p=psat, t=tsat, desc="cv")],
+            "cp": [Region1.props(p=psat, t=tsat, desc="cp"), Region2.props(p=psat, t=tsat, desc="cp")]
         }
         return props
     elif tsat and (psat := Region4.getSaturPress(tsat=tsat)) and 623.15 < tsat < TEMPC and 0. < psat < PRESSC:
@@ -54,11 +54,11 @@ def saturationT(tsat):
                 "psat": psat,
                 "tsat": tsat,
                 "v": [1/rhof, 1/rhog],
-                "u": [Region3.region3(rho=rhof, t=tsat, desc="u"), Region3.region3(rho=rhog, t=tsat, desc="u")],
-                "h": [Region3.region3(rho=rhof, t=tsat, desc="h"), Region3.region3(rho=rhog, t=tsat, desc="h")],
-                "s": [Region3.region3(rho=rhof, t=tsat, desc="s"), Region3.region3(rho=rhog, t=tsat, desc="s")],
-                "cv": [Region3.region3(rho=rhof, t=tsat, desc="cv"), Region3.region3(rho=rhog, t=tsat, desc="cv")],
-                "cp": [Region3.region3(rho=rhof, t=tsat, desc="cp"), Region3.region3(rho=rhog, t=tsat, desc="cp")]
+                "u": [Region3.props(rho=rhof, t=tsat, desc="u"), Region3.props(rho=rhog, t=tsat, desc="u")],
+                "h": [Region3.props(rho=rhof, t=tsat, desc="h"), Region3.props(rho=rhog, t=tsat, desc="h")],
+                "s": [Region3.props(rho=rhof, t=tsat, desc="s"), Region3.props(rho=rhog, t=tsat, desc="s")],
+                "cv": [Region3.props(rho=rhof, t=tsat, desc="cv"), Region3.props(rho=rhog, t=tsat, desc="cv")],
+                "cp": [Region3.props(rho=rhof, t=tsat, desc="cp"), Region3.props(rho=rhog, t=tsat, desc="cp")]
         }
         return props
     elif tsat and tsat == TEMPC:
@@ -66,9 +66,9 @@ def saturationT(tsat):
                 "psat": PRESSC,
                 "tsat": tsat,
                 "v": [1/RHOC, 1/RHOC],
-                "u": [Region3.region3(rho=RHOC, t=tsat, desc="u"), Region3.region3(rho=RHOC, t=tsat, desc="u")],
-                "h": [Region3.region3(rho=RHOC, t=tsat, desc="h"), Region3.region3(rho=RHOC, t=tsat, desc="h")],
-                "s": [Region3.region3(rho=RHOC, t=tsat, desc="s"), Region3.region3(rho=RHOC, t=tsat, desc="s")],
+                "u": [Region3.props(rho=RHOC, t=tsat, desc="u"), Region3.props(rho=RHOC, t=tsat, desc="u")],
+                "h": [Region3.props(rho=RHOC, t=tsat, desc="h"), Region3.props(rho=RHOC, t=tsat, desc="h")],
+                "s": [Region3.props(rho=RHOC, t=tsat, desc="s"), Region3.props(rho=RHOC, t=tsat, desc="s")],
                 "cv": [math.inf, math.inf],
                 "cp": [math.inf, math.inf]
         }
@@ -110,12 +110,12 @@ def saturationP(psat):
         props = {
                 "psat": psat,
                 "tsat": tsat,
-                "v": [region1(p=psat, t=tsat, desc="v"), region2(p=psat, t=tsat, desc="v")],
-                "u": [region1(p=psat, t=tsat, desc="u"), region2(p=psat, t=tsat, desc="u")],
-                "h": [region1(p=psat, t=tsat, desc="h"), region2(p=psat, t=tsat, desc="h")],
-                "s": [region1(p=psat, t=tsat, desc="s"), region2(p=psat, t=tsat, desc="s")],
-                "cv": [region1(p=psat, t=tsat, desc="cv"), region2(p=psat, t=tsat, desc="cv")],
-                "cp": [region1(p=psat, t=tsat, desc="cp"), region2(p=psat, t=tsat, desc="cp")]
+                "v": [Region1.props(p=psat, t=tsat, desc="v"), Region2.props(p=psat, t=tsat, desc="v")],
+                "u": [Region1.props(p=psat, t=tsat, desc="u"), Region2.props(p=psat, t=tsat, desc="u")],
+                "h": [Region1.props(p=psat, t=tsat, desc="h"), Region2.props(p=psat, t=tsat, desc="h")],
+                "s": [Region1.props(p=psat, t=tsat, desc="s"), Region2.props(p=psat, t=tsat, desc="s")],
+                "cv": [Region1.props(p=psat, t=tsat, desc="cv"), Region2.props(p=psat, t=tsat, desc="cv")],
+                "cp": [Region1.props(p=psat, t=tsat, desc="cp"), Region2.props(p=psat, t=tsat, desc="cp")]
         }
         return props
     elif psat and (tsat := Region4.getSaturTemp(psat=psat)) and 16529.2 < psat < PRESSC and 273.15 <= tsat < TEMPC:
@@ -124,11 +124,11 @@ def saturationP(psat):
                 "psat": psat,
                 "tsat": tsat,
                 "v": [1/rhof, 1/rhog],
-                "u": [Region3.region3(rho=rhof, t=tsat, desc="u"), Region3.region3(rho=rhog, t=tsat, desc="u")],
-                "h": [Region3.region3(rho=rhof, t=tsat, desc="h"), Region3.region3(rho=rhog, t=tsat, desc="h")],
-                "s": [Region3.region3(rho=rhof, t=tsat, desc="s"), Region3.region3(rho=rhog, t=tsat, desc="s")],
-                "cv": [Region3.region3(rho=rhof, t=tsat, desc="cv"), Region3.region3(rho=rhog, t=tsat, desc="cv")],
-                "cp": [Region3.region3(rho=rhof, t=tsat, desc="cp"), Region3.region3(rho=rhog, t=tsat, desc="cp")]
+                "u": [Region3.props(rho=rhof, t=tsat, desc="u"), Region3.props(rho=rhog, t=tsat, desc="u")],
+                "h": [Region3.props(rho=rhof, t=tsat, desc="h"), Region3.props(rho=rhog, t=tsat, desc="h")],
+                "s": [Region3.props(rho=rhof, t=tsat, desc="s"), Region3.props(rho=rhog, t=tsat, desc="s")],
+                "cv": [Region3.props(rho=rhof, t=tsat, desc="cv"), Region3.props(rho=rhog, t=tsat, desc="cv")],
+                "cp": [Region3.props(rho=rhof, t=tsat, desc="cp"), Region3.props(rho=rhog, t=tsat, desc="cp")]
         }
         return props
     elif psat and psat == PRESSC:
@@ -136,9 +136,9 @@ def saturationP(psat):
                 "psat": psat,
                 "tsat": TEMPC,
                 "v": [1/RHOC, 1/RHOC],
-                "u": [Region3.region3(rho=RHOC, t=TEMPC, desc="u"), Region3.region3(rho=RHOC, t=TEMPC, desc="u")],
-                "h": [Region3.region3(rho=RHOC, t=TEMPC, desc="h"), Region3.region3(rho=RHOC, t=TEMPC, desc="h")],
-                "s": [Region3.region3(rho=RHOC, t=TEMPC, desc="s"), Region3.region3(rho=RHOC, t=TEMPC, desc="s")],
+                "u": [Region3.props(rho=RHOC, t=TEMPC, desc="u"), Region3.props(rho=RHOC, t=TEMPC, desc="u")],
+                "h": [Region3.props(rho=RHOC, t=TEMPC, desc="h"), Region3.props(rho=RHOC, t=TEMPC, desc="h")],
+                "s": [Region3.props(rho=RHOC, t=TEMPC, desc="s"), Region3.props(rho=RHOC, t=TEMPC, desc="s")],
                 "cv": [math.inf, math.inf],
                 "cp": [math.inf, math.inf]
         }
@@ -174,63 +174,63 @@ def singlephase(p, t):
     t23 = 0.
     if 0 < p < (psat := Region4.getSaturPress(tsat=t)) and 273.15 <= t <= 623.15:
         props = {
-                "v": region2(p, t, desc="v"),
-                "u": region2(p, t, desc="u"),
-                "h": region2(p, t, desc="h"),
-                "s": region2(p, t, desc="s"),
-                "cv": region2(p, t, desc="cv"),
-                "cp": region2(p, t, desc="cp")
+                "v": Region2.props(p, t, desc="v"),
+                "u": Region2.props(p, t, desc="u"),
+                "h": Region2.props(p, t, desc="h"),
+                "s": Region2.props(p, t, desc="s"),
+                "cv": Region2.props(p, t, desc="cv"),
+                "cp": Region2.props(p, t, desc="cp")
         }
         return props
     elif (psat := Region4.getSaturPress(tsat=t)) <= p <= 1e5 and 273.15 <= t <= 623.15:
         props = {
-                "v": region1(p, t, desc="v"),
-                "u": region1(p, t, desc="u"),
-                "h": region1(p, t, desc="h"),
-                "s": region1(p, t, desc="s"),
-                "cv": region1(p, t, desc="cv"),
-                "cp": region1(p, t, desc="cp")
+                "v": Region1.props(p, t, desc="v"),
+                "u": Region1.props(p, t, desc="u"),
+                "h": Region1.props(p, t, desc="h"),
+                "s": Region1.props(p, t, desc="s"),
+                "cv": Region1.props(p, t, desc="cv"),
+                "cp": Region1.props(p, t, desc="cp")
         }
         return props
     elif (p23 := Boundary23.getPress(t)) and 0 < p <= p23 and 623.15 < t <= 863.15:
         props = {
-                "v": region2(p, t, desc="v"),
-                "u": region2(p, t, desc="u"),
-                "h": region2(p, t, desc="h"),
-                "s": region2(p, t, desc="s"),
-                "cv": region2(p, t, desc="cv"),
-                "cp": region2(p, t, desc="cp")
+                "v": Region2.props(p, t, desc="v"),
+                "u": Region2.props(p, t, desc="u"),
+                "h": Region2.props(p, t, desc="h"),
+                "s": Region2.props(p, t, desc="s"),
+                "cv": Region2.props(p, t, desc="cv"),
+                "cp": Region2.props(p, t, desc="cp")
         }
         return props
     elif (p23 := Boundary23.getPress(t)) and (t23 := Boundary23.getTemp(p)) and p23 < p <= 1e5 and 623.15 < t <= t23:
         rho = Region3VPT.singleRho(p, t)
         props = {
                 "v": 1/rho,
-                "u": Region3.region3(rho, t, desc="u"),
-                "h": Region3.region3(rho, t, desc="h"),
-                "s": Region3.region3(rho, t, desc="s"),
-                "cv": Region3.region3(rho, t, desc="cv"),
-                "cp": Region3.region3(rho, t, desc="cp")
+                "u": Region3.props(rho, t, desc="u"),
+                "h": Region3.props(rho, t, desc="h"),
+                "s": Region3.props(rho, t, desc="s"),
+                "cv": Region3.props(rho, t, desc="cv"),
+                "cp": Region3.props(rho, t, desc="cp")
         }
         return props
     elif 0 < p <= 1e5 and 863.15 < t <= 1073.15:
         props = {
-                "v": region2(p, t, desc="v"),
-                "u": region2(p, t, desc="u"),
-                "h": region2(p, t, desc="h"),
-                "s": region2(p, t, desc="s"),
-                "cv": region2(p, t, desc="cv"),
-                "cp": region2(p, t, desc="cp")
+                "v": Region2.props(p, t, desc="v"),
+                "u": Region2.props(p, t, desc="u"),
+                "h": Region2.props(p, t, desc="h"),
+                "s": Region2.props(p, t, desc="s"),
+                "cv": Region2.props(p, t, desc="cv"),
+                "cp": Region2.props(p, t, desc="cp")
         }
         return props
     elif 0 < p <= 5e4 and 1073.15 < t <= 2273.15:
         props = {
-                "v": region5(p, t, desc="v"),
-                "u": region5(p, t, desc="u"),
-                "h": region5(p, t, desc="h"),
-                "s": region5(p, t, desc="s"),
-                "cv": region5(p, t, desc="cv"),
-                "cp": region5(p, t, desc="cp")
+                "v": Region5.props(p, t, desc="v"),
+                "u": Region5.props(p, t, desc="u"),
+                "h": Region5.props(p, t, desc="h"),
+                "s": Region5.props(p, t, desc="s"),
+                "cv": Region5.props(p, t, desc="cv"),
+                "cp": Region5.props(p, t, desc="cp")
         }
         return props
 

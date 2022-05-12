@@ -1,4 +1,5 @@
 import numpy as np
+import math
 from scipy import optimize
 from ..coefficients import *
 from ..constants import BIGR, RHOC, TEMPC
@@ -7,11 +8,14 @@ from ..constants import BIGR, RHOC, TEMPC
 #Region 1
 class Region1:
 
-    _I = IJnReg1["I"]
-    _J = IJnReg1["J"]
-    _n = IJnReg1["n"]
+    @staticmethod
+    def _gamma(pi, tau):
+        """Basic equations for region 1
+        """
 
-    def _gamma(self, pi, tau):
+        _I = IJnReg1["I"]
+        _J = IJnReg1["J"]
+        _n = IJnReg1["n"]
         g = 0.
         dgdpi = 0.
         d2gdpi2 = 0.
@@ -19,7 +23,7 @@ class Region1:
         d2gdtau2 = 0.
         d2gdpidtau = 0.
 
-        for Ii, Ji, ni in zip(self._I, self._J, self._n):
+        for Ii, Ji, ni in zip(_I, _J, _n):
             g += ni*((7.1-pi)**Ii)*((tau-1.222)**Ji)
             dgdpi += -ni*Ii*((7.1-pi)**(Ii-1))*((tau-1.222)**Ji)
             d2gdpi2 += ni*Ii*(Ii-1)*((7.1-pi)**(Ii-2))*((tau-1.222)**Ji)
@@ -30,8 +34,8 @@ class Region1:
         return g, dgdpi, d2gdpi2, dgdtau, d2gdtau2, d2gdpidtau
 
     @classmethod
-    def region1(cls, p, t, desc=None):
-        """Property equations for region 1
+    def props(cls, p, t, desc=None):
+        """Equations of property for region 1
 
         Parameters
         ----------
@@ -40,198 +44,197 @@ class Region1:
         t: float
             temperature (K)
         desc: str
-            key of property to return, one of v, u, h, s, cp, and cv
+            property to return, one of v, u, h, s, cp, and cv
 
         Returns
         -------
-        props: dict or None
-            return one of:
-                v: float
-                    specific volume (Kg/m^3)
-                u: float
-                    specific internal energy (KJ/Kg)
-                h: float
-                    specific enthalpy (KJ/Kg)
-                s: float
-                    specific entropy (KJ/Kg*K)
-                cp: float
-                    specific isobaric heat capacity (KJ/Kg*K)
-                cv: float
-                    specific isochoric heat capacity (KJ/Kg*K)
+        _props: dict or None
+            return one of available properties or if the property is not available return None instead, see Available Properties
+
+
+        Available Properties
+        --------------------
+        v: float
+            specific volume (Kg/m^3)
+        u: float
+            specific internal energy (KJ/Kg)
+        h: float
+            specific enthalpy (KJ/Kg)
+        s: float
+            specific entropy (KJ/Kg*K)
+        cp: float
+            specific isobaric heat capacity (KJ/Kg*K)
+        cv: float
+            specific isochoric heat capacity (KJ/Kg*K)
         """
 
         pi = p/16.53e3
         tau = 1386/t
-        props = dict()
 
-        props["v"] = BIGR*t*pi*dgdpi/p
-        props["u"] = BIGR*t*(tau*dgdtau-pi*dgdpi)
-        props["s"] = BIGR*(tau*dgdtau-g)
-        props["h"] = BIGR*t*tau*dgdtau
-        props["cp"] = -1*BIGR*(tau**2)*dgdtau2
-        props["cv"] = BIGR*(-1*(tau**2)*dgdtau2 + ((dgdpi-tau*dgdpidtau)**2)/dgdpi2)
+        g, dgdpi, d2gdpi2, dgdtau, d2gdtau2, d2gdpidtau = cls._gamma(pi=pi, tau=tau)
 
-        if desc and desc.lower() in props.keys():
-            return props[desc.lower()]
+        _props = dict()
+        _props["v"] = BIGR*t*pi*dgdpi/p
+        _props["u"] = BIGR*t*(tau*dgdtau-pi*dgdpi)
+        _props["s"] = BIGR*(tau*dgdtau-g)
+        _props["h"] = BIGR*t*tau*dgdtau
+        _props["cp"] = -1*BIGR*(tau**2)*d2gdtau2
+        _props["cv"] = BIGR*(-1*(tau**2)*d2gdtau2+((dgdpi-tau*d2gdpidtau)**2)/d2gdpi2)
+
+        if desc and desc.lower() in _props.keys():
+            return _props[desc.lower()]
         else:
             return None
 
 
 #Region 2
-def region2(p, t, desc=None):
-    """Basic and property equations for region 2
+class Region2:
 
-    Parameters
-    ----------
-    p: float
-        pressure (KPa)
-    t: float
-        temperature (K)
-    desc: str
-        key of property to return, one of v, u, h, s, cp, and cv
+    @staticmethod
+    def _gammao(pi, tau):
 
-    Returns
-    -------
-    return one of:
-    v: float
-        specific volume (m^3/Kg)
-    u: float
-        specific internal energy (KJ/Kg)
-    h: float
-        specific enthalpy (KJ/Kg)
-    s: float
-        specific entropy (KJ/Kg*K)
-    cp: float
-        specific isobaric heat capacity (KJ/Kg*K)
-    cv: float
-        specific isochoric heat capacity (KJ/Kg*K)
-    """
+        _Jo = IJnReg2["Jo"]
+        _no = IJnReg2["no"]
 
-    pi = p/1e3
-    tau = 540/t
-    _Jo = IJnReg2["Jo"]
-    _no = IJnReg2["no"]
-    _I = IJnReg2["I"]
-    _J = IJnReg2["J"]
-    _n = IJnReg2["n"]
+        go = np.log(pi)
+        dgodpi = 1./pi
+        d2godpi2 = -1./(pi**2)
+        dgodtau = 0.
+        d2godtau2 = 0.
+        d2godpidtau = 0.
 
-    go = np.log(pi)
-    dgodpi = 1./pi
-    # dgodpi2 = -1./(pi**2)
-    dgodtau = 0.
-    dgodtau2 = 0.
-    # dgodpidtau = 0.
-    gr = 0.
-    dgrdpi = 0.
-    dgrdpi2 = 0.
-    dgrdtau = 0.
-    dgrdtau2 = 0.
-    dgrdpidtau = 0.
+        for Jio, nio in zip(_Jo, _no):
+            go += nio*(tau**Jio)
+            dgodtau += nio*Jio*(tau**(Jio-1))
+            d2godtau2 += nio*Jio*(Jio-1)*(tau**(Jio-2))
 
-    for Jio, nio in zip(_Jo, _no):
-        go += nio*(tau**Jio)
-        dgodtau += nio*Jio*(tau**(Jio-1))
-        dgodtau2 += nio*Jio*(Jio-1)*(tau**(Jio-2))
+        return go, dgodpi, d2godpi2, dgodtau, d2godtau2, d2godpidtau
 
-    for Ii, Ji, ni in zip(_I, _J, _n):
-        gr += ni*(pi**Ii)*((tau-0.5)**Ji)
-        dgrdpi += ni*Ii*(pi**(Ii-1))*((tau-0.5)**Ji)
-        dgrdpi2 += ni*Ii*(Ii-1)*(pi**(Ii-2))*((tau-0.5)**Ji)
-        dgrdtau += ni*Ji*(pi**Ii)*((tau-0.5)**(Ji-1))
-        dgrdtau2 += ni*Ji*(Ji-1)*(pi**Ii)*((tau-0.5)**(Ji-2))
-        dgrdpidtau += ni*Ii*Ji*(pi**(Ii-1))*((tau-0.5)**(Ji-1))
+    @staticmethod
+    def _gammar(pi, tau):
 
-    props = dict()
-    props["v"] = BIGR*t*pi*(dgodpi+dgrdpi)/p
-    props["u"] = BIGR*t*(tau*(dgodtau+dgrdtau)-pi*(dgodpi+dgrdpi))
-    props["s"] = BIGR*(tau*(dgodtau+dgrdtau)-(go+gr))
-    props["h"] = BIGR*t*tau*(dgodtau+dgrdtau)
-    props["cp"] = -1*BIGR*(tau**2)*(dgodtau2+dgrdtau2)
-    props["cv"] = BIGR*(-1*(tau**2)*(dgodtau2+dgrdtau2)-(((1+pi*dgrdpi-tau*pi*dgrdpidtau)**2)/(1-(pi**2)*dgrdpi2)))
+        _I = IJnReg2["I"]
+        _J = IJnReg2["J"]
+        _n = IJnReg2["n"]
 
-    if desc and desc.lower() in props.keys():
-        return props[desc.lower()]
-    else:
-        return None
+        gr = 0.
+        dgrdpi = 0.
+        d2grdpi2 = 0.
+        dgrdtau = 0.
+        d2grdtau2 = 0.
+        d2grdpidtau = 0.
+
+        for Ii, Ji, ni in zip(_I, _J, _n):
+            gr += ni*(pi**Ii)*((tau-0.5)**Ji)
+            dgrdpi += ni*Ii*(pi**(Ii-1))*((tau-0.5)**Ji)
+            d2grdpi2 += ni*Ii*(Ii-1)*(pi**(Ii-2))*((tau-0.5)**Ji)
+            dgrdtau += ni*Ji*(pi**Ii)*((tau-0.5)**(Ji-1))
+            d2grdtau2 += ni*Ji*(Ji-1)*(pi**Ii)*((tau-0.5)**(Ji-2))
+            d2grdpidtau += ni*Ii*Ji*(pi**(Ii-1))*((tau-0.5)**(Ji-1))
+
+        return gr, dgrdpi, d2grdpi2, dgrdtau, d2grdtau2, d2grdpidtau
+
+    @classmethod
+    def props(cls, p, t, desc=None):
+        """Equations of property for region 2
+
+        Parameters
+        ----------
+        p: float
+            pressure (KPa)
+        t: float
+            temperature (K)
+        desc: str
+            property to return, one of v, u, h, s, cp, and cv
+
+        Returns
+        -------
+        _props : dict or None
+            return one of available properties or if the property is not available return None instead, see Available Properties
+
+
+        Available Properties
+        --------------------
+        v: float
+            specific volume (m^3/Kg)
+        u: float
+            specific internal energy (KJ/Kg)
+        h: float
+            specific enthalpy (KJ/Kg)
+        s: float
+            specific entropy (KJ/Kg*K)
+        cp: float
+            specific isobaric heat capacity (KJ/Kg*K)
+        cv: float
+            specific isochoric heat capacity (KJ/Kg*K)
+        """
+
+        pi = p/1e3
+        tau = 540/t
+
+        go, dgodpi, d2godpi2, dgodtau, d2godtau2, d2godpidtau = cls._gammao(pi, tau)
+        gr, dgrdpi, d2grdpi2, dgrdtau, d2grdtau2, d2grdpidtau = cls._gammar(pi, tau)
+
+        _props = dict()
+        _props["v"] = BIGR*t*pi*(dgodpi+dgrdpi)/p
+        _props["u"] = BIGR*t*(tau*(dgodtau+dgrdtau)-pi*(dgodpi+dgrdpi))
+        _props["s"] = BIGR*(tau*(dgodtau+dgrdtau)-(go+gr))
+        _props["h"] = BIGR*t*tau*(dgodtau+dgrdtau)
+        _props["cp"] = -1*BIGR*(tau**2)*(d2godtau2+d2grdtau2)
+        _props["cv"] = BIGR*(-1*(tau**2)*(d2godtau2+d2grdtau2)-(((1+pi*dgrdpi-tau*pi*d2grdpidtau)**2)/(1-(pi**2)*d2grdpi2)))
+
+        if desc and desc.lower() in _props.keys():
+            return _props[desc.lower()]
+        else:
+            return None
 
 
 #Supplementary equations of region 2
-def supp_region2(p, t, desc=None):
-    """Supplementary equations for region 2
+class SuppRegion2(Region2):
 
-    Parameters
-    ----------
-    p: float
-        pressure (KPa)
-    t: float
-        temperature (K)
-    desc: str
-        key of property to return, one of v, u, h, s, cp, and cv
+    @staticmethod
+    def _gammao(pi, tau):
 
-    Returns
-    -------
-    return one of:
-    v: float
-        specific volume (m^3/Kg)
-    u: float
-        specific internal energy (KJ/Kg)
-    h: float
-        specific enthalpy (KJ/Kg)
-    s: float
-        specific entropy (KJ/Kg*K)
-    cp: float
-        specific isobaric heat capacity (KJ/Kg*K)
-    cv: float
-        specific isochoric heat capacity (KJ/Kg*K)
-    """
+        _Jo = IJnReg2Supp["Jo"]
+        _no = IJnReg2Supp["no"]
 
-    pi = p/1e3
-    tau = 540/t
+        go = np.log(pi)
+        dgodpi = 1./pi
+        d2godpi2 = -1./(pi**2)
+        dgodtau = 0.
+        d2godtau2 = 0.
+        d2godpidtau = 0.
 
-    _Jo = IJnReg2Supp["Jo"]
-    _no = IJnReg2Supp["no"]
-    _I = IJnReg2Supp["I"]
-    _J = IJnReg2Supp["J"]
-    _n = IJnReg2Supp["n"]
+        for Jio, nio in zip(_Jo, _no):
+            go += nio*(tau**Jio)
+            dgodtau += nio*Jio*(tau**(Jio-1))
+            d2godtau2 += nio*Jio*(Jio-1)*(tau**(Jio-2))
 
-    go = np.log(pi)
-    dgodpi = 1./pi
-    # dgodpi2 = -1./(pi**2)
-    dgodtau = 0.
-    dgodtau2 = 0.
-    # dgodpidtau = 0.
-    gr = 0.
-    dgrdpi = 0.
-    dgrdpi2 = 0.
-    dgrdtau = 0.
-    dgrdtau2 = 0.
-    dgrdpidtau = 0.
+        return go, dgodpi, d2godpi2, dgodtau, d2godtau2, d2godpidtau
 
-    for Jio, nio in zip(_Jo, _no):
-        go += nio*(tau**Jio)
-        dgodtau += nio*Jio*(tau**(Jio-1))
-        dgodtau2 += nio*Jio*(Jio-1)*(tau**(Jio-2))
+    @staticmethod
+    def _gammar(pi, tau):
 
-    for Ii, Ji, ni in zip(_I, _J, _n):
-        gr += ni*(pi**Ii)*((tau-0.5)**Ji)
-        dgrdpi += ni*Ii*(pi**(Ii-1))*((tau-0.5)**Ji)
-        dgrdpi2 += ni*Ii*(Ii-1)*(pi**(Ii-2))*((tau-0.5)**Ji)
-        dgrdtau += ni*Ji*(pi**Ii)*((tau-0.5)**(Ji-1))
-        dgrdtau2 += ni*Ji*(Ji-1)*(pi**Ii)*((tau-0.5)**(Ji-2))
-        dgrdpidtau += ni*Ii*Ji*(pi**(Ii-1))*((tau-0.5)**(Ji-1))
+        _I = IJnReg2Supp["I"]
+        _J = IJnReg2Supp["J"]
+        _n = IJnReg2Supp["n"]
 
-    props = dict()
-    props["v"] = BIGR*t*pi*(dgodpi+dgrdpi)/p
-    props["u"] = BIGR*t*(tau*(dgodtau+dgrdtau)-pi*(dgodpi+dgrdpi))
-    props["s"] = BIGR*(tau*(dgodtau+dgrdtau)-(go+gr))
-    props["h"] = BIGR*t*tau*(dgodtau+dgrdtau)
-    props["cp"] = -1*BIGR*(tau**2)*(dgodtau2+dgrdtau2)
-    props["cv"] = BIGR*(-1*(tau**2)*(dgodtau2+dgrdtau2)-(((1+pi*dgrdpi-tau*pi*dgrdpidtau)**2)/(1-(pi**2)*dgrdpi2)))
+        gr = 0.
+        dgrdpi = 0.
+        d2grdpi2 = 0.
+        dgrdtau = 0.
+        d2grdtau2 = 0.
+        d2grdpidtau = 0.
 
-    if desc and desc.lower() in props.keys():
-        return props[desc.lower()]
-    else:
-        return None
+        for Ii, Ji, ni in zip(_I, _J, _n):
+            gr += ni*(pi**Ii)*((tau-0.5)**Ji)
+            dgrdpi += ni*Ii*(pi**(Ii-1))*((tau-0.5)**Ji)
+            d2grdpi2 += ni*Ii*(Ii-1)*(pi**(Ii-2))*((tau-0.5)**Ji)
+            dgrdtau += ni*Ji*(pi**Ii)*((tau-0.5)**(Ji-1))
+            d2grdtau2 += ni*Ji*(Ji-1)*(pi**Ii)*((tau-0.5)**(Ji-2))
+            d2grdpidtau += ni*Ii*Ji*(pi**(Ii-1))*((tau-0.5)**(Ji-1))
+
+        return gr, dgrdpi, d2grdpi2, dgrdtau, d2grdtau2, d2grdpidtau
 
 
 #Region 3
@@ -268,7 +271,7 @@ class Region3:
            specific Helmhotz free energy.
         dfddel: float
             first partial derivative of f to delta
-        dfddel2: float
+        d2fddel2: float
             second partial derivative of f to delta
         dfdtau: float
             first partial derivative of f to tau
@@ -284,20 +287,41 @@ class Region3:
 
         f = _n[0]*np.log(delta)
         dfddel = _n[0]/delta
-        dfddel2 = (-1*_n[0])/(delta**2)
+        d2fddel2 = (-1*_n[0])/(delta**2)
         dfdtau = 0.
-        dfdtau2 = 0.
-        dfddeldtau = 0.
+        d2fdtau2 = 0.
+        d2fddeldtau = 0.
 
         for Ii, Ji, ni in zip(_I[1:], _J[1:], _n[1:]):
             f += ni*(delta**Ii)*(tau**Ji)
             dfddel += ni*Ii*(delta**(Ii-1))*(tau**Ji)
-            dfddel2 += ni*Ii*(Ii-1)*(delta**(Ii-2))*(tau**Ji)
+            d2fddel2 += ni*Ii*(Ii-1)*(delta**(Ii-2))*(tau**Ji)
             dfdtau += ni*Ji*(delta**Ii)*(tau**(Ji-1))
-            dfdtau2 += ni*Ji*(Ji-1)*(delta**Ii)*(tau**(Ji-2))
-            dfddeldtau += ni*Ii*Ji*(delta**(Ii-1))*(tau**(Ji-1))
+            d2fdtau2 += ni*Ji*(Ji-1)*(delta**Ii)*(tau**(Ji-2))
+            d2fddeldtau += ni*Ii*Ji*(delta**(Ii-1))*(tau**(Ji-1))
 
-        return f, dfddel, dfddel2, dfdtau, dfdtau2, dfddeldtau
+        return f, dfddel, d2fddel2, dfdtau, d2fdtau2, d2fddeldtau
+
+    @classmethod
+    def iterRho(cls, delta0, p, t):
+        """Backward equation using iterative ethod to calculate density using pressure and temperature as inputs"""
+
+        tau = TEMPC/t
+        c = p/(RHOC*BIGR*t)
+
+        def func(delta):
+            baseq = cls._phi(delta=delta, tau=tau)
+            f1 = (delta**2)*baseq[1]-c
+            return f1
+
+        def dfunc(delta):
+            baseq = cls._phi(delta=delta, tau=tau)
+            f1 = 2*delta*baseq[1]+(delta**2)*baseq[2]
+            return f1
+
+        _delta = optimize.newton(func, x0=delta0, fprime=dfunc, tol=1e-9)
+        _rho = RHOC*_delta
+        return _rho
 
     @classmethod
     def saturRho(cls, psat, tsat):
@@ -318,36 +342,18 @@ class Region3:
             Vapor density in saturation point (Kg/m^3)
         """
 
-        tau = TEMPC/tsat
-        c = psat/(RHOC*BIGR*tsat)
-
-        def func(delta):
-
-            f, dfddel, dfddel2, dfdtau, dfdtau2, dfddeldtau = cls._phi(delta=delta, tau=tau)
-            f1 = (delta**2)*dfddel-c
-            return f1
-
-        def dfunc(delta):
-
-            f, dfddel, dfddel2, dfdtau, dfdtau2, dfddeldtau = cls._phi(delta=delta, tau=tau)
-            f1 = 2*delta*dfddel+(delta**2)*dfddel2
-            return f1
-
-        delL = delV = 1.
-
-        if tsat <= 647:
-            delL = optimize.newton(func, x0=1.7, fprime=dfunc, tol=1e-9)
-            delV = optimize.newton(func, x0=0.4, fprime=dfunc, tol=1e-9)
+        if 623.15 < tsat <= 647:
+            rhof = cls.iterRho(1.7, psat, tsat)
+            rhog = cls.iterRho(0.4, psat, tsat)
         elif 647 < tsat < TEMPC:
-            delL = optimize.newton(func, x0=0.999999999, fprime=dfunc, tol=1e-9)
-            delV = optimize.newton(func, x0=0.999999999, fprime=dfunc, tol=1e-9)
+            rhof = cls.iterRho(0.999999999, psat, tsat)
+            rhog = cls.iterRho(0.999999999, psat, tsat)
 
-        rhoL, rhoV = delL*RHOC, delV*RHOC
-        return rhoL, rhoV
+        return rhof, rhog
 
     @classmethod
-    def region3(cls, rho, t, desc):
-        """Property equations in region 3
+    def props(cls, rho, t, desc):
+        """Equations of property for region 3
 
         Parameters
         ----------
@@ -356,11 +362,16 @@ class Region3:
         t: float
             temperature (K)
         desc: str
-            key of property to return, one of p, u, h, s, cp, and cv
+            property to return, one of p, u, h, s, cp, and cv
 
         Returns
         -------
-        return one of:
+        _props: dict or None
+            return one of available properties or if property is not available return None instead, see Available Properties
+
+
+        Available Properties
+        --------------------
         p: float
             pressure (KPa)
         u: float
@@ -378,24 +389,24 @@ class Region3:
         delta = rho/RHOC
         tau = TEMPC/t
 
-        f, dfddel, dfddel2, dfdtau, dfdtau2, dfddeldtau = cls._phi(delta=delta, tau=tau)
+        f, dfddel, d2fddel2, dfdtau, d2fdtau2, d2fddeldtau = cls._phi(delta=delta, tau=tau)
 
-        props = dict()
-        props["p"] = rho*BIGR*t*delta*dfddel
-        props["u"] = BIGR*t*tau*dfdtau
-        props["s"] = BIGR*(tau*dfdtau-f)
-        props["h"] = BIGR*t*(tau*dfdtau+delta*dfddel)
+        _props = dict()
+        _props["p"] = rho*BIGR*t*delta*dfddel
+        _props["u"] = BIGR*t*tau*dfdtau
+        _props["s"] = BIGR*(tau*dfdtau-f)
+        _props["h"] = BIGR*t*(tau*dfdtau+delta*dfddel)
 
         if not (647 <= t < TEMPC):
-            props["cv"] = -1*BIGR*(tau**2)*dfdtau2
-            sub = ((delta*dfddel-delta*tau*dfddeldtau)**2)/(2*delta*dfddel+(delta**2)*dfddel2)
-            props["cp"] = BIGR*(-1*(tau**2)*dfdtau2+sub)
+            _props["cv"] = -1*BIGR*(tau**2)*d2fdtau2
+            sub = ((delta*dfddel-delta*tau*d2fddeldtau)**2)/(2*delta*dfddel+(delta**2)*d2fddel2)
+            _props["cp"] = BIGR*(-1*(tau**2)*d2fdtau2+sub)
         else:
-            props["cv"] = None
-            props["cp"] = None
+            _props["cv"] = math.inf
+            _props["cp"] = math.inf
 
-        if desc and desc.lower() in props.keys():
-            return props[desc.lower()]
+        if desc and desc.lower() in _props.keys():
+            return _props[desc.lower()]
         else:
             return None
 
@@ -404,17 +415,17 @@ class Region3:
 class Region4:
     """Class for region 4
 
-    Static Methods
+    Classmethods
     --------------
     getSaturPress(cls, tsat)
-        calculate saturation pressure
+        Method to calculate saturation pressure
     getSaturTemp(cls, psat)
-        calculate saturation temperature
+        Method to calculate saturation temperature
     """
 
     @classmethod
     def getSaturPress(cls, tsat):
-        """Method to calculate saturation pressure
+        """Calculate saturation pressure
 
         Parameters
         ----------
@@ -423,7 +434,7 @@ class Region4:
 
         Returns
         -------
-        ans: float
+        psat: float
             Saturation pressure (KPa)
         """
 
@@ -432,12 +443,12 @@ class Region4:
         Ai = (nu**2)+n[0]*nu+n[1]
         Bi = n[2]*(nu**2)+n[3]*nu+n[4]
         Ci = n[5]*(nu**2)+n[6]*nu+n[7]
-        ans = 1e3*((2*Ci/(-Bi + np.sqrt(Bi**2 - 4*Ai*Ci)))**4)
-        return ans
+        psat = 1e3*((2*Ci/(-Bi+np.sqrt(Bi**2-4*Ai*Ci)))**4)
+        return psat
 
     @classmethod
     def getSaturTemp(cls, psat):
-        """Method to calculate saturation pressure
+        """Calculate saturation pressure
 
         Parameters
         ----------
@@ -446,7 +457,7 @@ class Region4:
 
         Returns
         -------
-        ans: float
+        tsat: float
             Saturation temperature (K)
         """
 
@@ -456,84 +467,107 @@ class Region4:
         Fi = n[0]*(beta**2)+n[3]*beta+n[6]
         Gi = n[1]*(beta**2)+n[4]*beta+n[7]
         Di = 2*Gi/(-Fi - np.sqrt((Fi**2) - 4*Ei*Gi))
-        ans = 1*((n[9]+Di-np.sqrt((n[9]+Di)**2-4*(n[8]+n[9]*Di)))/2)
-        return ans
+        tsat = 1*((n[9]+Di-np.sqrt((n[9]+Di)**2-4*(n[8]+n[9]*Di)))/2)
+        return tsat
 
 
 #Region 5
-def region5(p, t, desc=None):
-    """Basic and property equations for region 5
+class Region5:
 
-    Parameters
-    ----------
-    p: float
-        pressure (KPa)
-    t: float
-        temperature (K)
-    desc: str
-        key of property to return, one of v, u, h, s, cp, and cv
+    @staticmethod
+    def _gammao(pi, tau):
 
-    Returns
-    -------
-    return one of:
-    v: float
-        specific volume (m^3/Kg)
-    u: float
-        specific internal energy (KJ/Kg)
-    h: float
-        specific enthalpy (KJ/Kg)
-    s: float
-        specific entropy (KJ/Kg*K)
-    cp: float
-        specific isobaric heat capacity (KJ/Kg*K)
-    cv: float
-        specific isochoric heat capacity (KJ/Kg*K)
-    """
+        _Jo = IJnReg5["Jo"]
+        _no = IJnReg5["no"]
 
-    pi = p/1e3
-    tau = 1000/t
+        go = np.log(pi)
+        dgodpi = 1./pi
+        d2godpi2 = -1./(pi**2)
+        dgodtau = 0.
+        d2godtau2 = 0.
+        d2godpidtau = 0.
 
-    _Jo = IJnReg5["Jo"]
-    _no = IJnReg5["no"]
-    _I = IJnReg5["I"]
-    _J = IJnReg5["J"]
-    _n = IJnReg5["n"]
+        for Jio, nio in zip(_Jo, _no):
+            go += nio*(tau**Jio)
+            dgodtau += nio*Jio*(tau**(Jio-1))
+            d2godtau2 += nio*Jio*(Jio-1)*(tau**(Jio-2))
 
-    go = np.log(pi)
-    dgodpi = 1./pi
-    # dgodpi2 = -1./(pi**2)
-    dgodtau = 0.
-    dgodtau2 = 0.
-    # dgodpidtau = 0.
-    gr = 0.
-    dgrdpi = 0.
-    dgrdpi2 = 0.
-    dgrdtau = 0.
-    dgrdtau2 = 0.
-    dgrdpidtau = 0.
+        return go, dgodpi, d2godpi2, dgodtau, d2godtau2, d2godpidtau
 
-    for Jio, nio in zip(_Jo, _no):
-        go += nio*(tau**Jio)
-        dgodtau += nio*Jio*(tau**(Jio-1))
-        dgodtau2 += nio*Jio*(Jio-1)*(tau**(Jio-2))
+    @staticmethod
+    def _gammar(pi, tau):
 
-    for Ii, Ji, ni in zip(_I, _J, _n):
-        gr += ni*(pi**Ii)*(tau**Ji)
-        dgrdpi += ni*Ii*(pi**(Ii-1))*(tau**Ji)
-        dgrdpi2 += ni*Ii*(Ii-1)*(pi**(Ii-2))*(tau**Ji)
-        dgrdtau += ni*Ji*(pi**Ii)*(tau**(Ji-1))
-        dgrdtau2 += ni*Ji*(Ji-1)*(pi**Ii)*(tau**(Ji-2))
-        dgrdpidtau += ni*Ii*Ji*(pi**(Ii-1))*(tau**(Ji-1))
+        _I = IJnReg5["I"]
+        _J = IJnReg5["J"]
+        _n = IJnReg5["n"]
 
-    props = dict()
-    props["v"] = (BIGR*t*pi*(dgrdpi+dgodpi))/p
-    props["u"] = BIGR*t*(tau*(dgodtau+dgrdtau)-pi*(dgodpi+dgrdpi))
-    props["s"] = BIGR*(tau*(dgodtau+dgrdtau)-(go+gr))
-    props["h"] = BIGR*t*tau*(dgodtau+dgrdtau)
-    props["cp"] = -1*BIGR*(tau**2)*(dgodtau2+dgrdtau2)
-    props["cv"] = BIGR*(-1*(tau**2)*(dgodtau2+dgrdtau2)-(((1+pi*dgrdpi-tau*pi*dgrdpidtau)**2)/(1-(pi**2)*dgrdpi2)))
+        gr = 0.
+        dgrdpi = 0.
+        d2grdpi2 = 0.
+        dgrdtau = 0.
+        d2grdtau2 = 0.
+        d2grdpidtau = 0.
 
-    if desc and desc.lower() in props.keys():
-        return props[desc.lower()]
-    else:
-        return None
+        for Ii, Ji, ni in zip(_I, _J, _n):
+            gr += ni*(pi**Ii)*(tau**Ji)
+            dgrdpi += ni*Ii*(pi**(Ii-1))*(tau**Ji)
+            d2grdpi2 += ni*Ii*(Ii-1)*(pi**(Ii-2))*(tau**Ji)
+            dgrdtau += ni*Ji*(pi**Ii)*(tau**(Ji-1))
+            d2grdtau2 += ni*Ji*(Ji-1)*(pi**Ii)*(tau**(Ji-2))
+            d2grdpidtau += ni*Ii*Ji*(pi**(Ii-1))*(tau**(Ji-1))
+
+        return gr, dgrdpi, d2grdpi2, dgrdtau, d2grdtau2, d2grdpidtau
+
+    @classmethod
+    def props(cls, p, t, desc=None):
+        """Equations of property for region 5
+
+        Parameters
+        ----------
+        p: float
+            pressure (KPa)
+        t: float
+            temperature (K)
+        desc: str
+            property to return, one of v, u, h, s, cp, and cv
+
+        Returns
+        -------
+        _props: dict or None
+            return one of available properties or if property is not available return None instead, see Available Properties
+
+
+        Available Properties
+        --------------------
+        v: float
+            specific volume (m^3/Kg)
+        u: float
+            specific internal energy (KJ/Kg)
+        h: float
+            specific enthalpy (KJ/Kg)
+        s: float
+            specific entropy (KJ/Kg*K)
+        cp: float
+            specific isobaric heat capacity (KJ/Kg*K)
+        cv: float
+            specific isochoric heat capacity (KJ/Kg*K)
+        """
+
+        pi = p/1e3
+        tau = 1000/t
+
+        go, dgodpi, d2godpi2, dgodtau, d2godtau2, d2godpidtau = cls._gammao(pi, tau)
+        gr, dgrdpi, d2grdpi2, dgrdtau, d2grdtau2, d2grdpidtau = cls._gammar(pi, tau)
+
+        _props = dict()
+        _props["v"] = (BIGR*t*pi*(dgrdpi+dgodpi))/p
+        _props["u"] = BIGR*t*(tau*(dgodtau+dgrdtau)-pi*(dgodpi+dgrdpi))
+        _props["s"] = BIGR*(tau*(dgodtau+dgrdtau)-(go+gr))
+        _props["h"] = BIGR*t*tau*(dgodtau+dgrdtau)
+        _props["cp"] = -1*BIGR*(tau**2)*(d2godtau2+d2grdtau2)
+        _props["cv"] = BIGR*(-1*(tau**2)*(d2godtau2+d2grdtau2)-(((1+pi*dgrdpi-tau*pi*d2grdpidtau)**2)/(1-(pi**2)*d2grdpi2)))
+
+        if desc and desc.lower() in _props.keys():
+            return _props[desc.lower()]
+        else:
+            return None
