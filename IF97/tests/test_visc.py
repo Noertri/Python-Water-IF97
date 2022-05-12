@@ -1,5 +1,5 @@
 import unittest
-from IF97.visc import visc
+from IF97.visco import visc
 
 
 class TestVisc(unittest.TestCase):
