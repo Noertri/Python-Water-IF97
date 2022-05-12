@@ -10,8 +10,7 @@ class Region1:
 
     @staticmethod
     def _gamma(pi, tau):
-        """Basic equations for region 1
-        """
+        """Basic equations for region 1"""
 
         _I = IJnReg1["I"]
         _J = IJnReg1["J"]
