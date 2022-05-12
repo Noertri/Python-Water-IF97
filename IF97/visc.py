@@ -1,10 +1,10 @@
 import numpy as np
-import math
 from .coefficients import IJH
 from .constants import *
 
 
 def visc(rho, t):
+    """Calculate viscosity of ordinary/pure water"""
 
     delta = rho/RHOC
     tau = t/TEMPC

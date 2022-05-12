@@ -7,13 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi semua region di modul basic.py, test dan debug region 1 sampai region 5">
-      <change afterPath="$PROJECT_DIR$/IF97/tests/test_visc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/coefficients/_IJHVisc.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/coefficients/_IJHVisc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/visc.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/visc.py" afterDir="false" />
-    </list>
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="melengkapi rumus viskositas, tes dan debug modul visc.py" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,7 +53,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/IF97" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -73,7 +67,7 @@
       <recent name="D:\Python\Python-Water-Properties-IF97\IF97" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for test_visc.TestVisc.test_visc">
+  <component name="RunManager" selected="Python tests.Python tests in test_visc.py">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -116,17 +110,17 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_region2.TestRegion2.test_supp_properties2" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for IF97.tests.test_visc.TestVisc.test_visc" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/IF97/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Python-Water-IF97/IF97/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_region2.TestRegion2.test_supp_properties2&quot;" />
+      <option name="_new_target" value="&quot;IF97.tests.test_visc.TestVisc.test_visc&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -135,7 +129,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/IF97/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Python-Water-IF97/IF97/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -144,31 +138,17 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_visc.TestVisc.test_visc" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="Python-Water-Properties-IF97" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/IF97/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_visc.TestVisc.test_visc&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="Python tests in test_region3.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/IF97/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Python-Water-IF97/IF97/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/IF97/tests/test_region3.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/../Python-Water-IF97/IF97/tests/test_region3.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
@@ -177,31 +157,45 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/IF97/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Python-Water-IF97/IF97/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/IF97/tests/test_region5.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/../Python-Water-IF97/IF97/tests/test_region5.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests in test_visc.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="Python-Water-Properties-IF97" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Python-Water-IF97/IF97/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/../Python-Water-IF97/IF97/tests/test_visc.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python.app" />
       <item itemvalue="Python.main" />
-      <item itemvalue="Python tests.Python tests for test_region2.TestRegion2.test_supp_properties2" />
       <item itemvalue="Python tests.Python tests for test_region2.TestRegion2.test_supp_properties3" />
       <item itemvalue="Python tests.Python tests in test_region3.py" />
       <item itemvalue="Python tests.Python tests in test_region5.py" />
-      <item itemvalue="Python tests.Python tests for test_visc.TestVisc.test_visc" />
+      <item itemvalue="Python tests.Python tests in test_visc.py" />
+      <item itemvalue="Python tests.Python tests for IF97.tests.test_visc.TestVisc.test_visc" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for test_visc.TestVisc.test_visc" />
+        <item itemvalue="Python tests.Python tests in test_visc.py" />
+        <item itemvalue="Python tests.Python tests for IF97.tests.test_visc.TestVisc.test_visc" />
         <item itemvalue="Python tests.Python tests in test_region5.py" />
         <item itemvalue="Python tests.Python tests in test_region3.py" />
         <item itemvalue="Python tests.Python tests for test_region2.TestRegion2.test_supp_properties3" />
-        <item itemvalue="Python tests.Python tests for test_region2.TestRegion2.test_supp_properties2" />
       </list>
     </recent_temporary>
   </component>
@@ -213,13 +207,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1650182031901</updated>
-    </task>
-    <task id="LOCAL-00019" summary="modifikasi region3.py">
-      <created>1650523794882</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1650523794882</updated>
     </task>
     <task id="LOCAL-00020" summary="membuat modul backwardPT.py, test dan debug subregion 3">
       <created>1650551598518</created>
@@ -557,7 +544,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652334499241</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="melengkapi rumus viskositas, tes dan debug modul visc.py">
+      <created>1652341269942</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1652341269942</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -572,7 +566,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="mengganti nama folder desktop_app menjadi desktop, mengubah nama modul menjadi gui.py" />
     <MESSAGE value="mengganti nama folder desktop menjadi GUI, mengubah nama modul menjadi app.py" />
     <MESSAGE value="memodifikasi app.py" />
     <MESSAGE value="memodifikasi modul app.py dan if97.py" />
@@ -597,6 +590,7 @@
     <MESSAGE value="memodifikasi dokumentasi di modul backwardPT.py, membuat modul _IJHVisc.py di subpackage coefficients" />
     <MESSAGE value="memodifikasi region 1 di odul basic.py dan membuat modul visc.py" />
     <MESSAGE value="memodifikasi semua region di modul basic.py, test dan debug region 1 sampai region 5" />
-    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi semua region di modul basic.py, test dan debug region 1 sampai region 5" />
+    <MESSAGE value="melengkapi rumus viskositas, tes dan debug modul visc.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="melengkapi rumus viskositas, tes dan debug modul visc.py" />
   </component>
 </project>

@@ -1,5 +1,5 @@
-import numpy as np
 import math
+import numpy as np
 from scipy import optimize
 from ..coefficients import *
 from ..constants import BIGR, RHOC, TEMPC
