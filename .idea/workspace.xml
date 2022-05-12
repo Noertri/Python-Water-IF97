@@ -7,10 +7,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="test dan debug modul visc.py">
-      <change beforePath="$PROJECT_DIR$/IF97/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/tests/test_visc.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/tests/test_visc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/visc.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/visco.py" afterDir="false" />
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="mengganti nama modul visc.py menjadi visco.py">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/_if97.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/_if97.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/visco.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/visco.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +71,7 @@
       <recent name="D:\Python\Python-Water-Properties-IF97\IF97" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests in test_visc.py">
+  <component name="RunManager" selected="Python.main">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -211,13 +211,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1650182031901</updated>
-    </task>
-    <task id="LOCAL-00022" summary="test dan debug region 1">
-      <created>1650559234898</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1650559234898</updated>
     </task>
     <task id="LOCAL-00023" summary="mengganti nama modul di subpackage koefisien">
       <created>1650559534936</created>
@@ -555,7 +548,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652360908257</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="mengganti nama modul visc.py menjadi visco.py">
+      <created>1652360987551</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1652360987551</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -570,7 +570,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="memodifikasi app.py" />
     <MESSAGE value="memodifikasi modul app.py dan if97.py" />
     <MESSAGE value="memodifikasi modul if97.py dan menghapus modul _converter.py" />
     <MESSAGE value="menambah exception di modul if97.py dan memodifikasi gui" />
@@ -595,6 +594,7 @@
     <MESSAGE value="melengkapi rumus viskositas, tes dan debug modul visc.py" />
     <MESSAGE value="update workspace.xml" />
     <MESSAGE value="test dan debug modul visc.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="test dan debug modul visc.py" />
+    <MESSAGE value="mengganti nama modul visc.py menjadi visco.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="mengganti nama modul visc.py menjadi visco.py" />
   </component>
 </project>
