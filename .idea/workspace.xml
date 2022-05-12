@@ -115,7 +115,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Python-Water-IF97/IF97/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/IF97/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -129,7 +129,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Python-Water-IF97/IF97/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/IF97/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -143,12 +143,12 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Python-Water-IF97/IF97/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/IF97/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/../Python-Water-IF97/IF97/tests/test_region3.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/IF97/tests/test_region3.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
@@ -157,12 +157,12 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Python-Water-IF97/IF97/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/IF97/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/../Python-Water-IF97/IF97/tests/test_region5.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/IF97/tests/test_region5.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
@@ -171,23 +171,23 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Python-Water-IF97/IF97/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/IF97/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/../Python-Water-IF97/IF97/tests/test_visc.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/IF97/tests/test_visc.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python.app" />
       <item itemvalue="Python.main" />
+      <item itemvalue="Python tests.Python tests for IF97.tests.test_visc.TestVisc.test_visc" />
       <item itemvalue="Python tests.Python tests for test_region2.TestRegion2.test_supp_properties3" />
       <item itemvalue="Python tests.Python tests in test_region3.py" />
       <item itemvalue="Python tests.Python tests in test_region5.py" />
       <item itemvalue="Python tests.Python tests in test_visc.py" />
-      <item itemvalue="Python tests.Python tests for IF97.tests.test_visc.TestVisc.test_visc" />
     </list>
     <recent_temporary>
       <list>
