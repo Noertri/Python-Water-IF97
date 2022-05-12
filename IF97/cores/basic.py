@@ -5,69 +5,76 @@ from ..constants import BIGR, RHOC, TEMPC
 
 
 #Region 1
-def region1(p, t, desc=None):
-    """Basic and property equations for region 1
+class Region1:
 
-    Parameters
-    ----------
-    p: float
-        pressure (KPa)
-    t: float
-        temperature (K)
-    desc: str
-        key of property to return, one of v, u, h, s, cp, and cv
-
-    Returns
-    -------
-    return one of:
-    v: float
-        specific volume (Kg/m^3)
-    u: float
-        specific internal energy (KJ/Kg)
-    h: float
-        specific enthalpy (KJ/Kg)
-    s: float
-        specific entropy (KJ/Kg*K)
-    cp: float
-        specific isobaric heat capacity (KJ/Kg*K)
-    cv: float
-        specific isochoric heat capacity (KJ/Kg*K)
-    """
-
-    pi = p/16.53e3
-    tau = 1386/t
     _I = IJnReg1["I"]
     _J = IJnReg1["J"]
     _n = IJnReg1["n"]
 
-    g = 0.
-    dgdpi = 0.
-    dgdpi2 = 0.
-    dgdtau = 0.
-    dgdtau2 = 0.
-    dgdpidtau = 0.
+    def _gamma(self, pi, tau):
+        g = 0.
+        dgdpi = 0.
+        d2gdpi2 = 0.
+        dgdtau = 0.
+        d2gdtau2 = 0.
+        d2gdpidtau = 0.
 
-    for Ii, Ji, ni in zip(_I, _J, _n):
-        g += ni*((7.1-pi)**Ii)*((tau-1.222)**Ji)
-        dgdpi += -ni*Ii*((7.1-pi)**(Ii-1))*((tau-1.222)**Ji)
-        dgdpi2 += ni*Ii*(Ii-1)*((7.1-pi)**(Ii-2))*((tau-1.222)**Ji)
-        dgdtau += ni*Ji*((7.1-pi)**Ii)*((tau-1.222)**(Ji-1))
-        dgdtau2 += ni*Ji*(Ji-1)*((7.1-pi)**Ii)*((tau-1.222)**(Ji-2))
-        dgdpidtau += -ni*Ii*Ji*((7.1-pi)**(Ii-1))*((tau-1.222)**(Ji-1))
+        for Ii, Ji, ni in zip(self._I, self._J, self._n):
+            g += ni*((7.1-pi)**Ii)*((tau-1.222)**Ji)
+            dgdpi += -ni*Ii*((7.1-pi)**(Ii-1))*((tau-1.222)**Ji)
+            d2gdpi2 += ni*Ii*(Ii-1)*((7.1-pi)**(Ii-2))*((tau-1.222)**Ji)
+            dgdtau += ni*Ji*((7.1-pi)**Ii)*((tau-1.222)**(Ji-1))
+            d2gdtau2 += ni*Ji*(Ji-1)*((7.1-pi)**Ii)*((tau-1.222)**(Ji-2))
+            d2gdpidtau += -ni*Ii*Ji*((7.1-pi)**(Ii-1))*((tau-1.222)**(Ji-1))
 
-    props = dict()
+        return g, dgdpi, d2gdpi2, dgdtau, d2gdtau2, d2gdpidtau
 
-    props["v"] = BIGR*t*pi*dgdpi/p
-    props["u"] = BIGR*t*(tau*dgdtau-pi*dgdpi)
-    props["s"] = BIGR*(tau*dgdtau-g)
-    props["h"] = BIGR*t*tau*dgdtau
-    props["cp"] = -1*BIGR*(tau**2)*dgdtau2
-    props["cv"] = BIGR*(-1*(tau**2)*dgdtau2 + ((dgdpi-tau*dgdpidtau)**2)/dgdpi2)
+    @classmethod
+    def region1(cls, p, t, desc=None):
+        """Property equations for region 1
 
-    if desc and desc.lower() in props.keys():
-        return props[desc.lower()]
-    else:
-        return None
+        Parameters
+        ----------
+        p: float
+            pressure (KPa)
+        t: float
+            temperature (K)
+        desc: str
+            key of property to return, one of v, u, h, s, cp, and cv
+
+        Returns
+        -------
+        props: dict or None
+            return one of:
+                v: float
+                    specific volume (Kg/m^3)
+                u: float
+                    specific internal energy (KJ/Kg)
+                h: float
+                    specific enthalpy (KJ/Kg)
+                s: float
+                    specific entropy (KJ/Kg*K)
+                cp: float
+                    specific isobaric heat capacity (KJ/Kg*K)
+                cv: float
+                    specific isochoric heat capacity (KJ/Kg*K)
+        """
+
+        pi = p/16.53e3
+        tau = 1386/t
+        props = dict()
+
+        props["v"] = BIGR*t*pi*dgdpi/p
+        props["u"] = BIGR*t*(tau*dgdtau-pi*dgdpi)
+        props["s"] = BIGR*(tau*dgdtau-g)
+        props["h"] = BIGR*t*tau*dgdtau
+        props["cp"] = -1*BIGR*(tau**2)*dgdtau2
+        props["cv"] = BIGR*(-1*(tau**2)*dgdtau2 + ((dgdpi-tau*dgdpidtau)**2)/dgdpi2)
+
+        if desc and desc.lower() in props.keys():
+            return props[desc.lower()]
+        else:
+            return None
 
 
 #Region 2
