@@ -114,96 +114,105 @@ class Region3VPT:
         vol = 0.
         p3cd = 19.00881189173929e3
 
-        if 623.15 < t <= 863.15 and (p23 := Boundary23.getPress(t)) < p <= 1e5:
-            if 4e4 < p <= 1e5:
-                if t <= (t3ab := (t3ab := temp3(p, "3ab"))):
-                    vol = cls.volPT(p, t, "3a")
-                elif t > (t3ab := temp3(p, "3ab")):
-                    vol = cls.volPT(p, t, "3b")
-            elif 25e3 < p <= 4e4:
-                if t <= (t3cd := temp3(p, "3cd")):
-                    vol = cls.volPT(p, t, "3c")
-                elif (t3cd := temp3(p, "3cd")) < t <= (t3ab := temp3(p, "3ab")):
-                    vol = cls.volPT(p, t, "3d")
-                elif (t3ab := temp3(p, "3ab")) < t <= (t3ef := temp3(p, "3ef")):
-                    vol = cls.volPT(p, t, "3e")
-                elif t > (t3ef := temp3(p, "3ef")):
-                    vol = cls.volPT(p, t, "3f")
-            elif 23.5e3 < p <= 25e3:
-                if t <= (t3cd := temp3(p, "3cd")):
-                    vol = cls.volPT(p, t, "3c")
-                elif (t3cd := temp3(p, "3cd")) < t <= (t3gh := temp3(p, "3gh")):
-                    vol = cls.volPT(p, t, "3g")
-                elif (t3gh := temp3(p, "3gh")) < t <= (t3ef := temp3(p, "3ef")):
-                    vol = cls.volPT(p, t, "3h")
-                elif (t3ef := temp3(p, "3ef")) < t <= (t3ij := temp3(p, "3ij")):
-                    vol = cls.volPT(p, t, "3i")
-                elif (t3ij := temp3(p, "3ij")) < t <= (t3jk := temp3(p, "3jk")):
-                    vol = cls.volPT(p, t, "3j")
-                elif t > (t3jk := temp3(p, "3jk")):
-                    vol = cls.volPT(p, t, "3k")
-            elif 23e3 < p <= 23.5e3:
-                if t <= (t3cd := temp3(p, "3cd")):
-                    vol = cls.volPT(p, t, "3c")
-                elif (t3cd := temp3(p, "3cd")) < t <= (t3gh := temp3(p, "3gh")):
-                    vol = cls.volPT(p, t, "3l")
-                elif (t3gh := temp3(p, "3gh")) < t <= (t3ef := temp3(p, "3ef")):
-                    vol = cls.volPT(p, t, "3h")
-                elif (t3ef := temp3(p, "3ef")) < t <= (t3ij := temp3(p, "3ij")):
-                    vol = cls.volPT(p, t, "3i")
-                elif (t3ij := temp3(p, "3ij")) < t <= (t3jk := temp3(p, "3jk")):
-                    vol = cls.volPT(p, t, "3j")
-                elif t > (t3jk := temp3(p, "3jk")):
-                    vol = cls.volPT(p, t, "3k")
-            elif 22.5e3 < p <= 23e3:
-                if t <= (t3cd := temp3(p, "3cd")):
-                    vol = cls.volPT(p, t, "3c")
-                elif (t3cd := temp3(p, "3cd")) < t <= (t3gh := temp3(p, "3gh")):
-                    vol = cls.volPT(p, t, "3l")
-                elif (t3gh := temp3(p, "3gh")) < t <= (t3mn := temp3(p, "3mn")):
-                    vol = cls.volPT(p, t, "3m")
-                elif (t3mn := temp3(p, "3mn")) < t <= (t3ef := temp3(p, "3ef")):
-                    vol = cls.volPT(p, t, "3n")
-                elif (t3ef := temp3(p, "3ef")) < t <= (t3op := temp3(p, "3op")):
-                    vol = cls.volPT(p, t, "3o")
-                elif (t3op := temp3(p, "3op")) < t <= (t3ij := temp3(p, "3ij")):
-                    vol = cls.volPT(p, t, "3p")
-                elif (t3ij := temp3(p, "3ij")) < t <= (t3jk := temp3(p, "3jk")):
-                    vol = cls.volPT(p, t, "3j")
-                elif t > (t3jk := temp3(p, "3jk")):
-                    vol = cls.volPT(p, t, "3k")
-            elif (p643 := Region4.getSaturPress(tsat=643.15)) < p <= 22.5e3:
-                if t <= (t3cd := temp3(p, "3cd")):
-                    vol = cls.volPT(p, t, "3c")
-                elif (t3cd := temp3(p, "3cd")) < t <= (t3qu := temp3(p, "3qu")):
-                    vol = cls.volPT(p, t, "3q")
-                elif (t3qu := temp3(p, "3qu")) < t <= (t3rx := temp3(p, "3rx")):
-                    vol = cls.auxEqs(p, t)
-                elif (t3rx := temp3(p, "3rx")) < t <= (t3jk := temp3(p, "3jk")):
-                    vol = cls.volPT(p, t, "3r")
-                elif t > (t3jk := temp3(p, "3jk")):
-                    vol = cls.volPT(p, t, "3k")
-            elif 20.5e3 < p <= (p643 := Region4.getSaturPress(tsat=643.15)):
-                if t <= (t3cd := temp3(p, "3cd")):
-                    vol = cls.volPT(p, t, "3c")
-                elif (t3cd := temp3(p, "3cd")) < t <= Region4.getSaturTemp(psat=p):
-                    vol = cls.volPT(p, t, "3s")
-                elif Region4.getSaturTemp(psat=p) < t <= (t3jk := temp3(p, "3jk")):
-                    vol = cls.volPT(p, t, "3r")
-                elif t > (t3jk := temp3(p, "3jk")):
-                    vol = cls.volPT(p, t, "3k")
-            elif p3cd < p <= 20.5e3:
-                if t <= (t3cd := temp3(p, "3cd")):
-                    vol = cls.volPT(p, t, "3c")
-                elif (t3cd := temp3(p, "3cd")) < t <= Region4.getSaturTemp(psat=p):
-                    vol = cls.volPT(p, t, "3s")
-                elif t >= (tsat := Region4.getSaturTemp(psat=p)):
-                    vol = cls.volPT(p, t, "3t")
-            elif (pmin := Region4.getSaturPress(tsat=623.15)) < p <= p3cd:
-                if t <= (tsat := Region4.getSaturTemp(psat=p)):
-                    vol = cls.volPT(p, t, "3c")
-                elif t >= (tsat := Region4.getSaturTemp(psat=p)):
-                    vol = cls.volPT(p, t, "3t")
+        if 623.15 < t <= 863.15 and Boundary23.getPress(t) < p <= 1e5:
+
+            #subregion 3a and 3b
+            if 4e4 < p <= 1e5 and t <= temp3(p, "3ab"):
+                vol = cls.volPT(p, t, "3a")
+            elif 4e4 < p <= 1e5 and t > temp3(p, "3ab"):
+                vol = cls.volPT(p, t, "3b")
+
+            #subregion 3c, 3d, 3e, 3f
+            if 25e3 < p <= 4e4 and t <= temp3(p, "3cd"):
+                vol = cls.volPT(p, t, "3c")
+            elif 25e3 < p <= 4e4 and (temp3(p, "3cd") < t <= temp3(p, "3ab")):
+                vol = cls.volPT(p, t, "3d")
+            elif 25e3 < p <= 4e4 and (temp3(p, "3ab") < t <= temp3(p, "3ef")):
+                vol = cls.volPT(p, t, "3e")
+            elif 25e3 < p <= 4e4 and t > temp3(p, "3ef"):
+                vol = cls.volPT(p, t, "3f")
+
+            #subregion 3c, 3g, 3h, 3i, 3j, 3k
+            if 23.5e3 < p <= 25e3 and t <= temp3(p, "3cd"):
+                vol = cls.volPT(p, t, "3c")
+            elif 23.5e3 < p <= 25e3 and (temp3(p, "3cd") < t <= temp3(p, "3gh")):
+                vol = cls.volPT(p, t, "3g")
+            elif 23.5e3 < p <= 25e3 and (temp3(p, "3gh") < t <= temp3(p, "3ef")):
+                vol = cls.volPT(p, t, "3h")
+            elif 23.5e3 < p <= 25e3 and (temp3(p, "3ef") < t <= temp3(p, "3ij")):
+                vol = cls.volPT(p, t, "3i")
+            elif 23.5e3 < p <= 25e3 and (temp3(p, "3ij") < t <= temp3(p, "3jk")):
+                vol = cls.volPT(p, t, "3j")
+            elif 23.5e3 < p <= 25e3 and t > temp3(p, "3jk"):
+                vol = cls.volPT(p, t, "3k")
+
+            #subregion 3c, 3l, 3h, 3i, 3j, 3k
+            if 23e3 < p <= 23.5e3 and t <= temp3(p, "3cd"):
+                vol = cls.volPT(p, t, "3c")
+            elif 23e3 < p <= 23.5e3 and (temp3(p, "3cd") < t <= temp3(p, "3gh")):
+                vol = cls.volPT(p, t, "3l")
+            elif 23e3 < p <= 23.5e3 and (temp3(p, "3gh") < t <= temp3(p, "3ef")):
+                vol = cls.volPT(p, t, "3h")
+            elif 23e3 < p <= 23.5e3 and (temp3(p, "3ef") < t <= temp3(p, "3ij")):
+                vol = cls.volPT(p, t, "3i")
+            elif 23e3 < p <= 23.5e3 and (temp3(p, "3ij") < t <= temp3(p, "3jk")):
+                vol = cls.volPT(p, t, "3j")
+            elif 23e3 < p <= 23.5e3 and t > temp3(p, "3jk"):
+                vol = cls.volPT(p, t, "3k")
+
+            #subregion 3c, 3l, 3m, 3n, 3o, 3p, 3j, 3k
+            if 22.5e3 < p <= 23e3 and t <= temp3(p, "3cd"):
+                vol = cls.volPT(p, t, "3c")
+            elif 22.5e3 < p <= 23e3 and (temp3(p, "3cd") < t <= temp3(p, "3gh")):
+                vol = cls.volPT(p, t, "3l")
+            elif 22.5e3 < p <= 23e3 and (temp3(p, "3gh") < t <= temp3(p, "3mn")):
+                vol = cls.volPT(p, t, "3m")
+            elif 22.5e3 < p <= 23e3 and (temp3(p, "3mn") < t <= temp3(p, "3ef")):
+                vol = cls.volPT(p, t, "3n")
+            elif 22.5e3 < p <= 23e3 and (temp3(p, "3ef") < t <= temp3(p, "3op")):
+                vol = cls.volPT(p, t, "3o")
+            elif 22.5e3 < p <= 23e3 and (emp3(p, "3op") < t <= temp3(p, "3ij")):
+                vol = cls.volPT(p, t, "3p")
+            elif 22.5e3 < p <= 23e3 and (temp3(p, "3ij") < t <= temp3(p, "3jk")):
+                vol = cls.volPT(p, t, "3j")
+            elif 22.5e3 < p <= 23e3 and t > temp3(p, "3jk"):
+                vol = cls.volPT(p, t, "3k")
+
+            #subregion 3c, 3q, 3r, 3k
+            if Region4.getSaturPress(tsat=643.15) < p <= 22.5e3 and t <= temp3(p, "3cd"):
+                vol = cls.volPT(p, t, "3c")
+            elif Region4.getSaturPress(tsat=643.15) < p <= 22.5e3 and (temp3(p, "3cd") < t <= temp3(p, "3qu")):
+                vol = cls.volPT(p, t, "3q")
+            elif Region4.getSaturPress(tsat=643.15) < p <= 22.5e3 and (temp3(p, "3qu") < t <= temp3(p, "3rx")):
+                vol = cls.auxEqs(p, t)
+            elif Region4.getSaturPress(tsat=643.15) < p <= 22.5e3 and (temp3(p, "3rx") < t <= temp3(p, "3jk")):
+                vol = cls.volPT(p, t, "3r")
+            elif Region4.getSaturPress(tsat=643.15) < p <= 22.5e3 and t > temp3(p, "3jk"):
+                vol = cls.volPT(p, t, "3k")
+
+            #subregion 3c, 3r, 3s, 3k
+            if 20.5e3 < p <= Region4.getSaturPress(tsat=643.15) and t <= temp3(p, "3cd"):
+                vol = cls.volPT(p, t, "3c")
+            elif 20.5e3 < p <= Region4.getSaturPress(tsat=643.15) and (temp3(p, "3cd") < t <= Region4.getSaturTemp(psat=p)):
+                vol = cls.volPT(p, t, "3s")
+            elif 20.5e3 < p <= Region4.getSaturPress(tsat=643.15) and (Region4.getSaturTemp(psat=p) < t <= temp3(p, "3jk")):
+                vol = cls.volPT(p, t, "3r")
+            elif 20.5e3 < p <= Region4.getSaturPress(tsat=643.15) and t > temp3(p, "3jk"):
+                vol = cls.volPT(p, t, "3k")
+
+            #subregion 3c, 3s, 3t
+            if p3cd < p <= 20.5e3 and t <= temp3(p, "3cd"):
+                vol = cls.volPT(p, t, "3c")
+            elif p3cd < p <= 20.5e3 and (temp3(p, "3cd") < t <= Region4.getSaturTemp(psat=p)):
+                vol = cls.volPT(p, t, "3s")
+            elif p3cd < p <= 20.5e3 and t >= Region4.getSaturTemp(psat=p):
+                vol = cls.volPT(p, t, "3t")
+
+            #subregion 3c, 3t
+            if Region4.getSaturPress(tsat=623.15) < p <= p3cd and t <= Region4.getSaturTemp(psat=p):
+                vol = cls.volPT(p, t, "3c")
+            elif Region4.getSaturPress(tsat=623.15) < p <= p3cd and t >= Region4.getSaturTemp(psat=p):
+                vol = cls.volPT(p, t, "3t")
 
             rho = 1/vol
             return rho
@@ -235,42 +244,43 @@ class Region3VPT:
         """
 
         vol = 0.
+        if (temp3(p, "3qu") < t <= temp3(p, "3rx")) and Region4.getSaturPress(tsat=643.15) < p <= 22.5e3:
 
-        if (t3qu := temp3(p, "3qu")) < t <= (t3rx := temp3(p, "3rx")) and (pmin := Region4.getSaturPress(tsat=643.15)) < p <= 22.5e3:
-            if 21.93161551e3 < p <= 22.064e3 and t < (tsat := Region4.getSaturTemp(psat=p)):
-                if (t3qu := temp3(p, "3qu")) < p <= (t3uv := temp3(p, "3uv")):
-                    vol = cls.volPT(p, t, "3u")
-                elif t > (t3uv := temp3(p, "3uv")):
-                    vol = cls.volPT(p, t, "3y")
-            elif (pmin := Region4.getSaturPress(tsat=643.15)) < p <= 21.93161551e3 and t < (tsat := Region4.getSaturTemp(psat=p)):
-                if t > (t3qu := temp3(p, "3qu")):
-                    vol = cls.volPT(p, t, "3u")
-            elif 21.90096265e3 < p <= 22.064e3 and t > (tsat := Region4.getSaturTemp(psat=p)):
-                if t <= (t3wx := temp3(p, "3wx")):
-                    vol = cls.volPT(p, t, "3z")
-                elif (t3wx := temp3(p, "3wx")) < t <= (t3rx := temp3(p, "3rx")):
-                    vol = cls.volPT(p, t, "3x")
-            elif (pmin := Region4.getSaturPress(tsat=643.15)) < p <= 21.90096265e3 and t > Region4.getSaturTemp(psat=p):
-                if t <= (t3rx := temp3(p, "3rx")):
-                    vol = cls.volPT(p, t, "3x")
-            elif 22.11e3 < p <= 22.5e3:
-                if (t3qu := temp3(p, "3qu")) < t <= (t3uv := temp3(p, "3uv")):
-                    vol = cls.volPT(p, t, "3u")
-                elif (t3uv := temp3(p, "3uv")) < t <= (t3ef := temp3(p, "3ef")):
-                    vol = cls.volPT(p, t, "3v")
-                elif (t3ef := temp3(p, "3ef")) < t <= (t3wx := temp3(p, "3wx")):
-                    vol = cls.volPT(p, t, "3w")
-                elif (t3wx := temp3(p, "3wx")) < t <= (t3rx := temp3(p, "3rx")):
-                    vol = cls.volPT(p, t, "3x")
-            elif 22.064e3 < p <= 22.11e3:
-                if (t3qu := temp3(p, "3qu")) < t <= (t3uv := temp3(p, "3uv")):
-                    vol = cls.volPT(p, t, "3u")
-                elif (t3uv := temp3(p, "3uv")) < t <= (t3ef := temp3(p, "3ef")):
-                    vol = cls.volPT(p, t, "3y")
-                elif (t3ef := temp3(p, "3ef")) < t <= (t3wx := temp3(p, "3wx")):
-                    vol = cls.volPT(p, t, "3z")
-                elif (t3wx := temp3(p, "3wx")) < t <= (t3rx := temp3(p, "3rx")):
-                    vol = cls.volPT(p, t, "3x")
+            #subcritical pressure region 3u, 3y
+            if t <= Region4.getSaturTemp(psat=p) and 21.93161551e3 < p <= 22.064e3 and (temp3(p, "3qu") < t <= temp3(p, "3uv")):
+                vol = cls.volPT(p, t, "3u")
+            elif (temp3(p, "3uv") < t <= Region4.getSaturTemp(psat=p)) and 21.93161551e3 < p <= 22.064e3:
+                vol = cls.volPT(p, t, "3y")
+            elif (temp3(p, "3qu") < t <= Region4.getSaturTemp(psat=p) ) and (Region4.getSaturPress(tsat=643.15) < p <= 21.93161551e3):
+                vol = cls.volPT(p, t, "3u")
+
+            #subcritical pressure region 3x, 3z
+            if (Region4.getSaturTemp(psat=p) <= t <= temp3(p, "3wx")) and 21.90096265e3 < p <= 22.064e3:
+                vol = cls.volPT(p, t, "3z")
+            elif t >= Region4.getSaturTemp(psat=p) and 21.90096265e3 < p <= 22.064e3 and (temp3(p, "3wx") < t <= temp3(p, "3rx")):
+                vol = cls.volPT(p, t, "3x")
+            elif (Region4.getSaturTemp(psat=p) <= t <= temp3(p, "3rx")) and Region4.getSaturPress(tsat=643.15) < p <= 21.90096265e3:
+                vol = cls.volPT(p, t, "3x")
+
+            #supercritical pressure region 3u, 3v, 3w, 3x
+            if 22.11e3 < p <= 22.5e3 and (temp3(p, "3qu") < t <= temp3(p, "3uv")):
+                vol = cls.volPT(p, t, "3u")
+            elif 22.11e3 < p <= 22.5e3 and (temp3(p, "3uv") < t <= temp3(p, "3ef")):
+                vol = cls.volPT(p, t, "3v")
+            elif 22.11e3 < p <= 22.5e3 and (temp3(p, "3ef") < t <= temp3(p, "3wx")):
+                vol = cls.volPT(p, t, "3w")
+            elif 22.11e3 < p <= 22.5e3 and (temp3(p, "3wx") < t <= temp3(p, "3rx")):
+                vol = cls.volPT(p, t, "3x")
+
+            # supercritical pressure region 3u, 3x, 3y, 3z
+            if 22.064e3 < p <= 22.11e3 and (temp3(p, "3qu") < t <= temp3(p, "3uv")):
+                vol = cls.volPT(p, t, "3u")
+            elif 22.064e3 < p <= 22.11e3 and (temp3(p, "3uv") < t <= temp3(p, "3ef")):
+                vol = cls.volPT(p, t, "3y")
+            elif 22.064e3 < p <= 22.11e3 and (temp3(p, "3ef") < t <= temp3(p, "3wx")):
+                vol = cls.volPT(p, t, "3z")
+            elif 22.064e3 < p <= 22.11e3 and (temp3(p, "3wx") < t <= temp3(p, "3rx")):
+                vol = cls.volPT(p, t, "3x")
 
             return vol
         else:
