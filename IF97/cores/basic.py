@@ -395,14 +395,9 @@ class Region3:
         _props["u"] = BIGR*t*tau*dfdtau
         _props["s"] = BIGR*(tau*dfdtau-f)
         _props["h"] = BIGR*t*(tau*dfdtau+delta*dfddel)
-
-        if not (647 <= t < TEMPC):
-            _props["cv"] = -1*BIGR*(tau**2)*d2fdtau2
-            sub = ((delta*dfddel-delta*tau*d2fddeldtau)**2)/(2*delta*dfddel+(delta**2)*d2fddel2)
-            _props["cp"] = BIGR*(-1*(tau**2)*d2fdtau2+sub)
-        else:
-            _props["cv"] = math.inf
-            _props["cp"] = math.inf
+        _props["cv"] = -1*BIGR*(tau**2)*d2fdtau2
+        sub = ((delta*dfddel-delta*tau*d2fddeldtau)**2)/(2*delta*dfddel+(delta**2)*d2fddel2)
+        _props["cp"] = BIGR*(-1*(tau**2)*d2fdtau2+sub)
 
         if desc and desc.lower() in _props.keys():
             return _props[desc.lower()]

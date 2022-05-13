@@ -46,11 +46,6 @@ def saturationT(tsat):
     -------
     props: dict
         return all available properties, see Available Properties
-
-    Raises
-    ------
-    ValueError
-        if value of saturation temperature(tsat) exceed or not in range of limit, see Limit
     """
 
     # psat = 0.
@@ -98,8 +93,6 @@ def saturationT(tsat):
                 "mu": [math.inf, math.inf]
         }
         return props
-    else:
-        raise ValueError("Value of saturation temperature(tsat) exceed or not in range of limit")
 
 
 def saturationP(psat):
@@ -142,11 +135,6 @@ def saturationP(psat):
     -------
     props: dict
         return all available properties, see Available Properties
-
-    Raises
-    ------
-    ValueError
-        if value of saturation pressure(psat) exceed or not in range of limit, see Limit
     """
 
     # tsat = 0.
@@ -195,8 +183,6 @@ def saturationP(psat):
                 "mu": [math.inf, math.inf]
         }
         return props
-    else:
-        raise ValueError("Value of saturation pressure(psat) exceed or not in range limit")
 
 
 def singlephase(p, t):
@@ -325,7 +311,7 @@ def singlephase(p, t):
         return props
     elif 0 < p <= 5e4 and 1173.15 < t <= 2273.15:
         props = {
-                "v" : v,
+                "v" : Region5.props(p, t, desc="v"),
                 "u" : Region5.props(p, t, desc="u"),
                 "h" : Region5.props(p, t, desc="h"),
                 "s" : Region5.props(p, t, desc="s"),
@@ -334,8 +320,6 @@ def singlephase(p, t):
                 "mu": None
         }
         return props
-    else:
-        raise ValueError("Value of pressure(p) and/or temperature(t) exceed or not in range of limits")
 
 
 def if97(p=None, t=None, x=None):
@@ -363,7 +347,7 @@ def if97(p=None, t=None, x=None):
     Limits
     ------
     Mixed phase
-        273.15 K <= t <= 647.096 K or 0 C <= t <= 373.946 C and
+        273.15 K <= t <= 647.096 K or 0 C <= t <= 373.946 C or
 
         0.6112127 KPa <= p <= 22064 KPa and
 
@@ -397,8 +381,7 @@ def if97(p=None, t=None, x=None):
     """
 
     props = dict()
-    if (not p) and t and (x is not None) and 273.15 <= t < TEMPC and 0. <= x <= 1.:
-        ans = saturationT(tsat=t)
+    if p is None and 273.15 <= t < TEMPC and 0. <= x <= 1. and (ans := saturationT(tsat=t)) is not None:
         v = ans["v"]
         u = ans["u"]
         h = ans["h"]
@@ -417,8 +400,7 @@ def if97(p=None, t=None, x=None):
         props["cv"] = cv[0]+x*(cv[1]-cv[0])
         props["mu"] = visc(rho, t)
         return props
-    elif (not p) and t and (x is not None) and t == TEMPC and 0. <= x <= 1.:
-        ans = saturationT(tsat=t)
+    elif p is None and t == TEMPC and 0. <= x <= 1. and (ans := saturationT(tsat=t)) is not None:
         v = ans["v"]
         u = ans["u"]
         h = ans["h"]
@@ -434,28 +416,27 @@ def if97(p=None, t=None, x=None):
         props["cv"] = math.inf
         props["mu"] = math.inf
         return props
-    elif p and (not t) and (x is not None) and 0.6112127 <= p < PRESSC and 0. <= x <= 1.:
-        ans = saturationP(psat=p)
+    elif t is None and 0.6112127 <= p < PRESSC and 0. <= x <= 1. and (ans := saturationP(psat=p)) is not None:
         v = ans["v"]
         u = ans["u"]
         h = ans["h"]
         s = ans["s"]
         cp = ans["cp"]
         cv = ans["cv"]
+        tsat = ans["tsat"]
         vmix = v[0]+x*(v[1]-v[0])
         rho = 1/vmix
         props["psat"] = ans["psat"]
-        props["tsat"] = ans["tsat"]
+        props["tsat"] = tsat
         props["v"] = vmix
         props["u"] = u[0]+x*(u[1]-u[0])
         props["s"] = s[0]+x*(s[1]-s[0])
         props["h"] = h[0]+x*(h[1]-h[0])
         props["cp"] = cp[0]+x*(cp[1]-cp[0])
         props["cv"] = cv[0]+x*(cv[1]-cv[0])
-        props["mu"] = visc(rho, t)
+        props["mu"] = visc(rho, tsat)
         return props
-    elif p and (not t) and (x is not None) and p == PRESSC and 0. <= x <= 1.:
-        ans = saturationT(tsat=t)
+    elif t is None and p == PRESSC and 0. <= x <= 1. and (ans := saturationT(tsat=t)) is not None:
         v = ans["v"]
         u = ans["u"]
         h = ans["h"]
@@ -471,8 +452,17 @@ def if97(p=None, t=None, x=None):
         props["cv"] = math.inf
         props["mu"] = math.inf
         return props
-    elif p and t and (not x) and 0 < p <= 1e5 and 273.15 <= t <= 2273.15:
-        props = singlephase(p, t)
+    elif x is None and 0 < p <= 1e5 and 273.15 <= t <= 1073.15 and (props := singlephase(p, t)) is not None:
         return props
-    elif ((p is not None) or (t is not None)) and (x is not None) and (x < 0 or x > 1):
-        raise ValueError("Quality(x) value exceed and/or not in range of validity")
+    elif x is None and 0 < p <= 5e4 and 1073.15 < t <= 2273.15 and (props := singlephase(p, t)) is not None:
+        return props
+    elif ((p is not None) or (t is not None)) and (x < 0 or x > 1):
+        raise ValueError("Quality(x) value exceed and/or not in range of limits")
+    elif p is None and x is not None and (t < 273.15 or t > TEMPC):
+        raise ValueError("Value of saturation temperature(t) exceed and/or not in range of limits")
+    elif t is None and x is not None and (p < 0.6112127 or p > PRESSC):
+        raise ValueError("Value of saturation pressure(p) exceed and/or not in range limit")
+    elif ((p < 0 or p > 1e5) or (t < 273.15 or t > 1073.15)) and x is None:
+        raise ValueError("Value of pressure(p) and/or temperature(t) exceed and/or not in range of limits")
+    elif ((p < 0 or p > 5e4) or (t < 1073.15 or t > 2273.15)) and x is None:
+        raise ValueError("Value of pressure(p) and/or temperature(t) exceed and/or not in range of limits")
