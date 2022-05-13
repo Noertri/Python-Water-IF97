@@ -7,9 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi modul _if97.py">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi modul backwardPT.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/cores/backwardPT.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/cores/backwardPT.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IF97/_if97.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/_if97.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,13 +210,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1650182031901</updated>
-    </task>
-    <task id="LOCAL-00026" summary="memodifikasi modul basic.py">
-      <created>1650898031360</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1650898031360</updated>
     </task>
     <task id="LOCAL-00027" summary="memodifikasi dokumentasi modul basic.py">
       <created>1650898118811</created>
@@ -554,7 +547,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652452799151</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="memodifikasi modul backwardPT.py">
+      <created>1652457627845</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1652457627845</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -569,7 +569,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="memodifikasi modul app.py dan if97.py" />
     <MESSAGE value="memodifikasi modul if97.py dan menghapus modul _converter.py" />
     <MESSAGE value="menambah exception di modul if97.py dan memodifikasi gui" />
     <MESSAGE value="memodifikasi modul basic.py, _if97.py, backwardPT.py, test_region3.py, test_region4.py, tes dn debug region 3 dan region 4" />
@@ -594,6 +593,7 @@
     <MESSAGE value="test dan debug modul visc.py" />
     <MESSAGE value="mengganti nama modul visc.py menjadi visco.py" />
     <MESSAGE value="memodifikasi modul _if97.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi modul _if97.py" />
+    <MESSAGE value="memodifikasi modul backwardPT.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi modul backwardPT.py" />
   </component>
 </project>

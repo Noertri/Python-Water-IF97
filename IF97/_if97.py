@@ -235,7 +235,7 @@ def singlephase(p, t):
     """
 
     # t23 = 0.
-    if 0 < p < (psat := Region4.getSaturPress(tsat=t)) and 273.15 <= t <= 623.15:
+    if 0 < p < Region4.getSaturPress(tsat=t) and 273.15 <= t <= 623.15:
         v = Region2.props(p, t, desc="v")
         rho = 1/v
         props = {
@@ -248,7 +248,7 @@ def singlephase(p, t):
                 "mu": visc(rho, t)
         }
         return props
-    elif (psat := Region4.getSaturPress(tsat=t)) <= p <= 1e5 and 273.15 <= t <= 623.15:
+    elif Region4.getSaturPress(tsat=t) <= p <= 1e5 and 273.15 <= t <= 623.15:
         v = Region1.props(p, t, desc="v")
         rho = 1/v
         props = {
