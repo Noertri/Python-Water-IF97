@@ -44,8 +44,9 @@ def saturationT(tsat):
 
     Returns
     -------
-    props: dict
+    props: dict or None
         return all available properties, see Available Properties
+        if value of saturation temperature(tsat) exceed and/or is not in range of limit return None instead, see Limit
     """
 
     # psat = 0.
@@ -93,6 +94,8 @@ def saturationT(tsat):
                 "mu": [math.inf, math.inf]
         }
         return props
+    else:
+        return None
 
 
 def saturationP(psat):
@@ -133,8 +136,9 @@ def saturationP(psat):
 
     Returns
     -------
-    props: dict
+    props: dict or None
         return all available properties, see Available Properties
+        if value of saturation pressure(psat) exceed and/or is not in range of limit return None instead, see Limit
     """
 
     # tsat = 0.
@@ -183,6 +187,8 @@ def saturationP(psat):
                 "mu": [math.inf, math.inf]
         }
         return props
+    else:
+        return None
 
 
 def singlephase(p, t):
@@ -207,8 +213,9 @@ def singlephase(p, t):
 
     Limits
     ------
-    273.15 K <= t <= 1073 K or 0 C <= t <= 800 C for 0 < p <= 100 MPa or 0 < p <= 100000 KPa and 1073.15 K <= t <= 2273 K or 800 C <= t <= 2000 C
-    for 0 < p <= 50 MPa or 0 < p <= 50000 KPa
+    273.15 K <= t <= 1073 K or 0 C <= t <= 800 C for 0 MPa < p <= 100 MPa or 0 KPa < p <= 100000 KPa and,
+
+    1073.15 K <= t <= 2273 K or 800 C <= t <= 2000 C for 0 MPa < p <= 50 MPa or 0 KPa < p <= 50000 KPa
 
     *mu: 273.15 K <= t <= 1173.15 K or 0 C <= t <= 900 C
 
@@ -222,13 +229,9 @@ def singlephase(p, t):
 
     Returns
     -------
-    props: dict
+    props: dict or None
         return all available properties, see Available Properties
-
-    Raises
-    ------
-    ValueError
-        if value of pressure(p) or temperature(t) exceed or not in range of limits, see Limits
+        if value of pressure(p) and temperature(t) exceed and/or are not in range of limits return None instead, see Limits
     """
 
     # t23 = 0.
@@ -320,6 +323,8 @@ def singlephase(p, t):
                 "mu": None
         }
         return props
+    else:
+        return None
 
 
 def if97(p=None, t=None, x=None):
@@ -347,17 +352,13 @@ def if97(p=None, t=None, x=None):
     Limits
     ------
     Mixed phase
-        273.15 K <= t <= 647.096 K or 0 C <= t <= 373.946 C or
-
-        0.6112127 KPa <= p <= 22064 KPa and
-
-        0 <= x <= 1
+        273.15 K <= t <= 647.096 K or 0 C <= t <= 373.946 C and 0.6112127 KPa <= p <= 22064 KPa and 0 <= x <= 1
     Single phase
         273.15 K <= t <= 1073 K or 0 C <= t <= 800 C for 0 < p <= 100 MPa or 0 < p <= 100000 KPa,
 
-        1073.15 K <= t <= 2273 K or 800 C <= t <= 2000 C for 0 < p <= 50 MPa or 0 < p <= 50000 KPa
-    *mu
-        273.15 K <= t <= 1173.15 K or 0 C <= t <= 900 C
+        1073.15 K <= t <= 2273 K or 800 C <= t <= 2000 C for 0 MPa < p <= 50 MPa or 0 KPa < p <= 50000 KPa
+    mu
+        273.15 K <= t <= 1173.15 K or 0 C <= t <= 900 C for 0 MPa < p <= 100 MPa or 0 KPa < p <= 100000 KPa
 
 
     Parameters
@@ -452,17 +453,21 @@ def if97(p=None, t=None, x=None):
         props["cv"] = math.inf
         props["mu"] = math.inf
         return props
-    elif x is None and 0 < p <= 1e5 and 273.15 <= t <= 1073.15 and (props := singlephase(p, t)) is not None:
+    elif x is None and 273.15 <= t <= 1073.15 and 0 < p <= 1e5 and (props := singlephase(p, t)) is not None:
         return props
-    elif x is None and 0 < p <= 5e4 and 1073.15 < t <= 2273.15 and (props := singlephase(p, t)) is not None:
+    elif x is None and 1073.15 < t <= 2273.15 and 0 < p <= 5e4 and (props := singlephase(p, t)) is not None:
         return props
-    elif ((p is not None) or (t is not None)) and (x < 0 or x > 1):
+    elif ((p is not None) or (t is not None)) and x is not None and (x < 0 or x > 1):
         raise ValueError("Quality(x) value exceed and/or not in range of limits")
     elif p is None and x is not None and (t < 273.15 or t > TEMPC):
         raise ValueError("Value of saturation temperature(t) exceed and/or not in range of limits")
     elif t is None and x is not None and (p < 0.6112127 or p > PRESSC):
         raise ValueError("Value of saturation pressure(p) exceed and/or not in range limit")
-    elif ((p < 0 or p > 1e5) or (t < 273.15 or t > 1073.15)) and x is None:
-        raise ValueError("Value of pressure(p) and/or temperature(t) exceed and/or not in range of limits")
-    elif ((p < 0 or p > 5e4) or (t < 1073.15 or t > 2273.15)) and x is None:
-        raise ValueError("Value of pressure(p) and/or temperature(t) exceed and/or not in range of limits")
+    elif (t < 273.15 or t > 1073.15) and 0 < p <= 1e5 and x is None:
+        raise ValueError("Value of temperature(t) exceed and/or not in range of limits")
+    elif (t < 1073.15 or t > 2273.15) and 0 < p <= 5e4 and x is None:
+        raise ValueError("Value of temperature(t) exceed and/or not in range of limits")
+    elif 273.15 <= t <= 1073.15 and (p < 0 or p > 1e5) and x is None:
+        raise ValueError("Value of pressure(p) exceed and/or not in range of limits")
+    elif 1073.15 < t <= 2273.15 and (p < 0 or p > 5e4) and x is None:
+        raise ValueError("Value of pressure(p) exceed and/or not in range of limits")
