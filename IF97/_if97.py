@@ -458,16 +458,18 @@ def if97(p=None, t=None, x=None):
     elif x is None and 1073.15 < t <= 2273.15 and 0 < p <= 5e4 and (props := singlephase(p, t)) is not None:
         return props
     elif ((p is not None) or (t is not None)) and x is not None and (x < 0 or x > 1):
-        raise ValueError("Quality(x) value exceed and/or not in range of limits")
+        raise ValueError("Quality(x) value exceed and/or is not in range of limits")
     elif p is None and x is not None and (t < 273.15 or t > TEMPC):
-        raise ValueError("Value of saturation temperature(t) exceed and/or not in range of limits")
+        raise ValueError("Value of saturation temperature(t) exceed and/or is not in range of limits")
     elif t is None and x is not None and (p < 0.6112127 or p > PRESSC):
-        raise ValueError("Value of saturation pressure(p) exceed and/or not in range limit")
+        raise ValueError("Value of saturation pressure(p) exceed and/or is not in range limit")
     elif (t < 273.15 or t > 1073.15) and 0 < p <= 1e5 and x is None:
-        raise ValueError("Value of temperature(t) exceed and/or not in range of limits")
+        raise ValueError("Value of temperature(t) exceed and/or is not in range of limits")
     elif (t < 1073.15 or t > 2273.15) and 0 < p <= 5e4 and x is None:
-        raise ValueError("Value of temperature(t) exceed and/or not in range of limits")
-    elif 273.15 <= t <= 1073.15 and (p < 0 or p > 1e5) and x is None:
-        raise ValueError("Value of pressure(p) exceed and/or not in range of limits")
-    elif 1073.15 < t <= 2273.15 and (p < 0 or p > 5e4) and x is None:
-        raise ValueError("Value of pressure(p) exceed and/or not in range of limits")
+        raise ValueError("Value of temperature(t) exceed and/or is not in range of limits")
+    elif 273.15 <= t <= 1073.15 and (p <= 0 or p > 1e5) and x is None:
+        raise ValueError("Value of pressure(p) exceed and/or is not in range of limits")
+    elif 1073.15 < t <= 2273.15 and (p <= 0 or p > 5e4) and x is None:
+        raise ValueError("Value of pressure(p) exceed and/or is not in range of limits")
+    elif (t < 273.15 or t > 2273.15) or (p <= 0. or p > 1e5) and x is None:
+        raise ValueError("Value of pressure(p) or temperature(t) exceed and/or are not in range of limits")
