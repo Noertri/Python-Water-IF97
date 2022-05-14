@@ -378,7 +378,7 @@ def if97(p=None, t=None, x=None):
     Raises
     ------
     ValueError
-        when value of inputs exceed and/or not in range of limits, see Limits.
+        if value of inputs exceed and/or are not in range of limits, see Limits.
     """
 
     props = dict()

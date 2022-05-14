@@ -53,7 +53,7 @@ class PyWater(tk.Tk):
         self.label9 = ttk.Label(self.outputs_frame, text="s", justify="left", width=8)
         self.label10 = ttk.Label(self.outputs_frame, text="Cv", justify="left", width=8)
         self.label11 = ttk.Label(self.outputs_frame, text="Cp", justify="left", width=8)
-        # self.label12 = ttk.Label(self.outputs_frame, text="x", justify="left", width=8)
+        self.label12 = ttk.Label(self.outputs_frame, text="mu", justify="left", width=8)
         self.label13 = ttk.Label(self.outputs_frame, text="KPa", justify="left", width=8)
         self.label14 = ttk.Label(self.outputs_frame, text="K", justify="left", width=8)
         self.label15 = ttk.Label(self.outputs_frame, text="m^3/Kg", justify="left", width=8)
@@ -62,7 +62,7 @@ class PyWater(tk.Tk):
         self.label18 = ttk.Label(self.outputs_frame, text="KJ/Kg*K", justify="left", width=8)
         self.label19 = ttk.Label(self.outputs_frame, text="KJ/Kg*K", justify="left", width=8)
         self.label20 = ttk.Label(self.outputs_frame, text="KJ/Kg*K", justify="left", width=8)
-        # self.label21 = ttk.Label(self.outputs_frame, text="")
+        self.label21 = ttk.Label(self.outputs_frame, text="Pa*s", justify="left", width=8)
         self.credit = ttk.Label(self, text="Created by:\nNoertri\ntrinuruns@gmail.com", justify="center")
         self.credit.grid(row=12, column=0, pady=(0, 12))
         self.label1.grid(row=0, column=0, pady=(0, 5))
@@ -78,7 +78,7 @@ class PyWater(tk.Tk):
         self.label9.grid(row=9, column=0, pady=(0, 5))
         self.label10.grid(row=10, column=0, pady=(0, 5))
         self.label11.grid(row=11, column=0, pady=(0, 5))
-        # self.label12.grid(row=12, column=0, pady=(0, 5))
+        self.label12.grid(row=12, column=0, pady=(0, 5))
         # self.label13.grid(row=4, column=2, pady=(0, 5))
         self.label13.grid_forget()
         # self.label14.grid(row=5, column=2, pady=(0, 5))
@@ -89,7 +89,7 @@ class PyWater(tk.Tk):
         self.label18.grid(row=9, column=2, pady=(0, 5))
         self.label19.grid(row=10, column=2, pady=(0, 5))
         self.label20.grid(row=11, column=2, pady=(0, 5))
-        # self.label21.grid(row=12, column=2, pady=(0, 5))
+        self.label21.grid(row=12, column=2, pady=(0, 5))
 
         #comboboxes
         self.menu = ttk.Combobox(self.inputs_frame, width=14, state="readonly", textvariable=self.menuVar)
@@ -130,7 +130,7 @@ class PyWater(tk.Tk):
         self.output6.grid(row=9, column=1, padx=5, pady=(0, 5))
         self.output7.grid(row=10, column=1, padx=5, pady=(0, 5))
         self.output8.grid(row=11, column=1, padx=5, pady=(0, 5))
-        # self.output9.grid(row=12, column=1, padx=5, pady=(0, 5))
+        self.output9.grid(row=12, column=1, padx=5, pady=(0, 5))
 
         #buttons
         self.btn1 = ttk.Button(self.buttons_frame, text="Calc", command=self.btn1_callback)
@@ -188,19 +188,22 @@ class PyWater(tk.Tk):
 
     def btn1_callback(self):
         try:
-            if self.menuVar.get() == self.menuVal[0] and (tsat := self._convertT(self.input1Var.get(), self.unit1Var.get())) is not None and (x := self.input2Var.get()) is not None and (ans := if97(t=tsat, x=x)):
+            if self.menuVar.get() == self.menuVal[0] and (tsat := self._convertT(self.input1Var.get(), self.unit1Var.get())) is not None and \
+                    (x := self.input2Var.get()) is not None and (ans := if97(t=tsat, x=x)) is not None:
                 self.output1Var.set(round(ans['psat'], 9))
                 self.output2Var.set(round(ans['tsat'], 9))
                 self.output3Var.set(round(ans['v'], 9))
                 self.output4Var.set(round(ans['u'], 9))
                 self.output5Var.set(round(ans['h'], 9))
                 self.output6Var.set(round(ans['s'], 9))
-                if ans["cp"] is not None and ans["cv"] is not None:
+                if math.isfinite(ans["cp"]) and math.isfinite(ans["cv"]) and math.isfinite(ans["mu"]):
                     self.output7Var.set(round(ans['cp'], 9))
                     self.output8Var.set(round(ans['cv'], 9))
+                    self.output9Var.set(round(ans["mu"], 9))
                 else:
                     self.output7Var.set(math.inf)
                     self.output8Var.set(math.inf)
+                    self.output9Var.set(math.inf)
             elif self.menuVar.get() == self.menuVal[1] and (psat := self._convertP(self.input1Var.get(), self.unit1Var.get())) is not None and (x := self.input2Var.get()) is not None and (ans := if97(p=psat, x=x)) is not None:
                 self.output1Var.set(round(ans['psat'], 9))
                 self.output2Var.set(round(ans['tsat'], 9))
@@ -208,12 +211,14 @@ class PyWater(tk.Tk):
                 self.output4Var.set(round(ans['u'], 9))
                 self.output5Var.set(round(ans['h'], 9))
                 self.output6Var.set(round(ans['s'], 9))
-                if ans["cp"] is not None and ans["cv"] is not None:
+                if math.isfinite(ans["cp"]) and math.isfinite(ans["cv"]) and math.isfinite(ans["mu"]):
                     self.output7Var.set(round(ans['cp'], 9))
                     self.output8Var.set(round(ans['cv'], 9))
+                    self.output9Var.set(round(ans["mu"], 9))
                 else:
                     self.output7Var.set(math.inf)
                     self.output8Var.set(math.inf)
+                    self.output9Var.set(math.inf)
             elif self.menuVar.get() == self.menuVal[2] and (p := self._convertP(self.input1Var.get(), self.unit1Var.get())) is not None and (t := self._convertT(self.input2Var.get(), self.unit2Var.get())) is not None and (ans := if97(p=p, t=t)) is not None:
                 self.output3Var.set(round(ans['v'], 9))
                 self.output4Var.set(round(ans['u'], 9))
@@ -221,6 +226,10 @@ class PyWater(tk.Tk):
                 self.output6Var.set(round(ans['s'], 9))
                 self.output7Var.set(round(ans['cp'], 9))
                 self.output8Var.set(round(ans['cv'], 9))
+                if ans["mu"] is not None:
+                    self.output9Var.set(round(ans["mu"], 9))
+                else:
+                    self.output9Var.set(None)
         except Exception as e:
             messagebox.showerror(title="Value Error!!!", message=e)
 
@@ -235,6 +244,7 @@ class PyWater(tk.Tk):
         self.output6Var.set(0.)
         self.output7Var.set(0.)
         self.output8Var.set(0.)
+        self.output9Var.set(0.)
 
     @staticmethod
     def _convertT(value, unit):
