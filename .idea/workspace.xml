@@ -7,10 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="mengganti judul gui dan update workspace.xml">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi modul _if97.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GUI/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/_if97.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/_if97.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +75,7 @@
       <recent name="D:\Python\Python-Water-Properties-IF97\IF97" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.app">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Python-Water-Properties-IF97" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -216,13 +215,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1650182031901</updated>
-    </task>
-    <task id="LOCAL-00031" summary="memodifikasi modul _if97.py">
-      <created>1651073015025</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1651073015025</updated>
     </task>
     <task id="LOCAL-00032" summary="membuat fungsi allphase">
       <created>1651074138945</created>
@@ -560,7 +552,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652507519785</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="memodifikasi modul _if97.py">
+      <created>1652508265334</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1652508265334</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -597,9 +596,9 @@
     <MESSAGE value="test dan debug modul visc.py" />
     <MESSAGE value="mengganti nama modul visc.py menjadi visco.py" />
     <MESSAGE value="memodifikasi modul backwardPT.py" />
-    <MESSAGE value="memodifikasi modul _if97.py" />
     <MESSAGE value="memodifikasi modul _if97.py dan apps.py" />
     <MESSAGE value="mengganti judul gui dan update workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="mengganti judul gui dan update workspace.xml" />
+    <MESSAGE value="memodifikasi modul _if97.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi modul _if97.py" />
   </component>
 </project>

@@ -204,10 +204,8 @@ class PyWater(tk.Tk):
                     self.output7Var.set(math.inf)
                     self.output8Var.set(math.inf)
                     self.output9Var.set(math.inf)
-            elif self.menuVar.get() == self.menuVal[1] and (psat := self._convertP(self.input1Var.get(), self.unit1Var.get())) is not None and (x := self.input2Var.get()) is not None and (ans := if97(
-                    p=psat,
-                    x=x
-                    )) is not None:
+            elif self.menuVar.get() == self.menuVal[1] and (psat := self._convertP(self.input1Var.get(), self.unit1Var.get())) is not None and \
+                    (x := self.input2Var.get()) is not None and (ans := if97(p=psat, x=x)) is not None:
                 self.output1Var.set(round(ans['psat'], 9))
                 self.output2Var.set(round(ans['tsat'], 9))
                 self.output3Var.set(round(ans['v'], 9))
@@ -222,10 +220,8 @@ class PyWater(tk.Tk):
                     self.output7Var.set(math.inf)
                     self.output8Var.set(math.inf)
                     self.output9Var.set(math.inf)
-            elif self.menuVar.get() == self.menuVal[2] and (p := self._convertP(self.input1Var.get(), self.unit1Var.get())) is not None and (t := self._convertT(self.input2Var.get(), self.unit2Var.get())) is not None and (ans := if97(
-                    p=p,
-                    t=t
-                    )) is not None:
+            elif self.menuVar.get() == self.menuVal[2] and (p := self._convertP(self.input1Var.get(), self.unit1Var.get())) is not None and \
+                    (t := self._convertT(self.input2Var.get(), self.unit2Var.get())) is not None and (ans := if97(p=p, t=t)) is not None:
                 self.output3Var.set(round(ans['v'], 9))
                 self.output4Var.set(round(ans['u'], 9))
                 self.output5Var.set(round(ans['h'], 9))
