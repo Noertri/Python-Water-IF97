@@ -327,7 +327,7 @@ def singlephase(p, t):
         return None
 
 
-def if97(p=None, t=None, x=None):
+def if97(*, p=None, t=None, x=None):
     """Calculate ordinary/pure water properties at mixed and single phase
 
     Available Properties
@@ -363,6 +363,7 @@ def if97(p=None, t=None, x=None):
 
     Parameters
     ----------
+    *
     p: float or None
         pressure (KPa)
     t: float or None
