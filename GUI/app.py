@@ -13,7 +13,7 @@ class PyWater(tk.Tk):
 
     def __init__(self):
         super().__init__()
-        self.title("PyWater")
+        self.title("Python Water")
 
         #variables
         self.label2Val = tk.StringVar(value="P")
