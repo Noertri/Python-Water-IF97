@@ -7,7 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi modul app.py">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="update workspace.xml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -214,13 +214,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1650182031901</updated>
-    </task>
-    <task id="LOCAL-00033" summary="memodifikasi fungsi allphase">
-      <created>1651129815836</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1651129815836</updated>
     </task>
     <task id="LOCAL-00034" summary="menambahkan dokumentasi">
       <created>1651131839384</created>
@@ -558,7 +551,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652508519775</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="update workspace.xml">
+      <created>1652508580836</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1652508580836</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -590,7 +590,6 @@
     <MESSAGE value="memodifikasi region 1 di odul basic.py dan membuat modul visc.py" />
     <MESSAGE value="memodifikasi semua region di modul basic.py, test dan debug region 1 sampai region 5" />
     <MESSAGE value="melengkapi rumus viskositas, tes dan debug modul visc.py" />
-    <MESSAGE value="update workspace.xml" />
     <MESSAGE value="test dan debug modul visc.py" />
     <MESSAGE value="mengganti nama modul visc.py menjadi visco.py" />
     <MESSAGE value="memodifikasi modul backwardPT.py" />
@@ -598,6 +597,7 @@
     <MESSAGE value="mengganti judul gui dan update workspace.xml" />
     <MESSAGE value="memodifikasi modul _if97.py" />
     <MESSAGE value="memodifikasi modul app.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi modul app.py" />
+    <MESSAGE value="update workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="update workspace.xml" />
   </component>
 </project>
