@@ -1,4 +1,3 @@
-import math
 import numpy as np
 from scipy import optimize
 from ..coefficients import *
@@ -7,14 +6,51 @@ from ..constants import BIGR, RHOC, TEMPC
 
 #Region 1
 class Region1:
+    """Class for region 1.
+
+    Static Methods
+    --------------
+    _gamma(pi, tau)
+        Basic equations for region 1.
+
+    Class Methods
+    -------------
+    props(cls, p, t, desc)
+        Equations of property for region 1.
+    """
 
     @staticmethod
     def _gamma(pi, tau):
-        """Basic equations for region 1"""
+        """Basic equations for region 1.
 
+        Parameters
+        ----------
+        pi: float
+            pi = p/16.5e3.
+        tau: float
+            tau = 1386/t.
+
+        Returns
+        -------
+        g: float
+            specific Gibbs free energy.
+        dgdpi: float
+            first partial derivative of g to pi.
+        d2gdpi2: float
+            second partial derivative of g to pi.
+        dgdtau: float
+            first partial derivative of g to tau.
+        d2gdtau2: float
+            second partial derivative of g to tau.
+        d2gdpidtau: float
+            partial derivative of g to pi and tau.
+        """
+
+        #coefficients
         _I = IJnReg1["I"]
         _J = IJnReg1["J"]
         _n = IJnReg1["n"]
+
         g = 0.
         dgdpi = 0.
         d2gdpi2 = 0.
@@ -33,38 +69,37 @@ class Region1:
         return g, dgdpi, d2gdpi2, dgdtau, d2gdtau2, d2gdpidtau
 
     @classmethod
-    def props(cls, p, t, desc=None):
-        """Equations of property for region 1
-
-        Parameters
-        ----------
-        p: float
-            pressure (KPa)
-        t: float
-            temperature (K)
-        desc: str
-            property to return, one of v, u, h, s, cp, and cv
-
-        Returns
-        -------
-        _props: dict or None
-            return one of available properties or if the property is not available return None instead, see Available Properties
-
+    def props(cls, p, t, desc):
+        """Equations of property for region 1.
 
         Available Properties
         --------------------
         v: float
-            specific volume (Kg/m^3)
+            specific volume (Kg/m^3).
         u: float
-            specific internal energy (KJ/Kg)
+            specific internal energy (KJ/Kg).
         h: float
-            specific enthalpy (KJ/Kg)
+            specific enthalpy (KJ/Kg).
         s: float
-            specific entropy (KJ/Kg*K)
+            specific entropy (KJ/Kg*K).
         cp: float
-            specific isobaric heat capacity (KJ/Kg*K)
+            specific isobaric heat capacity (KJ/Kg*K).
         cv: float
-            specific isochoric heat capacity (KJ/Kg*K)
+            specific isochoric heat capacity (KJ/Kg*K).
+
+        Parameters
+        ----------
+        p: float
+            pressure (KPa).
+        t: float
+            temperature (K).
+        desc: str
+            property to return, one of v, u, h, s, cp, and cv.
+
+        Returns
+        -------
+        _props: dict or None
+            return one of available properties, if the property is not available return None instead, see Available Properties.
         """
 
         pi = p/16.53e3
@@ -88,10 +123,49 @@ class Region1:
 
 #Region 2
 class Region2:
+    """Class for region 2.
+
+    Static Methods
+    --------------
+    _gammao(pi, tau)
+        Ideal part of basic equations for region 2.
+    _gammar(pi, tau)
+        Residual part of basic equations for region 2.
+
+    Class Methods
+    -------------
+    props(cls, p, t, desc)
+        Equations of property for region 2.
+    """
 
     @staticmethod
     def _gammao(pi, tau):
+        """Ideal part of basic equations for region 2.
 
+        Parameters
+        ----------
+        pi: float
+            pi = p/1e3.
+        tau: float
+            tau = 540/t.
+
+        Returns
+        -------
+        go: float
+            specific Gibbs free energy.
+        dgodpi: float
+            first partial derivative of go to pi.
+        d2godpi2: float
+            second partial derivative of go to pi.
+        dgodtau: float
+            first partial derivative of go to tau.
+        d2godtau2: float
+            second partial derivative of go to tau.
+        d2godpidtau: float
+            partial derivative of go to pi and tau.
+        """
+
+        #coefficients
         _Jo = IJnReg2["Jo"]
         _no = IJnReg2["no"]
 
@@ -111,7 +185,32 @@ class Region2:
 
     @staticmethod
     def _gammar(pi, tau):
+        """Residual part of basic equations for region 2.
 
+        Parameters
+        ----------
+        pi: float
+            pi = p/1e3.
+        tau: float
+            tau = 540/t.
+
+        Returns
+        -------
+        gr: float
+            specific Gibbs free energy.
+        dgrdpi: float
+            first partial derivative of gr to pi.
+        d2grdpi2: float
+            second partial derivative of gr to pi.
+        dgrdtau: float
+            first partial derivative of gr to tau.
+        d2grdtau2: float
+            second partial derivative of gr to tau.
+        d2grdpidtau: float
+            partial derivative of gr to pi and tau.
+        """
+
+        #coefficients
         _I = IJnReg2["I"]
         _J = IJnReg2["J"]
         _n = IJnReg2["n"]
@@ -134,38 +233,37 @@ class Region2:
         return gr, dgrdpi, d2grdpi2, dgrdtau, d2grdtau2, d2grdpidtau
 
     @classmethod
-    def props(cls, p, t, desc=None):
-        """Equations of property for region 2
-
-        Parameters
-        ----------
-        p: float
-            pressure (KPa)
-        t: float
-            temperature (K)
-        desc: str
-            property to return, one of v, u, h, s, cp, and cv
-
-        Returns
-        -------
-        _props : dict or None
-            return one of available properties or if the property is not available return None instead, see Available Properties
-
+    def props(cls, p, t, desc):
+        """Equations of property for region 2.
 
         Available Properties
         --------------------
         v: float
-            specific volume (m^3/Kg)
+            specific volume (m^3/Kg).
         u: float
-            specific internal energy (KJ/Kg)
+            specific internal energy (KJ/Kg).
         h: float
-            specific enthalpy (KJ/Kg)
+            specific enthalpy (KJ/Kg).
         s: float
-            specific entropy (KJ/Kg*K)
+            specific entropy (KJ/Kg*K).
         cp: float
-            specific isobaric heat capacity (KJ/Kg*K)
+            specific isobaric heat capacity (KJ/Kg*K).
         cv: float
-            specific isochoric heat capacity (KJ/Kg*K)
+            specific isochoric heat capacity (KJ/Kg*K).
+
+        Parameters
+        ----------
+        p: float
+            pressure (KPa).
+        t: float
+            temperature (K).
+        desc: str
+            property to return, one of v, u, h, s, cp, and cv.
+
+        Returns
+        -------
+        _props : dict or None
+            return one of available properties or if the property is not available return None instead, see Available Properties.
         """
 
         pi = p/1e3
@@ -190,10 +288,44 @@ class Region2:
 
 #Supplementary equations of region 2
 class SuppRegion2(Region2):
+    """Class for supplementary equations of region 2, subclass of class Region2.
+
+    Static Methods
+    --------------
+    _gammao(pi, tau)
+        Ideal part of supplementary equations for region 2.
+    _gammar(pi, tau)
+        Residual part of supplementary equations for region 2.
+    """
 
     @staticmethod
     def _gammao(pi, tau):
+        """Ideal part of supplementary equations for region 2.
 
+        Parameters
+        ----------
+        pi: float
+            pi = p/1e3.
+        tau: float
+            tau = 540/t.
+
+        Returns
+        -------
+        go: float
+            specific Gibbs free energy.
+        dgodpi: float
+            first partial derivative of go to pi.
+        d2godpi2: float
+            second partial derivative of go to pi.
+        dgodtau: float
+            first partial derivative of go to tau.
+        d2godtau2: float
+            second partial derivative of go to tau.
+        d2godpidtau: float
+            partial derivative of go to pi and tau.
+        """
+
+        #coefficients
         _Jo = IJnReg2Supp["Jo"]
         _no = IJnReg2Supp["no"]
 
@@ -213,7 +345,32 @@ class SuppRegion2(Region2):
 
     @staticmethod
     def _gammar(pi, tau):
+        """Residual part of supplementary equations for region 2.
 
+        Parameters
+        ----------
+        pi: float
+            pi = p/1e3.
+        tau: float
+            tau = 540/t.
+
+        Returns
+        -------
+        gr: float
+            specific Gibbs free energy.
+        dgrdpi: float
+            first partial derivative of gr to pi.
+        d2grdpi2: float
+            second partial derivative of gr to pi.
+        dgrdtau: float
+            first partial derivative of gr to tau.
+        d2grdtau2: float
+            second partial derivative of gr to tau.
+        d2grdpidtau: float
+            partial derivative of gr to pi and tau.
+        """
+
+        #coefficients
         _I = IJnReg2Supp["I"]
         _J = IJnReg2Supp["J"]
         _n = IJnReg2Supp["n"]
@@ -240,46 +397,49 @@ class SuppRegion2(Region2):
 class Region3:
     """Class for region 3
 
-    staticmethods
-    -------------
+    Static Methods
+    --------------
     _phi(delta, tau)
         Basic equation for region 3
 
-    classsmethods
-    -------------
-    saturRho(psat, tsat)
-        Method to calculate saturation densities in region 3
-    region3(rho, t, desc=None)
-        Method to calculate properties in region 3
+    Classs Methods
+    --------------
+    saturRho(cls, psat, tsat)
+        Calculate saturation densities in region 3
+    props(cls, rho, t, desc)
+        Calculate properties in region 3
+    _iterRho(cls, delta0, p, t)
+        Backward equation to calculate density using iterative method
     """
 
     @staticmethod
     def _phi(delta, tau):
-        """Basic equations for region 3
+        """Basic equations for region 3.
 
         Parameters
         ----------
         delta: float
-            delta = rho/RHOC (dimensionless)
+            delta = rho/RHOC.
         tau: float
-            tau = TEMPC/t (dimensionless)
+            tau = TEMPC/t.
 
         Returns
         -------
         f: float
            specific Helmhotz free energy.
         dfddel: float
-            first partial derivative of f to delta
+            first partial derivative of f to delta.
         d2fddel2: float
-            second partial derivative of f to delta
+            second partial derivative of f to delta.
         dfdtau: float
-            first partial derivative of f to tau
-        dfdtau2: float
-            second partial derivative of f to tau
+            first partial derivative of f to tau.
+        d2fdtau2: float
+            second partial derivative of f to tau.
         dfddeldtau: float
-            partial derivative of f to delta and tau
+            partial derivative of f to delta and tau.
         """
 
+        #coefficients
         _n = IJnReg3["n"]
         _I = IJnReg3["I"]
         _J = IJnReg3["J"]
@@ -302,8 +462,23 @@ class Region3:
         return f, dfddel, d2fddel2, dfdtau, d2fdtau2, d2fddeldtau
 
     @classmethod
-    def iterRho(cls, delta0, p, t):
-        """Backward equation using iterative ethod to calculate density using pressure and temperature as inputs"""
+    def _iterRho(cls, delta0, p, t):
+        """Backward equation using iterative method to calculate density using pressure and temperature as inputs.
+
+        Parameters
+        ----------
+        delta0: float
+            initial guess value of delta.
+        p: float
+            pressure (KPa).
+        t: float
+            temperature (K).
+
+        Returns
+        -------
+        _rho: float
+            density (Kg/m^3).
+        """
 
         tau = TEMPC/t
         c = p/(RHOC*BIGR*t)
@@ -324,21 +499,21 @@ class Region3:
 
     @classmethod
     def saturRho(cls, psat, tsat):
-        """Basic equations for region 3
+        """Calculate saturated liquid and vapor density for region 3.
 
         Parameters
         ----------
         psat: float
-            saturation pressure (KPa)
+            saturation pressure (KPa).
         tsat: float
-            saturation temperature (K)
+            saturation temperature (K).
 
         Returns
         -------
-        rhoL: float
-            Liquid density in saturation point (Kg/m^3)
-        rhoV: float
-            Vapor density in saturation point (Kg/m^3)
+        rhof: float
+            saturated liquid density (Kg/m^3).
+        rhof: float
+            saturated vapor density (Kg/m^3).
         """
 
         if 623.15 < tsat <= 647:
@@ -352,37 +527,36 @@ class Region3:
 
     @classmethod
     def props(cls, rho, t, desc):
-        """Equations of property for region 3
-
-        Parameters
-        ----------
-        rho: float
-            density (Kg/m^3)
-        t: float
-            temperature (K)
-        desc: str
-            property to return, one of p, u, h, s, cp, and cv
-
-        Returns
-        -------
-        _props: dict or None
-            return one of available properties or if property is not available return None instead, see Available Properties
-
+        """Equations of property for region 3.
 
         Available Properties
         --------------------
         p: float
-            pressure (KPa)
+            pressure (KPa).
         u: float
-            specific internal energy (KJ/Kg)
+            specific internal energy (KJ/Kg).
         h: float
-            specific enthalpy (KJ/Kg)
+            specific enthalpy (KJ/Kg).
         s: float
-            specific entropy (KJ/Kg*K)
+            specific entropy (KJ/Kg*K).
         cp: float
-            specific isobaric heat capacity (KJ/Kg*K)
+            specific isobaric heat capacity (KJ/Kg*K).
         cv: float
-            specific isochoric heat capacity (KJ/Kg*K)
+            specific isochoric heat capacity (KJ/Kg*K).
+
+        Parameters
+        ----------
+        rho: float
+            density (Kg/m^3).
+        t: float
+            temperature (K).
+        desc: str
+            property to return, one of p, u, h, s, cp, and cv.
+
+        Returns
+        -------
+        _props: dict or None
+            return one of available properties or if property is not available return None instead, see Available Properties.
         """
 
         delta = rho/RHOC
@@ -407,29 +581,29 @@ class Region3:
 
 #Region 4
 class Region4:
-    """Class for region 4
+    """Class for region 4.
 
-    Classmethods
-    --------------
+    Class Methods
+    -------------
     getSaturPress(cls, tsat)
-        Method to calculate saturation pressure
+        Method to calculate saturation pressure.
     getSaturTemp(cls, psat)
-        Method to calculate saturation temperature
+        Method to calculate saturation temperature.
     """
 
     @classmethod
     def getSaturPress(cls, tsat):
-        """Calculate saturation pressure
+        """Calculate saturation pressure.
 
         Parameters
         ----------
         tsat: float
-            Saturation temperature (K)
+            Saturation temperature (K).
 
         Returns
         -------
         psat: float
-            Saturation pressure (KPa)
+            Saturation pressure (KPa).
         """
 
         n = nReg4["n"]
@@ -442,17 +616,17 @@ class Region4:
 
     @classmethod
     def getSaturTemp(cls, psat):
-        """Calculate saturation pressure
+        """Calculate saturation pressure.
 
         Parameters
         ----------
         psat: float
-            Saturation presssure (KPa)
+            Saturation presssure (KPa).
 
         Returns
         -------
         tsat: float
-            Saturation temperature (K)
+            Saturation temperature (K).
         """
 
         n = nReg4["n"]
@@ -467,10 +641,49 @@ class Region4:
 
 #Region 5
 class Region5:
+    """Class for region 5.
+
+    Static Methods
+    --------------
+    _gammao(pi, tau)
+        Ideal part of basic equations for region 5.
+    _gammar(pi, tau)
+        Residual part of basic equations for region 5.
+
+    Class Methods
+    -------------
+    props(cls, p, t, desc)
+        Equations of property for region 5.
+    """
 
     @staticmethod
     def _gammao(pi, tau):
+        """Ideal part of basic equations for region 5.
 
+        Parameters
+        ----------
+        pi: float
+            pi = p/1e3.
+        tau: float
+            tau = 1000/t.
+
+        Returns
+        -------
+        go: float
+            specific Gibbs free energy.
+        dgodpi: float
+            first partial derivative of go to pi.
+        d2godpi2: float
+            second partial derivative of go to pi.
+        dgodtau: float
+            first partial derivative of go to tau.
+        d2godtau2: float
+            second partial derivative of go to tau.
+        d2godpidtau: float
+            partial derivative of go to pi and tau.
+        """
+
+        #coefficients
         _Jo = IJnReg5["Jo"]
         _no = IJnReg5["no"]
 
@@ -490,7 +703,32 @@ class Region5:
 
     @staticmethod
     def _gammar(pi, tau):
+        """Residual part of basic equations for region 5.
 
+        Parameters
+        ----------
+        pi: float
+            pi = p/1e3.
+        tau: float
+            tau = 1000/t.
+
+        Returns
+        -------
+        gr: float
+            specific Gibbs free energy.
+        dgrdpi: float
+            first partial derivative of gr to pi.
+        d2grdpi2: float
+            second partial derivative of gr to pi.
+        dgrdtau: float
+            first partial derivative of gr to tau.
+        d2grdtau2: float
+            second partial derivative of gr to tau.
+        d2grdpidtau: float
+            partial derivative of gr to pi and tau.
+        """
+
+        #coefficients
         _I = IJnReg5["I"]
         _J = IJnReg5["J"]
         _n = IJnReg5["n"]
@@ -513,38 +751,37 @@ class Region5:
         return gr, dgrdpi, d2grdpi2, dgrdtau, d2grdtau2, d2grdpidtau
 
     @classmethod
-    def props(cls, p, t, desc=None):
+    def props(cls, p, t, desc):
         """Equations of property for region 5
-
-        Parameters
-        ----------
-        p: float
-            pressure (KPa)
-        t: float
-            temperature (K)
-        desc: str
-            property to return, one of v, u, h, s, cp, and cv
-
-        Returns
-        -------
-        _props: dict or None
-            return one of available properties or if property is not available return None instead, see Available Properties
-
 
         Available Properties
         --------------------
         v: float
-            specific volume (m^3/Kg)
+            specific volume (m^3/Kg).
         u: float
-            specific internal energy (KJ/Kg)
+            specific internal energy (KJ/Kg).
         h: float
-            specific enthalpy (KJ/Kg)
+            specific enthalpy (KJ/Kg).
         s: float
-            specific entropy (KJ/Kg*K)
+            specific entropy (KJ/Kg*K).
         cp: float
-            specific isobaric heat capacity (KJ/Kg*K)
+            specific isobaric heat capacity (KJ/Kg*K).
         cv: float
-            specific isochoric heat capacity (KJ/Kg*K)
+            specific isochoric heat capacity (KJ/Kg*K).
+
+        Parameters
+        ----------
+        p: float
+            pressure (KPa).
+        t: float
+            temperature (K).
+        desc: str
+            property to return, one of v, u, h, s, cp, and cv.
+
+        Returns
+        -------
+        _props: dict or None
+            return one of available properties or if property is not available return None instead, see Available Properties.
         """
 
         pi = p/1e3

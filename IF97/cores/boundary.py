@@ -3,91 +3,91 @@ from ..coefficients import InBoundT3, nb23
 
 
 class Boundary23:
-    """Class for boundary equations between region 2 and 3
+    """Class for boundary equations between region 2 and 3.
 
-    classmethods
-    ------------
+    class Methods
+    -------------
     getPress(cls, t)
-        return pressure at boundary line between region 2 and region 3
+        find pressure at boundary line between region 2 and region 3.
     getTemp(cls, p)
-        return temperature at boundary line betweeen region 2 and region 3
+        find temperature at boundary line betweeen region 2 and region 3.
     """
 
     _n = nb23
 
     @classmethod
     def getPress(cls, t):
-        """Get pressure at boundary line between region 2 and region 3
+        """Find pressure at boundary line between region 2 and region 3.
+
+        Limit
+        -----
+        Valid for:
+            623.15 K <= t <= 863.15 K or 350 C <= t <= 800 C.
 
         Parameters
         ----------
         t: float
-            temperature (K)
+            temperature (K).
 
         Returns
         -------
-        ans: float or None
-            return presssure (KPa) or None if value of temperature(t) is not in or exceed range of validity
-
-
-        Range of validity
-        -----------------
-        623.15 K <= t <= 863.15 K or 350 C <= t <= 800 C
+        p: float or None
+            return presssure (KPa) or None if value of temperature(t) is not in or exceed range of limit.
         """
 
         if 623.15 <= t <= 863.15:
             _n = nb23
             theta = t/1
-            ans = cls._n[0] + cls._n[1]*theta + cls._n[2]*(theta**2)
-            return ans*1000
+            p = cls._n[0] + cls._n[1]*theta + cls._n[2]*(theta**2)
+            return p*1000
         else:
             return None
 
     @classmethod
     def getTemp(cls, p):
-        """Get temperature at boundary line between region 2 and region 3
+        """Find temperature at boundary line between region 2 and region 3.
+
+        Limit
+        -----
+        Valid for:
+            16.5291643e3 KPa <= p <= 1e5 KPa or 16.5291643 MPa <= p <= 100 MPa.
 
         Parameters
         ----------
         p: float
-            presssure (KPa)
+            presssure (KPa).
 
         Returns
         -------
-        ans: float or None
-            return temperature (K) or None if value of pressure(p) is not in or exceed range of validity return None instead
-
-
-        Range of validity
-        -----------------
-        16.5291643e3 KPa <= p <= 1e5 KPa or 16.5291643 MPa <= p <= 100 MPa
+        t: float or None
+            return temperature (K) or None if value of pressure(p) is not in or exceed range of limit return None instead.
         """
 
         if 16.5291643e3 <= p <= 1e5:
             pi = p/1000
-            ans = cls._n[3] + sqrt((pi - cls._n[4])/cls._n[2])
-            return ans*1
+            t = cls._n[3] + sqrt((pi - cls._n[4])/cls._n[2])
+            return t*1
         else:
             return None
 
 
-def temp3(p, desc=""):
-    """Boundary equations for subregion 3
+def temp3(p, desc):
+    """Boundary equations for subregion 3.
 
     Parameters
     ----------
     p: float
-        presssure (KPa)
+        presssure (KPa).
     desc: str
-        input key, one of: "3ab", "3cd", "3gh", "3ij", "3jk", "3mn", "3op", "3qu", "3rx", "3uv", "3wx"
+        input key, one of: "3ab", "3cd", "3gh", "3ij", "3jk", "3mn", "3op", "3qu", "3rx", "3uv", "3wx".
 
     Returns
     -------
     t: float or None
-        return temperature (K) or None if value of desc is wrong key
+        return temperature (K) or None if value of desc is wrong key.
 
 
-    For more details see http://www.iapws.org/relguide/Supp-VPT3-2016.pdf
+    For more details see http://www.iapws.org/relguide/Supp-VPT3-2016.pdf.
     """
 
     pi = p/1e3

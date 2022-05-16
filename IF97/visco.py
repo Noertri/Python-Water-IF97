@@ -4,7 +4,12 @@ from .constants import *
 
 
 def visc(rho, t):
-    """Calculate viscosity of ordinary/pure water"""
+    """Calculate dynamic viscosity of ordinary/pure water
+
+    Limit
+    -----
+        
+    """
 
     delta = rho/RHOC
     tau = t/TEMPC

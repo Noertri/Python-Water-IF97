@@ -7,49 +7,49 @@ from .constants import PRESSC, RHOC, TEMPC
 
 
 def saturationT(tsat):
-    """Calculate properties at saturation phase using saturation temperature as input
+    """Calculate properties at saturation phase using saturation temperature as input.
 
     Available Properties
     --------------------
     psat: float
-        saturation pressure (KPa)
+        saturation pressure (KPa).
     tsat: float
-        saturation temperature (K)
+        saturation temperature (K).
     v: float
-        specific volume of liquid and vapor phase (m^3/Kg)
+        specific volume of liquid and vapor phase (m^3/Kg).
     u: float
-        specific internal energy of liquid and vapor phase (KJ/Kg)
+        specific internal energy of liquid and vapor phase (KJ/Kg).
     h: float
-        specific enthalpy of liquid and vapor phase (KJ/Kg)
+        specific enthalpy of liquid and vapor phase (KJ/Kg).
     s: float
-        specific entropy of liquid and vapor phase (KJ/Kg*K)
+        specific entropy of liquid and vapor phase (KJ/Kg*K).
     cp: float or inf
         specific isobaric heat capacity of liquid and vapor phase (KJ/Kg*K),
-        return inf when tsat near critical temperature, because near critical temperature value of cp is not accurate
+        return inf when tsat near critical temperature, because near critical temperature value of cp is not accurate.
     cv: float or inf
         specific isohoric heat capacity of liquid and vapor phase (KJ/Kg*K),
-        return inf when tsat near critical temperature, because near critical temperature value of cv is not accurate
+        return inf when tsat near critical temperature, because near critical temperature value of cv is not accurate.
     mu: float or inf
-        dynamic viscosity (Pa*s), return inf when tsat near critical temperature, because near critical temperature value of mu is not accurate
+        dynamic viscosity (Pa*s), return inf when tsat near critical temperature, because near critical temperature value of mu is not accurate.
 
     Limit
     -----
-    273.15 K <= tsat <= 647.096 K or 0 C <= tsat <= 373.946 C
+    Valid for:
+        273.15 K <= tsat <= 647.096 K or 0 C <= tsat <= 373.946 C.
 
 
     Parameters
     ----------
     tsat: float
-       saturation temperature (K)
+       saturation temperature (K).
 
     Returns
     -------
     props: dict or None
-        return all available properties, see Available Properties
-        if value of saturation temperature(tsat) exceed and/or is not in range of limit return None instead, see Limit
+        return all available properties, see Available Properties,
+        if value of saturation temperature(tsat) exceed and/or is not in range of limit return None instead, see Limit.
     """
 
-    # psat = 0.
     if tsat and (psat := Region4.getSaturPress(tsat=tsat)) and 273.15 <= tsat <= 623.15 and 0. < psat < PRESSC:
         vf = Region1.props(p=psat, t=tsat, desc="v")
         vg = Region2.props(p=psat, t=tsat, desc="v")
@@ -99,49 +99,49 @@ def saturationT(tsat):
 
 
 def saturationP(psat):
-    """Calculate properties at saturation phase using saturation pressure as input
+    """Calculate properties at saturation phase using saturation pressure as input.
 
     Available Properties
     --------------------
     psat: float
-        saturation pressure (KPa)
+        saturation pressure (KPa).
     tsat: float
-        saturation temperature (K)
+        saturation temperature (K).
     v: float
-        specific volume of liquid and vapor phase (m^3/Kg)
+        specific volume of liquid and vapor phase (m^3/Kg).
     u: float
-        specific internal energy of liquid and vapor phase (KJ/Kg)
+        specific internal energy of liquid and vapor phase (KJ/Kg).
     h: float
-        specific enthalpy of liquid and vapor phase (KJ/Kg)
+        specific enthalpy of liquid and vapor phase (KJ/Kg).
     s: float
-        specific entropy of liquid and vapor phase (KJ/Kg*K)
+        specific entropy of liquid and vapor phase (KJ/Kg*K).
     cp: float or inf
         specific isobaric heat capacity of liquid and vapor phase (KJ/Kg*K),
-        return inf when psat near critical temperature, because near critical temperature value of cp is not accurate
+        return inf when psat near critical temperature, because near critical temperature value of cp is not accurate.
     cv: float or inf
         specific isohoric heat capacity of liquid and vapor phase (KJ/Kg*K),
-        return inf when psat near critical temperature, because near critical temperature value of cv is not accurate
+        return inf when psat near critical temperature, because near critical temperature value of cv is not accurate.
     mu: float or inf
-        dynamic viscosity (Pa*s), return inf when tsat near critical temperature, because near critical temperature value of mu is not accurate
+        dynamic viscosity (Pa*s), return inf when tsat near critical temperature, because near critical temperature value of mu is not accurate.
 
     Limit
     -----
-    0.6112127 KPa <= psat <= 22064 KPa or 0.6112127e-3 MPa <= psat <= 22.064 MPa
+    Valid for:
+        0.6112127 KPa <= psat <= 22064 KPa or 0.6112127e-3 MPa <= psat <= 22.064 MPa.
 
 
     Parameters
     ----------
     psat: float
-       saturation pressure (KPa)
+       saturation pressure (KPa).
 
     Returns
     -------
     props: dict or None
         return all available properties, see Available Properties
-        if value of saturation pressure(psat) exceed and/or is not in range of limit return None instead, see Limit
+        if value of saturation pressure(psat) exceed and/or is not in range of limit return None instead, see Limit.
     """
 
-    # tsat = 0.
     if psat and (tsat := Region4.getSaturTemp(psat=psat)) and 0.6112127 <= psat <= 16529.2 and 273.15 <= tsat < TEMPC:
         vf = Region1.props(p=psat, t=tsat, desc="v")
         vg = Region2.props(p=psat, t=tsat, desc="v")
@@ -192,49 +192,50 @@ def saturationP(psat):
 
 
 def singlephase(p, t):
-    """Calculate properties at single phase using pressure and temperature as inputs
+    """Calculate properties at single phase using pressure and temperature as inputs.
 
     Available Properties
     --------------------
     v: float
-        specific volume (m^3/Kg)
+        specific volume (m^3/Kg).
     u: float
-        specific internal energy (KJ/Kg)
+        specific internal energy (KJ/Kg).
     h: float
-        specific enthalpy (KJ/Kg)
+        specific enthalpy (KJ/Kg).
     s: float
-        specific entropy (KJ/Kg*K)
+        specific entropy (KJ/Kg*K).
     cp: float
-        specific isobaric heat capacity (KJ/Kg*K)
+        specific isobaric heat capacity (KJ/Kg*K).
     cv: float
-        specific isochoric heat capacity (KJ/Kg*K)
+        specific isochoric heat capacity (KJ/Kg*K).
     mu: float or None
-        dynamic viscosity (Pa*s), if value of temperature(t) exceed and/or not in range limit return None instead, see Limits
+        dynamic viscosity (Pa*s), if value of temperature(t) exceed and/or not in range limit return None instead, see Limits.
 
     Limits
     ------
-    273.15 K <= t <= 1073 K or 0 C <= t <= 800 C for 0 MPa < p <= 100 MPa or 0 KPa < p <= 100000 KPa and,
+    Valid for:
+        273.15 K <= t <= 1073 K or 0 C <= t <= 800 C for 0 MPa < p <= 100 MPa or 0 KPa < p <= 100000 KPa and,
 
-    1073.15 K <= t <= 2273 K or 800 C <= t <= 2000 C for 0 MPa < p <= 50 MPa or 0 KPa < p <= 50000 KPa
+        1073.15 K <= t <= 2273 K or 800 C <= t <= 2000 C for 0 MPa < p <= 50 MPa or 0 KPa < p <= 50000 KPa.
 
-    *mu: 273.15 K <= t <= 1173.15 K or 0 C <= t <= 900 C
+    *mu:
+        273.15 K <= t <= 1173.15 K or 0 C <= t <= 900 C.
 
 
     Parameters
     ----------
     p: float
-        pressure (KPa)
+        pressure (KPa).
     t: float
-        temperature (K)
+        temperature (K).
 
     Returns
     -------
     props: dict or None
-        return all available properties, see Available Properties
-        if value of pressure(p) and temperature(t) exceed and/or are not in range of limits return None instead, see Limits
+        return all available properties, see Available Properties,
+        if value of pressure(p) and temperature(t) exceed and/or are not in range of limits return None instead, see Limits.
     """
 
-    # t23 = 0.
     if 0 < p < Region4.getSaturPress(tsat=t) and 273.15 <= t <= 623.15:
         v = Region2.props(p, t, desc="v")
         rho = 1/v
@@ -328,53 +329,52 @@ def singlephase(p, t):
 
 
 def if97(*, p=None, t=None, x=None):
-    """Calculate ordinary/pure water properties at mixed and single phase
+    """Calculate properties at mixed or single phase.
 
     Available Properties
     --------------------
     v: float
-        specific volume (m^3/Kg)
+        specific volume (m^3/Kg).
     u: float
-        specific internal energy (KJ/Kg)
+        specific internal energy (KJ/Kg).
     h: float
-        specific enthalpy (KJ/Kg)
+        specific enthalpy (KJ/Kg).
     s: float
-        specific entropy (KJ/Kg*K)
+        specific entropy (KJ/Kg*K).
     cp: float or inf
         specific isobaric heat capacity (KJ/Kg*K),
-        return inf when t near critical temperature, because near critical temperature value of cp is not accurate
+        return inf when t near critical temperature, because near critical temperature value of cp is not accurate.
     cv: float or inf
         specific isohoric heat capacity (KJ/Kg*K),
-        return inf when t near critical temperature, because near critical temperature value of cv is not accurate
+        return inf when t near critical temperature, because near critical temperature value of cv is not accurate.
     mu: float or None
-        dynamic viscosity (Pa*s), if value of temperature(t) exceed and/or not in range of limit return None instead, see Limits
+        dynamic viscosity (Pa*s), if value of temperature(t) exceed and/or not in range of limit return None instead, see Limits.
 
     Limits
     ------
-    Mixed phase
-        273.15 K <= t <= 647.096 K or 0 C <= t <= 373.946 C and 0.6112127 KPa <= p <= 22064 KPa and 0 <= x <= 1
-    Single phase
+    Mixed phase:
+        273.15 K <= t <= 647.096 K or 0 C <= t <= 373.946 C and 0.6112127 KPa <= p <= 22064 KPa and 0 <= x <= 1.
+    Single phase:
         273.15 K <= t <= 1073 K or 0 C <= t <= 800 C for 0 < p <= 100 MPa or 0 < p <= 100000 KPa,
 
-        1073.15 K <= t <= 2273 K or 800 C <= t <= 2000 C for 0 MPa < p <= 50 MPa or 0 KPa < p <= 50000 KPa
-    mu
-        273.15 K <= t <= 1173.15 K or 0 C <= t <= 900 C for 0 MPa < p <= 100 MPa or 0 KPa < p <= 100000 KPa
+        1073.15 K <= t <= 2273 K or 800 C <= t <= 2000 C for 0 MPa < p <= 50 MPa or 0 KPa < p <= 50000 KPa.
+    mu:
+        273.15 K <= t <= 1173.15 K or 0 C <= t <= 900 C for 0 MPa < p <= 100 MPa or 0 KPa < p <= 100000 KPa.
 
 
     Parameters
     ----------
-    *
     p: float or None
-        pressure (KPa)
+        pressure (KPa).
     t: float or None
-        temperature (K)
+        temperature (K).
     x: float or None
-        quality of vapor
+        quality of vapor.
 
     Returns
     -------
     props: dict
-        return all available properties, see Available Properties
+        return all available properties, see Available Properties.
 
     Raises
     ------
