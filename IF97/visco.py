@@ -8,7 +8,20 @@ def visc(rho, t):
 
     Limit
     -----
-        
+    Valid for:
+        273.15 K <= t <= 1173.15 K or 0 C <= t <= 900 C and 0 MPa < p <= 100 MPa or 0 KPa < p <= 100000 KPa.
+
+    Parameters
+    ----------
+    rho: float
+        density (Kg/m^3).
+    t: float
+        temperature (K).
+
+    Returns
+    -------
+    _mu: float
+        return value of dynamic viscosity (*1e-6 Pa*s)
     """
 
     delta = rho/RHOC
