@@ -7,14 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="update dokumentasi di modul visco.py">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_05_2022_13_16_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_10_05_2022_13_16__Changes_.xml" beforeDir="false" />
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi dokumentasi">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/coefficients/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/coefficients/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/cores/backwardPT.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/cores/backwardPT.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/cores/basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/cores/basic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/cores/boundary.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/cores/boundary.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,13 +214,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1650182031901</updated>
-    </task>
-    <task id="LOCAL-00035" summary="menambahkan notasi walrus">
-      <created>1651135863299</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1651135863299</updated>
     </task>
     <task id="LOCAL-00036" summary="membuat fungsi if97">
       <created>1651279899204</created>
@@ -564,7 +551,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652751316582</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="memodifikasi dokumentasi">
+      <created>1652769805222</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1652769805222</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -586,7 +580,6 @@
     <MESSAGE value="menambahkan dokumentasi di modul boundary.py" />
     <MESSAGE value="memodifikasi modul backwardPT.py, test_backwardPT.py, _if97.py" />
     <MESSAGE value="memindahkan modul _const.py dari folder coefficients ke folder IF97 dan mengganti nama modul _const.py menjadi constants.py" />
-    <MESSAGE value="memodifikasi dokumentasi" />
     <MESSAGE value="menambahkan dokumentasi di modul constants.py dan sedikit memodifikasi odul app.py" />
     <MESSAGE value="membuat modul _IJnBasic.py, meimndahkan semua koefisien dari region 1 sampai region 5 ke modul _IJnBasic.py, memodifikasi modul _IJnVPTReg3.py, menghapus mmodul _IJnReg1.py, _IJnReg2.py, _IJnReg3.py, _IJnReg4.py, _IJnReg5.py" />
     <MESSAGE value="optimisasi import" />
@@ -604,6 +597,7 @@
     <MESSAGE value="memodifikasi modul app.py" />
     <MESSAGE value="update workspace.xml" />
     <MESSAGE value="update dokumentasi di modul visco.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="update dokumentasi di modul visco.py" />
+    <MESSAGE value="memodifikasi dokumentasi" />
+    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi dokumentasi" />
   </component>
 </project>
