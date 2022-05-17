@@ -14,6 +14,8 @@ Available properties that can be calculated are:
 5. cp: specific isobaric heat capacity (KJ/Kg*K)
 6. cv: specific isochoric heat capacity (KJ/Kg*K)
 7. mu: dynamic viscosity (Pa*s)
+8. psat: saturation pressure (KPa)
+9. tsat: saturation temperature (K)
 
 ## Requirements
 1. Python >= 3.10
@@ -66,7 +68,7 @@ Output
 {'v': 0.0010434353664157238, 'u': 418.88499171366203, 'h': 418.9907178021641, 's': 1.306723978359408, 'cv': 3.7678305778834753, 'cp': 4.216612690426204}
 ```
 
-Note: All units of inputs are in SI unit, temperature is in kelvin(K), pressure is in kilopascal(KPa).
+Note: All units of inputs and outputs are in SI unit, temperature is in kelvin(K), pressure is in kilopascal(KPa), see [Available Properties](#Available Properties).
 
 ## References
 1. IAPWS, R7-97(2012), *Revised Release on the IAPWS Industrial Formulation 1997 for the Thermodynamic Properties of Water and Steam (The revision only relates to the extension of region 5 to 50 MPa)* (August 2007), Available from http://www.iapws.org
