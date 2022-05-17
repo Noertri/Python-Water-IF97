@@ -1,3 +1,5 @@
+"""Contain all equations for boundary line"""
+
 from math import log, sqrt
 from ..coefficients import InBoundT3, nb23
 

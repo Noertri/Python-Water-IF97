@@ -1,4 +1,4 @@
-"""Contain coeffiients of basic equations, backward equations, and boundary equations"""
+"""Contain coeffiients for basic equations, backward equations, viscosity equations, and boundary equations"""
 
 
 from ._IJnBasic import *

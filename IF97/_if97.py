@@ -7,7 +7,7 @@ from .constants import PRESSC, RHOC, TEMPC
 
 
 def saturationT(tsat):
-    """Calculate properties at saturation phase using saturation temperature as input.
+    """Calculate properties of ordinary/pure water at saturation phase using saturation temperature as input.
 
     Available Properties
     --------------------
@@ -36,7 +36,6 @@ def saturationT(tsat):
     -----
     Valid for:
         273.15 K <= tsat <= 647.096 K or 0 C <= tsat <= 373.946 C.
-
 
     Parameters
     ----------
@@ -99,7 +98,7 @@ def saturationT(tsat):
 
 
 def saturationP(psat):
-    """Calculate properties at saturation phase using saturation pressure as input.
+    """Calculate properties of ordinary/pure water at saturation phase using saturation pressure as input.
 
     Available Properties
     --------------------
@@ -128,7 +127,6 @@ def saturationP(psat):
     -----
     Valid for:
         0.6112127 KPa <= psat <= 22064 KPa or 0.6112127e-3 MPa <= psat <= 22.064 MPa.
-
 
     Parameters
     ----------
@@ -192,7 +190,7 @@ def saturationP(psat):
 
 
 def singlephase(p, t):
-    """Calculate properties at single phase using pressure and temperature as inputs.
+    """Calculate properties of ordinary/pure water at single phase using pressure and temperature as inputs.
 
     Available Properties
     --------------------
@@ -220,7 +218,6 @@ def singlephase(p, t):
 
     *mu:
         273.15 K <= t <= 1173.15 K or 0 C <= t <= 900 C.
-
 
     Parameters
     ----------
@@ -329,7 +326,7 @@ def singlephase(p, t):
 
 
 def if97(*, p=None, t=None, x=None):
-    """Calculate properties at mixed or single phase.
+    """Calculate properties of ordinary/pure water at mixed or single phase.
 
     Available Properties
     --------------------
@@ -360,7 +357,6 @@ def if97(*, p=None, t=None, x=None):
         1073.15 K <= t <= 2273 K or 800 C <= t <= 2000 C for 0 MPa < p <= 50 MPa or 0 KPa < p <= 50000 KPa.
     mu:
         273.15 K <= t <= 1173.15 K or 0 C <= t <= 900 C for 0 MPa < p <= 100 MPa or 0 KPa < p <= 100000 KPa.
-
 
     Parameters
     ----------

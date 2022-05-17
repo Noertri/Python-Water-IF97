@@ -1,3 +1,5 @@
+"""Contain backward equations using pressure and temperature as inputs"""
+
 from numpy import exp
 from .basic import Region4
 from .boundary import Boundary23, temp3
@@ -5,42 +7,41 @@ from ..coefficients import IJnVPTReg3
 
 
 class Region3VPT:
-    """Class for backward equations of region 3
+    """Class of backward equations for region 3.
 
     staticmethods
     -------------
     volPT(p, t, desc="")
-        Backward equation for region 3
+        Backward equation for region 3.
 
     classmethods
     ------------
     singleRho(cls, p, t)
-        Method for subregion 3a to 3t to get value of density at single phase
+        Method for subregion 3a to 3t to get value of density at single phase.
     auxEqs(cls, p, t)
-        Auxillary equations for subregion 3u to 3z that near critical point
+        Auxillary equations for subregion 3u to 3z that near critical point.
     """
 
     @staticmethod
-    def volPT(p, t, desc=""):
-        """Backward equations for subregion 3 to get value of specific volume(v) using presssure(p) and temperature(t) as inputs
+    def volPT(p, t, desc):
+        """Backward equations for subregion 3 to get value of specific volume(v) using presssure(p) and temperature(t) as inputs.
 
         Parameters
         ----------
         p: float
-            pressure (KPa)
+            pressure (KPa).
         t: float
-            temperature (K)
+            temperature (K).
         desc: str
             input key, one of: "3a", "3b", "3c", "3d", "3e", "3f", "3g", "3h", "3i", "3j", "3k", "3l",
-            "3m", "3n", "3o", "3p", "3q", "3r", "3s", "3t", "3u", "3v", "3w", "3x", "3y",  "3z"
+            "3m", "3n", "3o", "3p", "3q", "3r", "3s", "3t", "3u", "3v", "3w", "3x", "3y",  "3z".
 
         Returns
         -------
         v: float
-            specific volume (m^3/Kg)
+            specific volume (m^3/Kg).
 
-
-        For more details see References[2, 3]
+        For more details see References[2, 3].
         """
 
         if desc and desc.lower() != "3n":
@@ -89,26 +90,27 @@ class Region3VPT:
 
     @classmethod
     def singleRho(cls, p, t):
-        """Method to get value of density at single phase for subregion 3a to 3t
+        """Method to get density at single phase for subregion 3a to 3t.
+
+        Limit
+        -----
+        Valid for:
+            623.15 K < t <= 863.15 K and p23 < p <= 100 MPa or 350 C < t <= 800 C and p23 < p <= 100000 KPa,
+            p23 represent boundary equation between region 2 and region 3.
 
         Parameters
         ----------
         p: float
-            pressure (KPa)
+            pressure (KPa).
         t: float
-            temperature (K)
+            temperature (K).
 
         Returns
         -------
         rho: float or None
-            return density (Kg/m^3) or None if pressure(p) and/or temperature(t) are not in range or exceed range of validity
+            return density (Kg/m^3) or None if pressure(p) and/or temperature(t) are not in or exceed range of limmit, see Limit.
 
-
-        Range of validity
-        -----------------
-        623.15 K < t <= 863.15 K and p23 < p <= 100 MPa or 350 C < t <= 800 C and p23 < p <= 100000 KPa, p23 represent boundary equation between region 2 and region 3
-
-        For more details see References[2, 3]
+        For more details see References[2, 3].
         """
 
         vol = 0.
@@ -221,24 +223,24 @@ class Region3VPT:
 
     @classmethod
     def auxEqs(cls, p, t):
-        """Auxillary equation for subregion 3u to 3z near critical point
+        """Auxillary equation for subregion 3u to 3z near critical point.
+
+        Limit
+        -----
+        Valid for:
+            T3qu < t <= T3rx and psat(643.15 K) < p <= 22.5 MPa.
 
         Parameters
         ----------
         p: float
-            pressure (KPa)
+            pressure (KPa).
         t: float
-            temperature (K)
+            temperature (K).
 
         Returns
         -------
         vol: float or None
-            return specific volume (m^3/Kg) or None if pressure(p) and/or temperature(t) are not in or exceed range of validity
-
-
-        Range of validity
-        -----------------
-        T3qu < t <= T3rx and psat(643.15 K) < p <= 22.5 MPa
+            return specific volume (m^3/Kg) or None if pressure(p) and/or temperature(t) are not in or exceed range of limit, see Limit.
 
         For more details see References[2, 3]
         """
