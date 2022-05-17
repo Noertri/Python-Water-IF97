@@ -1,4 +1,4 @@
-"""Contain backward equations using pressure and temperature as inputs"""
+"""This module contains backward equations that using pressure and temperature as inputs"""
 
 from numpy import exp
 from .basic import Region4
@@ -7,7 +7,7 @@ from ..coefficients import IJnVPTReg3
 
 
 class Region3VPT:
-    """Class of backward equations for region 3.
+    """Backward equations for region 3.
 
     staticmethods
     -------------
@@ -24,7 +24,7 @@ class Region3VPT:
 
     @staticmethod
     def volPT(p, t, desc):
-        """Backward equations for subregion 3 to get value of specific volume(v) using presssure(p) and temperature(t) as inputs.
+        """Method to get specific volume(v) using presssure(p) and temperature(t) as inputs.
 
         Parameters
         ----------

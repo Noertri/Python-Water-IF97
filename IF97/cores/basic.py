@@ -1,4 +1,4 @@
-"""Contain basic and property equations for region 1 to region 5"""
+"""This module contains all basic and property equations for region 1 to region 5"""
 
 import numpy as np
 from scipy import optimize

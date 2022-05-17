@@ -1,11 +1,12 @@
-"""Contain all equations for boundary line"""
+"""This module contains all equations of boundary line, boundary equations beetwen region 2 and region 3,
+boundary equations beetwen subregion 3"""
 
 from math import log, sqrt
 from ..coefficients import InBoundT3, nb23
 
 
 class Boundary23:
-    """Class for boundary equations between region 2 and 3.
+    """Boundary equations between region 2 and 3.
 
     class Methods
     -------------
