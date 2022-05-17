@@ -4,7 +4,13 @@ This repository contains program of implementation IAPWS-IF97 using python. This
 ## What is IAPWS-IF97?
 IAPWS-IF97 is formulation to calculate thermodynamical properties of ordinary/pure water for industrial use (primarily in the steam power industry). It approximate IAPWS-95 (formulation for general and scientific use) but with faster computational speed. The formulation is valid from 273.15 K to 1073.15 K at pressure up to 100 MPa and from 1073.15 K to 2273.15 K at pressure up to 50 MPa. For further details see [references](#References)
 
-## Available Properties
+## Available Inputs and Outputs
+Available inputs mode are T-x, P-x, P-T, with:
+
+1. P: pressure (KPa).
+2. T: temperature (K).
+3. x: quality of vapor.
+
 Available properties that can be calculated are:
 
 1. v: specific volume (m^3/Kg)
@@ -68,7 +74,7 @@ Output
 {'v': 0.0010434353664157238, 'u': 418.88499171366203, 'h': 418.9907178021641, 's': 1.306723978359408, 'cv': 3.7678305778834753, 'cp': 4.216612690426204}
 ```
 
-Note: All units of inputs and outputs are in SI unit, temperature is in kelvin(K), pressure is in kilopascal(KPa), see [Available Properties](#Available-Properties).
+Note: All units of inputs and outputs are in SI unit, temperature is in kelvin(K), see [Available Inputs and Outputs](#Available-Inputs-and-Outputs).
 
 ## References
 1. IAPWS, R7-97(2012), *Revised Release on the IAPWS Industrial Formulation 1997 for the Thermodynamic Properties of Water and Steam (The revision only relates to the extension of region 5 to 50 MPa)* (August 2007), Available from http://www.iapws.org
