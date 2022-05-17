@@ -1,3 +1,5 @@
+"""Simple calculator, GUI/front-end for package IF97 and package IF97 as back-end/engine"""
+
 import math
 import tkinter as tk
 from tkinter import messagebox, ttk
@@ -13,7 +15,7 @@ class PyWater(tk.Tk):
 
     def __init__(self):
         super().__init__()
-        self.title("Python Water")
+        self.title("Python Water IF97")
 
         #variables
         self.label2Val = tk.StringVar(value="P")
