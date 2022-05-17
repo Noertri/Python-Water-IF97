@@ -21,7 +21,7 @@ def visc(rho, t):
     Returns
     -------
     _mu: float
-        return value of dynamic viscosity (*1e-6 Pa*s)
+        return value of dynamic viscosity (*1e-6 Pa*s).
     """
 
     delta = rho/RHOC
