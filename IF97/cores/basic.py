@@ -3,7 +3,7 @@
 import numpy as np
 from scipy import optimize
 from ..coefficients import *
-from ..constants import BIGR, RHOC, TEMPC
+from ..constants import *
 
 
 #Region 1
@@ -597,6 +597,11 @@ class Region4:
     def getSaturPress(cls, tsat):
         """Calculate saturation pressure.
 
+        Limit
+        -----
+        Valid for:
+            273.15 K <= tsat <= 647.096 K or 0 C <= tsat <= 373.946 C.
+
         Parameters
         ----------
         tsat: float
@@ -605,20 +610,30 @@ class Region4:
         Returns
         -------
         psat: float
-            Saturation pressure (KPa).
+            return saturation pressure (KPa) or if saturation temperature (tsat) exceed
+            and/or is not in range of limit return None instead, see Limit.
         """
 
         n = nReg4["n"]
-        nu = (tsat/1)+(n[8]/((tsat/1)-n[9]))
-        Ai = (nu**2)+n[0]*nu+n[1]
-        Bi = n[2]*(nu**2)+n[3]*nu+n[4]
-        Ci = n[5]*(nu**2)+n[6]*nu+n[7]
-        psat = 1e3*((2*Ci/(-Bi+np.sqrt(Bi**2-4*Ai*Ci)))**4)
-        return psat
+
+        if 273.15 <= tsat <= TEMPC:
+            nu = (tsat/1)+(n[8]/((tsat/1)-n[9]))
+            Ai = (nu**2)+n[0]*nu+n[1]
+            Bi = n[2]*(nu**2)+n[3]*nu+n[4]
+            Ci = n[5]*(nu**2)+n[6]*nu+n[7]
+            psat = 1e3*((2*Ci/(-Bi+np.sqrt(Bi**2-4*Ai*Ci)))**4)
+            return psat
+        else:
+            return None
 
     @classmethod
     def getSaturTemp(cls, psat):
         """Calculate saturation pressure.
+
+        Limit
+        -----
+        Valid for:
+            0.6112127 KPa <= psat <= 22064 KPa or 0.6112127e-3 MPa <= psat <= 22.064 MPa
 
         Parameters
         ----------
@@ -628,17 +643,21 @@ class Region4:
         Returns
         -------
         tsat: float
-            Saturation temperature (K).
+            Saturation temperature (K) or if saturation pressure exceed and/or
+            is not in range of limit return None instead, see Limit.
         """
 
         n = nReg4["n"]
-        beta = (psat/1000)**(1/4)
-        Ei = (beta**2)+n[2]*beta+n[5]
-        Fi = n[0]*(beta**2)+n[3]*beta+n[6]
-        Gi = n[1]*(beta**2)+n[4]*beta+n[7]
-        Di = 2*Gi/(-Fi - np.sqrt((Fi**2) - 4*Ei*Gi))
-        tsat = 1*((n[9]+Di-np.sqrt((n[9]+Di)**2-4*(n[8]+n[9]*Di)))/2)
-        return tsat
+        if 0.6112127 <= psat <= PRESSC:
+            beta = (psat/1000)**(1/4)
+            Ei = (beta**2)+n[2]*beta+n[5]
+            Fi = n[0]*(beta**2)+n[3]*beta+n[6]
+            Gi = n[1]*(beta**2)+n[4]*beta+n[7]
+            Di = 2*Gi/(-Fi - np.sqrt((Fi**2) - 4*Ei*Gi))
+            tsat = 1*((n[9]+Di-np.sqrt((n[9]+Di)**2-4*(n[8]+n[9]*Di)))/2)
+            return tsat
+        else:
+            return None
 
 
 #Region 5
