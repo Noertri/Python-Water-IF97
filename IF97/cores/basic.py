@@ -615,7 +615,6 @@ class Region4:
         """
 
         n = nReg4["n"]
-
         if 273.15 <= tsat <= TEMPC:
             nu = (tsat/1)+(n[8]/((tsat/1)-n[9]))
             Ai = (nu**2)+n[0]*nu+n[1]
