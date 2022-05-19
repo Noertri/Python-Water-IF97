@@ -519,11 +519,11 @@ class Region3:
         """
 
         if 623.15 < tsat <= 647:
-            rhof = cls.iterRho(1.7, psat, tsat)
-            rhog = cls.iterRho(0.4, psat, tsat)
+            rhof = cls._iterRho(1.7, psat, tsat)
+            rhog = cls._iterRho(0.4, psat, tsat)
         elif 647 < tsat < TEMPC:
-            rhof = cls.iterRho(0.999999999, psat, tsat)
-            rhog = cls.iterRho(0.999999999, psat, tsat)
+            rhof = cls._iterRho(0.999999999, psat, tsat)
+            rhog = cls._iterRho(0.999999999, psat, tsat)
 
         return rhof, rhog
 
@@ -648,7 +648,7 @@ class Region4:
         """
 
         n = nReg4["n"]
-        if 0.6112127 <= psat <= PRESSC:
+        if cls.getSaturPress(tsat=273.15) <= psat <= PRESSC:
             beta = (psat/1000)**(1/4)
             Ei = (beta**2)+n[2]*beta+n[5]
             Fi = n[0]*(beta**2)+n[3]*beta+n[6]

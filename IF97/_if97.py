@@ -49,7 +49,7 @@ def saturationT(tsat):
         if value of saturation temperature(tsat) exceed and/or is not in range of limit return None instead, see Limit.
     """
 
-    if tsat and (psat := Region4.getSaturPress(tsat=tsat)) and 273.15 <= tsat <= 623.15 and 0. < psat < PRESSC:
+    if (psat := Region4.getSaturPress(tsat=tsat)) is not None and 273.15 <= tsat <= 623.15:
         vf = Region1.props(p=psat, t=tsat, desc="v")
         vg = Region2.props(p=psat, t=tsat, desc="v")
         rhof = 1/vf
@@ -66,7 +66,7 @@ def saturationT(tsat):
             "mu": [visc(rho=rhof, t=tsat), visc(rho=rhog, t=tsat)]
         }
         return props
-    elif tsat and (psat := Region4.getSaturPress(tsat=tsat)) and 623.15 < tsat < TEMPC and 0. < psat < PRESSC:
+    elif (psat := Region4.getSaturPress(tsat=tsat)) is not None and 623.15 < tsat < TEMPC:
         rhof, rhog = Region3.saturRho(psat, tsat)
         props = {
                 "psat": psat,
@@ -80,7 +80,7 @@ def saturationT(tsat):
                 "mu": [visc(rho=rhof, t=tsat), visc(rho=rhog, t=tsat)]
         }
         return props
-    elif tsat and tsat == TEMPC:
+    elif tsat == TEMPC:
         props = {
                 "psat": PRESSC,
                 "tsat": tsat,
@@ -140,11 +140,9 @@ def saturationP(psat):
         if value of saturation pressure(psat) exceed and/or is not in range of limit return None instead, see Limit.
     """
 
-    if psat and (tsat := Region4.getSaturTemp(psat=psat)) and 0.6112127 <= psat <= 16529.2 and 273.15 <= tsat < TEMPC:
-        vf = Region1.props(p=psat, t=tsat, desc="v")
-        vg = Region2.props(p=psat, t=tsat, desc="v")
-        rhof = 1/vf
-        rhog = 1/vg
+    if (tsat := Region4.getSaturTemp(psat=psat)) is not None and Region4.getSaturPress(tsat=273.15) <= psat <= Region4.getSaturPress(tsat=623.15):
+        vf, vg = Region1.props(p=psat, t=tsat, desc="v"), Region2.props(p=psat, t=tsat, desc="v")
+        rhof, rhog = 1/vf, 1/vg
         props = {
                 "psat": psat,
                 "tsat": tsat,
@@ -158,7 +156,7 @@ def saturationP(psat):
 
         }
         return props
-    elif psat and (tsat := Region4.getSaturTemp(psat=psat)) and 16529.2 < psat < PRESSC and 273.15 <= tsat < TEMPC:
+    elif (tsat := Region4.getSaturTemp(psat=psat)) is not None and Region4.getSaturPress(tsat=623.15) < psat < PRESSC:
         rhof, rhog = Region3.saturRho(psat, tsat)
         props = {
                 "psat": psat,
@@ -172,7 +170,7 @@ def saturationP(psat):
                 "mu": [visc(rho=rhof, t=tsat), visc(rho=rhog, t=tsat)]
         }
         return props
-    elif psat and psat == PRESSC:
+    elif psat == PRESSC:
         props = {
                 "psat": psat,
                 "tsat": TEMPC,
@@ -259,7 +257,7 @@ def singlephase(p, t):
                 "mu": visc(rho, t)
         }
         return props
-    elif (p23 := Boundary23.getPress(t)) and 0 < p <= p23 and 623.15 < t <= 863.15:
+    elif (p23 := Boundary23.getPress(t)) is not None and 0 < p <= p23 and 623.15 < t <= 863.15:
         v = Region2.props(p, t, desc="v")
         rho = 1/v
         props = {
@@ -272,7 +270,7 @@ def singlephase(p, t):
                 "mu": visc(rho, t)
         }
         return props
-    elif (p23 := Boundary23.getPress(t)) and (t23 := Boundary23.getTemp(p)) and p23 < p <= 1e5 and 623.15 < t <= t23:
+    elif (p23 := Boundary23.getPress(t)) is not None and (t23 := Boundary23.getTemp(p)) is not None and p23 < p <= 1e5 and 623.15 < t <= t23:
         rho = Region3VPT.singleRho(p, t)
         props = {
                 "v": 1/rho,
