@@ -190,11 +190,11 @@
     <list>
       <item itemvalue="Python.app" />
       <item itemvalue="Python.main" />
+      <item itemvalue="Python tests.Python tests for IF97.tests.test_visc.TestVisc.test_visc" />
+      <item itemvalue="Python tests.Python tests for test_visc.TestVisc.test_visc" />
       <item itemvalue="Python tests.Python tests in test_region3.py" />
       <item itemvalue="Python tests.Python tests in test_region5.py" />
       <item itemvalue="Python tests.Python tests in test_visc.py" />
-      <item itemvalue="Python tests.Python tests for IF97.tests.test_visc.TestVisc.test_visc" />
-      <item itemvalue="Python tests.Python tests for test_visc.TestVisc.test_visc" />
     </list>
     <recent_temporary>
       <list>
