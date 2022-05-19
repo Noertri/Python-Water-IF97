@@ -1,4 +1,4 @@
-"""Contain reference points and universal constants
+"""This module contains reference points and universal constants
 
 TEMPC: Critical temperature (K)
 
