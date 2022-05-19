@@ -7,10 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="update dokumentasi di modul basic.py">
+    <list default="true" id="78565e10-82f3-4494-baa8-4f6020d86c76" name="Changes" comment="memodifikasi modul basic.py dan _if97.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/_if97.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/_if97.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IF97/cores/basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/IF97/cores/basic.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,13 +214,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1650182031901</updated>
-    </task>
-    <task id="LOCAL-00037" summary="mengubah rhoL, rhoV menjadi rhof, dan rhog, enghapus subpackage _SubReg3">
-      <created>1651280477066</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1651280477066</updated>
     </task>
     <task id="LOCAL-00038" summary="mengubah rhoL, rhoV menjadi rhof, dan rhog, menghapus subpackage _SubReg3, membuat folder desktop_app">
       <created>1651281173030</created>
@@ -560,7 +551,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652927726877</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="memodifikasi modul basic.py dan _if97.py">
+      <created>1652929511384</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1652929511384</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -575,7 +573,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="memodifikasi dan menambahkan dokumentasi di modul basic.py dan _if97.py" />
     <MESSAGE value="memodifikasi README.md" />
     <MESSAGE value="menambahkan dokumentasi di modul boundary.py dan sedikit memodifikasi modul boundary.py" />
     <MESSAGE value="menambahkan dokumentasi di modul boundary.py" />
@@ -600,6 +597,7 @@
     <MESSAGE value="update dokumentasi di modul visco.py" />
     <MESSAGE value="memodifikasi dokumentasi" />
     <MESSAGE value="update dokumentasi di modul basic.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="update dokumentasi di modul basic.py" />
+    <MESSAGE value="memodifikasi modul basic.py dan _if97.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="memodifikasi modul basic.py dan _if97.py" />
   </component>
 </project>
